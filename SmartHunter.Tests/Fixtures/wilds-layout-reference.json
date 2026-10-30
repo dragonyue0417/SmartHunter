@@ -1,0 +1,227 @@
+{
+  "Source": "Root RVAs from the user-supplied Scan.Wilds.json; typed memory read-contract fixtures.",
+  "Addresses": {
+    "PlayerManager": 343859040,
+    "SaveManager": 343762168,
+    "EnemyManager": 344478080,
+    "QuestManager": 344434256,
+    "CameraManager": 343552568,
+    "PauseManager": 344509400,
+    "HealthEncryptionKey": 345387328,
+    "HealthEncryptionRound": 345387312,
+    "NpcManager": 343744504
+  },
+  "Offsets": {
+    "EnvironmentMonsterList": [
+      720
+    ],
+    "MonsterMagic": [
+      16,
+      40,
+      20
+    ],
+    "MonsterContext": [
+      48
+    ],
+    "MonsterContextData": [
+      48,
+      64
+    ],
+    "MonsterBasicData": [
+      48,
+      64,
+      264
+    ],
+    "MonsterHealth": [
+      48,
+      56,
+      16
+    ],
+    "MonsterRage": [
+      48,
+      64,
+      312,
+      24
+    ],
+    "MonsterStamina": [
+      48,
+      64,
+      312,
+      32
+    ],
+    "MonsterStatusEffects": [
+      48,
+      64,
+      312,
+      192
+    ],
+    "MonsterParts": [
+      48,
+      64,
+      296
+    ],
+    "CameraMonsterTarget": [
+      176,
+      560,
+      32,
+      48
+    ],
+    "MonsterTargetKey": [
+      48,
+      64,
+      256,
+      24
+    ],
+    "PlayerLocal": [
+      80,
+      32,
+      16
+    ],
+    "PlayerList": [
+      80,
+      32
+    ],
+    "PlayerStage": [
+      48,
+      56,
+      24
+    ],
+    "PlayerContext": [
+      48,
+      72
+    ],
+    "PlayerGear": [
+      48,
+      64,
+      16
+    ],
+    "PlayerParty": [
+      96
+    ],
+    "PlayerDamageHistory": [
+      24,
+      1664,
+      168,
+      32,
+      56
+    ],
+    "PlayerConsumableEffects": [
+      48,
+      64,
+      80,
+      56
+    ],
+    "PlayerHornEffects": [
+      48,
+      64,
+      80,
+      64,
+      56
+    ],
+    "PlayerDebuffs": [
+      48,
+      64,
+      80,
+      96
+    ],
+    "PlayerPalicoEffects": [
+      48,
+      64,
+      80,
+      64,
+      48
+    ],
+    "PlayerSkillEffects": [
+      48,
+      64,
+      80,
+      64,
+      64
+    ],
+    "PlayerQuestPlayerIndexes": [
+      120,
+      16
+    ],
+    "QuestIsRetrying": [
+      376,
+      213
+    ],
+    "QuestCurrentInformation": [
+      376,
+      56,
+      24
+    ],
+    "QuestLocalPlayerDamage": [
+      376,
+      72,
+      80,
+      48
+    ],
+    "QuestRemotePlayerDamage": [
+      376,
+      72,
+      96,
+      48
+    ],
+    "PauseState": [
+      80,
+      16,
+      32
+    ],
+    "SaveIndex": [
+      216
+    ],
+    "SaveData": [
+      128,
+      16,
+      32
+    ],
+    "PlayerSpecializedTools": [
+      24,
+      936,
+      176,
+      56
+    ],
+    "QuestArenaSelectedLoadout": [
+      376,
+      48,
+      48,
+      60
+    ],
+    "QuestMissionId": [
+      376,
+      48,
+      24,
+      32,
+      16
+    ],
+    "PlayerIsInArena": [
+      80,
+      32,
+      24,
+      32,
+      241
+    ],
+    "QuestArenaData": [
+      240,
+      72,
+      72
+    ],
+    "SaveSpecializedTool": [
+      144,
+      16,
+      16
+    ],
+    "NpcParty": [
+      224,
+      40
+    ],
+    "NpcDamageHistory": [
+      40,
+      1664,
+      168,
+      32,
+      56
+    ]
+  }
+}

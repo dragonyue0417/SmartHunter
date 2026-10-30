@@ -1,0 +1,227 @@
+{
+  "Purpose": "Redacted paired-client evidence; fingerprints and getter code only, no raw identifiers or names",
+  "Samples": [
+    {
+      "Role": "Host",
+      "QuestCandidate": {
+        "Status": "MatchingPathsCandidate",
+        "PrimaryState": "GuidCandidate",
+        "SecondaryState": "GuidCandidate",
+        "Sha256": "ea8476097a662eedf2b16ab59add483551020c929264f5d83b1280469498a6cc",
+        "PrimaryPath": "NetworkManager+0x90+0x20+0x1D8",
+        "SecondaryPath": "NetworkManager+0x90+0x20+0x1E0+0x10",
+        "CurrentCandidateSha256": "ea8476097a662eedf2b16ab59add483551020c929264f5d83b1280469498a6cc",
+        "PrimarySha256": "ea8476097a662eedf2b16ab59add483551020c929264f5d83b1280469498a6cc",
+        "SecondarySha256": "ea8476097a662eedf2b16ab59add483551020c929264f5d83b1280469498a6cc",
+        "CurrentState": "CurrentFieldsAgree",
+        "ValidatedForSharing": false
+      },
+      "NativeMembers": [
+        {
+          "TableSlot": 0,
+          "UniqueIdSize": 48,
+          "NativeIndex": 0,
+          "IsHost": true,
+          "IsSelf": true,
+          "Status": "GetterVerifiedFields",
+          "UniqueIdType": "via.network.utility.UniqueId",
+          "UniqueIdVtableRva": null
+        },
+        {
+          "TableSlot": 1,
+          "UniqueIdSize": 48,
+          "NativeIndex": 1,
+          "IsHost": false,
+          "IsSelf": false,
+          "Status": "GetterVerifiedFields",
+          "UniqueIdType": "via.network.utility.UniqueId",
+          "UniqueIdVtableRva": null
+        }
+      ],
+      "MemberMetadata": {
+        "Type": "via.network.session.MemberInfo",
+        "Status": "Completed",
+        "PropertyCount": 5,
+        "Properties": [
+          {
+            "Name": "Index",
+            "Type": "s32",
+            "GetterRva": "0xD03B080",
+            "GetterBytes": "8B 42 14 41 89 00 C3 CC CC CC CC CC CC CC CC CC 8A 42 1C 41 88 00 C3 CC CC CC CC CC CC CC CC CC 8A 42 1D 41 88 00 C3 CC CC CC CC CC CC CC CC CC 8B 42 18 41 89 00 C3 CC CC CC CC CC CC CC CC CC",
+            "Flags": 4103,
+            "VariableType": 0,
+            "GetterParameter": 0,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          },
+          {
+            "Name": "Name",
+            "Type": "c16",
+            "GetterRva": "0xD0829B0",
+            "GetterBytes": "48 83 C2 18 49 89 10 C3 CC CC CC CC CC CC CC CC 56 48 83 EC 20 4C 89 C6 48 89 D1 E8 60 B2 CF FF 88 06 48 83 C4 20 5E C3 CC CC CC CC CC CC CC CC 48 8B 42 10 48 8D 48 08 48 85 C0 48 8D 05 26 17",
+            "Flags": 8367,
+            "VariableType": 0,
+            "GetterParameter": 0,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          },
+          {
+            "Name": "IsHost",
+            "Type": "bool",
+            "GetterRva": "0xD03B1C0",
+            "GetterBytes": "8A 42 11 41 88 00 C3 CC CC CC CC CC CC CC CC CC 48 8B 42 10 49 89 00 C3 CC CC CC CC CC CC CC CC 48 8D 42 32 80 7A 52 00 74 0C 83 7A 4E 0C 72 17 48 8B 42 32 EB 11 48 8B 08 48 85 C9 48 8D 05 1D",
+            "Flags": 1026,
+            "VariableType": 0,
+            "GetterParameter": 0,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          },
+          {
+            "Name": "IsSelf",
+            "Type": "bool",
+            "GetterRva": "0xD080230",
+            "GetterBytes": "8A 42 12 41 88 00 C3 CC CC CC CC CC CC CC CC CC 41 8A 00 88 42 12 C3 CC CC CC CC CC CC CC CC CC 8B 82 BC 07 00 00 41 89 00 C3 CC CC CC CC CC CC 48 89 D1 41 8B 10 E9 25 49 D1 FF CC CC CC CC CC",
+            "Flags": 1026,
+            "VariableType": 0,
+            "GetterParameter": 0,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          },
+          {
+            "Name": "UniqueId",
+            "Type": "via.intrusive_ptr",
+            "GetterRva": "0xAEEBD00",
+            "GetterBytes": "56 57 48 83 EC 28 4C 89 C7 48 8B B2 98 00 00 00 48 85 F6 74 10 48 89 F1 E8 93 CD 11 00 48 89 F1 E8 8B CD 11 00 48 8B 0F 48 89 37 48 85 C9 74 05 E8 8B EB 11 00 48 85 F6 74 0E 48 89 F1 48 83 C4",
+            "Flags": 8241,
+            "VariableType": 7980288,
+            "GetterParameter": 5964176,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          }
+        ]
+      },
+      "NativeSession": {
+        "Path": "NetworkManager+0x90+0x20+0x60",
+        "Type": "via.network.utility.SessionId",
+        "Status": "BufferFingerprintCandidate",
+        "Sha256": "f6a4bab93551f950caaf8093c6cc4fdf60afe66d6824f2ba68d821b04e009575",
+        "ObjectSize": 96,
+        "BufferLength": 235,
+        "ValidatedForSharing": false
+      },
+      "GameVersion": "1.42.0.3",
+      "AppVersion": "2026.10.27.3"
+    },
+    {
+      "Role": "Guest",
+      "QuestCandidate": {
+        "Status": "MatchingPathsCandidate",
+        "PrimaryState": "GuidCandidate",
+        "SecondaryState": "GuidCandidate",
+        "Sha256": "ea8476097a662eedf2b16ab59add483551020c929264f5d83b1280469498a6cc",
+        "PrimaryPath": "NetworkManager+0x90+0x20+0x1D8",
+        "SecondaryPath": "NetworkManager+0x90+0x20+0x1E0+0x10",
+        "CurrentCandidateSha256": "ea8476097a662eedf2b16ab59add483551020c929264f5d83b1280469498a6cc",
+        "PrimarySha256": "ea8476097a662eedf2b16ab59add483551020c929264f5d83b1280469498a6cc",
+        "SecondarySha256": "ea8476097a662eedf2b16ab59add483551020c929264f5d83b1280469498a6cc",
+        "CurrentState": "CurrentFieldsAgree",
+        "ValidatedForSharing": false
+      },
+      "NativeMembers": [
+        {
+          "TableSlot": 0,
+          "UniqueIdSize": 48,
+          "NativeIndex": 0,
+          "IsHost": true,
+          "IsSelf": false,
+          "Status": "GetterVerifiedFields",
+          "UniqueIdType": "via.network.utility.UniqueId",
+          "UniqueIdVtableRva": null
+        },
+        {
+          "TableSlot": 1,
+          "UniqueIdSize": 48,
+          "NativeIndex": 1,
+          "IsHost": false,
+          "IsSelf": true,
+          "Status": "GetterVerifiedFields",
+          "UniqueIdType": "via.network.utility.UniqueId",
+          "UniqueIdVtableRva": null
+        }
+      ],
+      "MemberMetadata": {
+        "Type": "via.network.session.MemberInfo",
+        "Status": "Completed",
+        "PropertyCount": 5,
+        "Properties": [
+          {
+            "Name": "Index",
+            "Type": "s32",
+            "GetterRva": "0xD03B080",
+            "GetterBytes": "8B 42 14 41 89 00 C3 CC CC CC CC CC CC CC CC CC 8A 42 1C 41 88 00 C3 CC CC CC CC CC CC CC CC CC 8A 42 1D 41 88 00 C3 CC CC CC CC CC CC CC CC CC 8B 42 18 41 89 00 C3 CC CC CC CC CC CC CC CC CC",
+            "Flags": 4103,
+            "VariableType": 0,
+            "GetterParameter": 0,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          },
+          {
+            "Name": "Name",
+            "Type": "c16",
+            "GetterRva": "0xD0829B0",
+            "GetterBytes": "48 83 C2 18 49 89 10 C3 CC CC CC CC CC CC CC CC 56 48 83 EC 20 4C 89 C6 48 89 D1 E8 60 B2 CF FF 88 06 48 83 C4 20 5E C3 CC CC CC CC CC CC CC CC 48 8B 42 10 48 8D 48 08 48 85 C0 48 8D 05 26 17",
+            "Flags": 8367,
+            "VariableType": 0,
+            "GetterParameter": 0,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          },
+          {
+            "Name": "IsHost",
+            "Type": "bool",
+            "GetterRva": "0xD03B1C0",
+            "GetterBytes": "8A 42 11 41 88 00 C3 CC CC CC CC CC CC CC CC CC 48 8B 42 10 49 89 00 C3 CC CC CC CC CC CC CC CC 48 8D 42 32 80 7A 52 00 74 0C 83 7A 4E 0C 72 17 48 8B 42 32 EB 11 48 8B 08 48 85 C9 48 8D 05 1D",
+            "Flags": 1026,
+            "VariableType": 0,
+            "GetterParameter": 0,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          },
+          {
+            "Name": "IsSelf",
+            "Type": "bool",
+            "GetterRva": "0xD080230",
+            "GetterBytes": "8A 42 12 41 88 00 C3 CC CC CC CC CC CC CC CC CC 41 8A 00 88 42 12 C3 CC CC CC CC CC CC CC CC CC 8B 82 BC 07 00 00 41 89 00 C3 CC CC CC CC CC CC 48 89 D1 41 8B 10 E9 25 49 D1 FF CC CC CC CC CC",
+            "Flags": 1026,
+            "VariableType": 0,
+            "GetterParameter": 0,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          },
+          {
+            "Name": "UniqueId",
+            "Type": "via.intrusive_ptr",
+            "GetterRva": "0xAEEBD00",
+            "GetterBytes": "56 57 48 83 EC 28 4C 89 C7 48 8B B2 98 00 00 00 48 85 F6 74 10 48 89 F1 E8 93 CD 11 00 48 89 F1 E8 8B CD 11 00 48 8B 0F 48 89 37 48 85 C9 74 05 E8 8B EB 11 00 48 85 F6 74 0E 48 89 F1 48 83 C4",
+            "Flags": 8241,
+            "VariableType": 7980288,
+            "GetterParameter": 5964176,
+            "GetterHelperRva": null,
+            "GetterHelperBytes": null
+          }
+        ]
+      },
+      "NativeSession": {
+        "Path": "NetworkManager+0x90+0x20+0x60",
+        "Type": "via.network.utility.SessionId",
+        "Status": "BufferFingerprintCandidate",
+        "Sha256": "f6a4bab93551f950caaf8093c6cc4fdf60afe66d6824f2ba68d821b04e009575",
+        "ObjectSize": 96,
+        "BufferLength": 235,
+        "ValidatedForSharing": false
+      },
+      "GameVersion": "1.42.0.3",
+      "AppVersion": "2026.10.27.3"
+    }
+  ]
+}

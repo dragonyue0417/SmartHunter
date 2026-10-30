@@ -1,0 +1,2927 @@
+{
+  "Purpose": "Redacted real paired snapshots for regression only; no player names or raw session IDs",
+  "HostState": "Providing",
+  "GuestState": "NoHost",
+  "HostMonsters": [
+    {
+      "Id": 13,
+      "TargetKey": 3266,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 25344.0,
+      "MaxHealth": 25344.0,
+      "Distance": 296118.4,
+      "Selected": true,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 1254.0,
+          "MaxHealth": 1254.0
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_L_LEG",
+          "Severable": false,
+          "Health": 2850.0,
+          "MaxHealth": 2850.0
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_L_CLAW",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_R_LEG",
+          "Severable": false,
+          "Health": 2850.0,
+          "MaxHealth": 2850.0
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_R_CLAW",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_H_LEG",
+          "Severable": false,
+          "Health": 3078.0,
+          "MaxHealth": 3078.0
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_R_H_LEG",
+          "Severable": false,
+          "Health": 3078.0,
+          "MaxHealth": 3078.0
+        },
+        {
+          "Slot": 7,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 3420.0,
+          "MaxHealth": 3420.0
+        },
+        {
+          "Slot": 8,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 3420.0,
+          "MaxHealth": 3420.0
+        },
+        {
+          "Slot": 9,
+          "Count": 0,
+          "NameId": "LOC_PART_DORSAL_FIN",
+          "Severable": false,
+          "Health": 3078.0,
+          "MaxHealth": 3078.0
+        },
+        {
+          "Slot": 10,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 3420.0,
+          "MaxHealth": 3420.0
+        },
+        {
+          "Slot": 11,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": true,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 12,
+          "Count": 0,
+          "NameId": "LOC_PART_UNKNOWN",
+          "Severable": false,
+          "Health": 2280.0,
+          "MaxHealth": 2280.0
+        },
+        {
+          "Slot": 13,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 1254.0,
+          "MaxHealth": 1254.0
+        },
+        {
+          "Slot": 14,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 3648.0,
+          "MaxHealth": 3648.0
+        },
+        {
+          "Slot": 15,
+          "Count": 0,
+          "NameId": "LOC_PART_L_CLAW",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 16,
+          "Count": 0,
+          "NameId": "LOC_PART_R_CLAW",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 100.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 1175.0,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    },
+    {
+      "Id": 21,
+      "TargetKey": 3401,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 15094.5957,
+      "MaxHealth": 15805.44,
+      "Distance": 99558.26,
+      "Selected": false,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 1675.8,
+          "MaxHealth": 1675.8
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 1915.20007,
+          "MaxHealth": 1915.20007
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_L_CLAW",
+          "Severable": false,
+          "Health": 1149.12,
+          "MaxHealth": 1149.12
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_R_CLAW",
+          "Severable": false,
+          "Health": 1149.12,
+          "MaxHealth": 1149.12
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_FORELEG",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_R_FORELEG",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 7,
+          "Count": 0,
+          "NameId": "LOC_PART_L_H_LEG",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 8,
+          "Count": 0,
+          "NameId": "LOC_PART_R_H_LEG",
+          "Severable": false,
+          "Health": 963.6001,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 9,
+          "Count": 0,
+          "NameId": "LOC_PART_PETALS",
+          "Severable": false,
+          "Health": 1915.20007,
+          "MaxHealth": 1915.20007
+        },
+        {
+          "Slot": 10,
+          "Count": 0,
+          "NameId": "LOC_PART_UNKNOWN",
+          "Severable": false,
+          "Health": 478.800018,
+          "MaxHealth": 478.800018
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 568.6686,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 1180.0,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 300.0,
+          "Remaining": 0.0,
+          "MaxDuration": 8.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 7.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 120.000008,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    },
+    {
+      "Id": 1,
+      "TargetKey": 3400,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 22464.0,
+      "MaxHealth": 22464.0,
+      "Distance": 145420.75,
+      "Selected": false,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 2850.0,
+          "MaxHealth": 2850.0
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_NECK",
+          "Severable": false,
+          "Health": 2850.0,
+          "MaxHealth": 2850.0
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_L_WING",
+          "Severable": false,
+          "Health": 2964.0,
+          "MaxHealth": 2964.0
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_R_WING",
+          "Severable": false,
+          "Health": 2964.0,
+          "MaxHealth": 2964.0
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_LEG",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_R_WING",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 7,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 2964.0,
+          "MaxHealth": 2964.0
+        },
+        {
+          "Slot": 9,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": true,
+          "Health": 2508.0,
+          "MaxHealth": 2508.0
+        },
+        {
+          "Slot": 10,
+          "Count": 0,
+          "NameId": "LOC_PART_SKY_FALL",
+          "Severable": false,
+          "Health": 456.0,
+          "MaxHealth": 456.0
+        },
+        {
+          "Slot": 11,
+          "Count": 0,
+          "NameId": "LOC_PART_SKY_FALL",
+          "Severable": false,
+          "Health": 456.0,
+          "MaxHealth": 456.0
+        },
+        {
+          "Slot": 12,
+          "Count": 0,
+          "NameId": "LOC_PART_AIR_FLINCH",
+          "Severable": false,
+          "Health": 570.0,
+          "MaxHealth": 570.0
+        },
+        {
+          "Slot": 13,
+          "Count": 0,
+          "NameId": "LOC_PART_AIR_FLINCH",
+          "Severable": false,
+          "Health": 570.0,
+          "MaxHealth": 570.0
+        },
+        {
+          "Slot": 14,
+          "Count": 0,
+          "NameId": "LOC_PART_UNKNOWN",
+          "Severable": false,
+          "Health": 1140.0,
+          "MaxHealth": 1140.0
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 100.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 1200.0,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 250.0,
+          "Remaining": 0.0,
+          "MaxDuration": 15.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 15.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    },
+    {
+      "Id": 0,
+      "TargetKey": 3397,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 16785.3711,
+      "MaxHealth": 17781.1211,
+      "Distance": 301085.125,
+      "Selected": false,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 2106.72,
+          "MaxHealth": 2106.72
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_L_LEG",
+          "Severable": false,
+          "Health": 1675.8,
+          "MaxHealth": 1675.8
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_R_LEG",
+          "Severable": false,
+          "Health": 1675.8,
+          "MaxHealth": 1675.8
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 2106.72,
+          "MaxHealth": 2106.72
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_WING",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_R_WING",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 7,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": true,
+          "Health": 1915.20007,
+          "MaxHealth": 1915.20007
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 1145.10449,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 80.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 955.0,
+          "MaxBuildup": 1000.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 250.0,
+          "Remaining": 0.0,
+          "MaxDuration": 15.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 15.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 144.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    },
+    {
+      "Id": 16,
+      "TargetKey": 3396,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 23500.8,
+      "MaxHealth": 23500.8,
+      "Distance": 537882.2,
+      "Selected": false,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 2052.0,
+          "MaxHealth": 2052.0
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 2280.0,
+          "MaxHealth": 2280.0
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_R_FORELEG",
+          "Severable": false,
+          "Health": 2280.0,
+          "MaxHealth": 2280.0
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_L_FORELEG",
+          "Severable": false,
+          "Health": 2280.0,
+          "MaxHealth": 2280.0
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_R_H_FORELEG",
+          "Severable": false,
+          "Health": 1140.0,
+          "MaxHealth": 1140.0
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_H_FORELEG",
+          "Severable": false,
+          "Health": 1140.0,
+          "MaxHealth": 1140.0
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL_HAIR",
+          "Severable": false,
+          "Health": 1368.0,
+          "MaxHealth": 1368.0
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 80.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 1000.0,
+          "MaxBuildup": 1000.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 28,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    }
+  ],
+  "GuestMonsters": [
+    {
+      "Id": 13,
+      "TargetKey": 4337,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 25344.0,
+      "MaxHealth": 25344.0,
+      "Distance": 304534.0,
+      "Selected": true,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 1254.0,
+          "MaxHealth": 1254.0
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_L_LEG",
+          "Severable": false,
+          "Health": 2850.0,
+          "MaxHealth": 2850.0
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_L_CLAW",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_R_LEG",
+          "Severable": false,
+          "Health": 2850.0,
+          "MaxHealth": 2850.0
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_R_CLAW",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_H_LEG",
+          "Severable": false,
+          "Health": 3078.0,
+          "MaxHealth": 3078.0
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_R_H_LEG",
+          "Severable": false,
+          "Health": 3078.0,
+          "MaxHealth": 3078.0
+        },
+        {
+          "Slot": 7,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 3420.0,
+          "MaxHealth": 3420.0
+        },
+        {
+          "Slot": 8,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 3420.0,
+          "MaxHealth": 3420.0
+        },
+        {
+          "Slot": 9,
+          "Count": 0,
+          "NameId": "LOC_PART_DORSAL_FIN",
+          "Severable": false,
+          "Health": 3078.0,
+          "MaxHealth": 3078.0
+        },
+        {
+          "Slot": 10,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 3420.0,
+          "MaxHealth": 3420.0
+        },
+        {
+          "Slot": 11,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": true,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 12,
+          "Count": 0,
+          "NameId": "LOC_PART_UNKNOWN",
+          "Severable": false,
+          "Health": 2280.0,
+          "MaxHealth": 2280.0
+        },
+        {
+          "Slot": 13,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 1254.0,
+          "MaxHealth": 1254.0
+        },
+        {
+          "Slot": 14,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 3648.0,
+          "MaxHealth": 3648.0
+        },
+        {
+          "Slot": 15,
+          "Count": 0,
+          "NameId": "LOC_PART_L_CLAW",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 16,
+          "Count": 0,
+          "NameId": "LOC_PART_R_CLAW",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 100.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 1200.0,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    },
+    {
+      "Id": 21,
+      "TargetKey": 4202,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 15095.0,
+      "MaxHealth": 15805.44,
+      "Distance": 96583.47,
+      "Selected": false,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 1675.8,
+          "MaxHealth": 1675.8
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 1915.20007,
+          "MaxHealth": 1915.20007
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_L_CLAW",
+          "Severable": false,
+          "Health": 1149.12,
+          "MaxHealth": 1149.12
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_R_CLAW",
+          "Severable": false,
+          "Health": 1149.12,
+          "MaxHealth": 1149.12
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_FORELEG",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_R_FORELEG",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 7,
+          "Count": 0,
+          "NameId": "LOC_PART_L_H_LEG",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 8,
+          "Count": 0,
+          "NameId": "LOC_PART_R_H_LEG",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 9,
+          "Count": 0,
+          "NameId": "LOC_PART_PETALS",
+          "Severable": false,
+          "Health": 1915.20007,
+          "MaxHealth": 1915.20007
+        },
+        {
+          "Slot": 10,
+          "Count": 0,
+          "NameId": "LOC_PART_UNKNOWN",
+          "Severable": false,
+          "Health": 478.800018,
+          "MaxHealth": 478.800018
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 564.7059,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 1180.0,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 300.0,
+          "Remaining": 0.0,
+          "MaxDuration": 8.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 7.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 120.000008,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    },
+    {
+      "Id": 1,
+      "TargetKey": 4205,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 22464.0,
+      "MaxHealth": 22464.0,
+      "Distance": 149499.875,
+      "Selected": false,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 2850.0,
+          "MaxHealth": 2850.0
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_NECK",
+          "Severable": false,
+          "Health": 2850.0,
+          "MaxHealth": 2850.0
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_L_WING",
+          "Severable": false,
+          "Health": 2964.0,
+          "MaxHealth": 2964.0
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_R_WING",
+          "Severable": false,
+          "Health": 2964.0,
+          "MaxHealth": 2964.0
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_LEG",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_R_WING",
+          "Severable": false,
+          "Health": 1710.0,
+          "MaxHealth": 1710.0
+        },
+        {
+          "Slot": 7,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 2964.0,
+          "MaxHealth": 2964.0
+        },
+        {
+          "Slot": 9,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": true,
+          "Health": 2508.0,
+          "MaxHealth": 2508.0
+        },
+        {
+          "Slot": 10,
+          "Count": 0,
+          "NameId": "LOC_PART_SKY_FALL",
+          "Severable": false,
+          "Health": 456.0,
+          "MaxHealth": 456.0
+        },
+        {
+          "Slot": 11,
+          "Count": 0,
+          "NameId": "LOC_PART_SKY_FALL",
+          "Severable": false,
+          "Health": 456.0,
+          "MaxHealth": 456.0
+        },
+        {
+          "Slot": 12,
+          "Count": 0,
+          "NameId": "LOC_PART_AIR_FLINCH",
+          "Severable": false,
+          "Health": 570.0,
+          "MaxHealth": 570.0
+        },
+        {
+          "Slot": 13,
+          "Count": 0,
+          "NameId": "LOC_PART_AIR_FLINCH",
+          "Severable": false,
+          "Health": 570.0,
+          "MaxHealth": 570.0
+        },
+        {
+          "Slot": 14,
+          "Count": 0,
+          "NameId": "LOC_PART_UNKNOWN",
+          "Severable": false,
+          "Health": 1140.0,
+          "MaxHealth": 1140.0
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 100.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 1200.0,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 250.0,
+          "Remaining": 0.0,
+          "MaxDuration": 15.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 15.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    },
+    {
+      "Id": 0,
+      "TargetKey": 4193,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 16785.0,
+      "MaxHealth": 17781.1211,
+      "Distance": 294074.438,
+      "Selected": false,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 2106.72,
+          "MaxHealth": 2106.72
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_L_LEG",
+          "Severable": false,
+          "Health": 1675.8,
+          "MaxHealth": 1675.8
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_R_LEG",
+          "Severable": false,
+          "Health": 1675.8,
+          "MaxHealth": 1675.8
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": false,
+          "Health": 2106.72,
+          "MaxHealth": 2106.72
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_WING",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_R_WING",
+          "Severable": false,
+          "Health": 1436.4,
+          "MaxHealth": 1436.4
+        },
+        {
+          "Slot": 7,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL",
+          "Severable": true,
+          "Health": 1915.20007,
+          "MaxHealth": 1915.20007
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 1143.52942,
+          "MaxBuildup": 1200.0,
+          "Remaining": 0.0,
+          "MaxDuration": 80.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 980.0,
+          "MaxBuildup": 1000.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 250.0,
+          "Remaining": 0.0,
+          "MaxDuration": 15.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 15.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 144.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 400.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    },
+    {
+      "Id": 16,
+      "TargetKey": 4199,
+      "Size": 100,
+      "Role": 0,
+      "Legendary": 0,
+      "Health": 23500.8,
+      "MaxHealth": 23500.8,
+      "Distance": 536627.3,
+      "Selected": false,
+      "Parts": [
+        {
+          "Slot": 0,
+          "Count": 0,
+          "NameId": "LOC_PART_HEAD",
+          "Severable": false,
+          "Health": 2052.0,
+          "MaxHealth": 2052.0
+        },
+        {
+          "Slot": 1,
+          "Count": 0,
+          "NameId": "LOC_PART_TORSO",
+          "Severable": false,
+          "Health": 2280.0,
+          "MaxHealth": 2280.0
+        },
+        {
+          "Slot": 2,
+          "Count": 0,
+          "NameId": "LOC_PART_R_FORELEG",
+          "Severable": false,
+          "Health": 2280.0,
+          "MaxHealth": 2280.0
+        },
+        {
+          "Slot": 3,
+          "Count": 0,
+          "NameId": "LOC_PART_L_FORELEG",
+          "Severable": false,
+          "Health": 2280.0,
+          "MaxHealth": 2280.0
+        },
+        {
+          "Slot": 4,
+          "Count": 0,
+          "NameId": "LOC_PART_R_H_FORELEG",
+          "Severable": false,
+          "Health": 1140.0,
+          "MaxHealth": 1140.0
+        },
+        {
+          "Slot": 5,
+          "Count": 0,
+          "NameId": "LOC_PART_L_H_FORELEG",
+          "Severable": false,
+          "Health": 1140.0,
+          "MaxHealth": 1140.0
+        },
+        {
+          "Slot": 6,
+          "Count": 0,
+          "NameId": "LOC_PART_TAIL_HAIR",
+          "Severable": false,
+          "Health": 1368.0,
+          "MaxHealth": 1368.0
+        }
+      ],
+      "Ailments": [
+        {
+          "Id": 0,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 80.0
+        },
+        {
+          "Id": 1,
+          "Active": false,
+          "Buildup": 1000.0,
+          "MaxBuildup": 1000.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 3,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 4,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 5,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 6,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 60.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 7,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 8,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 50.0,
+          "Remaining": 0.0,
+          "MaxDuration": 40.0
+        },
+        {
+          "Id": 9,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 70.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 13,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 75.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 14,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 225.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 15,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 16,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 180.0,
+          "Remaining": 0.0,
+          "MaxDuration": 10.0
+        },
+        {
+          "Id": 17,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 150.0,
+          "Remaining": 0.0,
+          "MaxDuration": 60.0
+        },
+        {
+          "Id": 18,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 19,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 20.0
+        },
+        {
+          "Id": 21,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 120.0
+        },
+        {
+          "Id": 25,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 1.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 28,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 100.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 34,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 35,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 36,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 37,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        },
+        {
+          "Id": 38,
+          "Active": false,
+          "Buildup": 0.0,
+          "MaxBuildup": 500.0,
+          "Remaining": 0.0,
+          "MaxDuration": 0.0
+        }
+      ]
+    }
+  ]
+}

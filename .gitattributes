@@ -1,0 +1,3 @@
+# Update hashes refer to the exact bytes downloaded from GitHub Raw.
+# Keep EXE, DLL, XAML and JSON bytes unchanged by line-ending conversion.
+/release/** -text

@@ -1,0 +1,17 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHunter", "SmartHunter\SmartHunter.csproj", "{F85F02B2-FDA2-44B5-AE65-BC77A69AD95D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHunter.Tests", "SmartHunter.Tests\SmartHunter.Tests.csproj", "{1A1636F1-6675-4239-9019-20982AE5948D}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {F85F02B2-FDA2-44B5-AE65-BC77A69AD95D}.Release|x64.ActiveCfg = Release|x64
+        {F85F02B2-FDA2-44B5-AE65-BC77A69AD95D}.Release|x64.Build.0 = Release|x64
+        {1A1636F1-6675-4239-9019-20982AE5948D}.Release|x64.ActiveCfg = Release|x64
+        {1A1636F1-6675-4239-9019-20982AE5948D}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+EndGlobal

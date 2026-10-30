@@ -1,0 +1,25 @@
+**/bin/
+**/obj/
+.tools/
+.reference/
+artifacts/
+*.user
+.vs/
+TestResults/
+*.suo
+*.pdb
+*.log
+*.tmp
+
+# Only the generated program payload belongs in the published release folder.
+/release/*
+!/release/SmartHunter.exe
+!/release/SmartHunter.exe.config
+!/release/Newtonsoft.Json.dll
+!/release/Microsoft.Xaml.Behaviors.dll
+!/release/OxyPlot.dll
+!/release/OxyPlot.Wpf.dll
+!/release/UpdateManifest.json
+!/release/Themes/
+/release/Themes/*
+!/release/Themes/Default.xaml

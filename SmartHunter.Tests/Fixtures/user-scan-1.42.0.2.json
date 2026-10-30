@@ -1,0 +1,141 @@
+{
+  "GameVersion": "1.42.0.2",
+  "LayoutVersion": "1.42.0.2",
+  "Status": "Resolved",
+  "Reason": null,
+  "ElapsedMilliseconds": 1872,
+  "BytesRead": 399214860,
+  "UnreadablePages": 0,
+  "ScanCandidates": {
+    "PlayerManager": [
+      "0x147EDF60"
+    ],
+    "SaveManager": [
+      "0x147D64F8"
+    ],
+    "EnemyManager": [
+      "0x14885180"
+    ],
+    "QuestManager": [
+      "0x1487A650"
+    ]
+  },
+  "ResolvedRvas": {
+    "PlayerManager": "0x147EDF60",
+    "SaveManager": "0x147D64F8",
+    "EnemyManager": "0x14885180",
+    "QuestManager": "0x1487A650",
+    "CameraManager": "0x147A3238",
+    "PauseManager": "0x1488CBD8",
+    "HealthEncryptionKey": "0x14963140",
+    "HealthEncryptionRound": "0x14963130",
+    "NpcManager": "0x147D1FF8"
+  },
+  "CodeReferences": [
+    {
+      "Target": "NpcManager",
+      "TargetRva": "0x147D1FF8",
+      "InstructionRva": "0x4D944",
+      "ContextRva": "0x4D934",
+      "Bytes": "00 00 00 CC CC CC CC CC CC CC CC CC 84 D2 74 17 48 8B 05 AD 46 78 14 48 8B 80 B0 00 00 00 48 8B 50 10 E9 45 00 09 09 48 8B 05 DE 3D 7E 14 F7 40 60 1F 00 10 00 0F 95 C0 C3 CC CC CC 56 57 48 83"
+    },
+    {
+      "Target": "HealthEncryptionRound",
+      "TargetRva": "0x14963130",
+      "InstructionRva": "0x52F02",
+      "ContextRva": "0x52EF2",
+      "Bytes": "24 48 C5 F8 10 01 4C 8D 44 24 30 C4 C1 78 29 00 48 8D 15 27 02 91 14 48 8D 74 24 20 41 B9 01 00 00 00 48 89 F1 E8 34 F0 48 0A 80 7E 08 00 74 07 48 8B 74 24 20 EB 09 C6 05 D0 02 91 14 01 31 F6"
+    },
+    {
+      "Target": "NpcManager",
+      "TargetRva": "0x147D1FF8",
+      "InstructionRva": "0x559C4",
+      "ContextRva": "0x559B4",
+      "Bytes": "00 00 00 CC CC CC CC CC CC CC CC CC 84 D2 74 17 48 8B 05 2D C6 77 14 48 8B 80 B0 00 00 00 48 8B 50 18 E9 C5 7F 08 09 48 8B 05 5E BD 7D 14 8B 48 60 B0 01 F7 C1 00 80 04 00 74 01 C3 C1 E9 11 83"
+    },
+    {
+      "Target": "NpcManager",
+      "TargetRva": "0x147D1FF8",
+      "InstructionRva": "0xA15E4",
+      "ContextRva": "0xA15D4",
+      "Bytes": "00 00 00 CC CC CC CC CC CC CC CC CC 48 83 EC 28 48 8B 05 0D 0A 73 14 48 8B 80 B0 00 00 00 84 D2 74 0D 48 8B 50 68 48 83 C4 28 E9 9D C3 03 09 48 8B 50 50 E8 04 CC 14 00 48 85 C0 74 37 48 83 78"
+    },
+    {
+      "Target": "PauseManager",
+      "TargetRva": "0x1488CBD8",
+      "InstructionRva": "0xA30D3",
+      "ContextRva": "0xA30C3",
+      "Bytes": "0B 48 89 D9 E8 14 72 FC 0A 8A 43 11 3C 01 75 35 48 8B 05 FE 9A 7E 14 48 85 C0 74 29 48 83 78 10 00 74 22 48 8B 50 50 48 89 F9 E8 AE 66 7F 03 84 C0 74 12 EB 37 48 89 F9 BA 46 00 00 00 45 31 C0"
+    },
+    {
+      "Target": "PauseManager",
+      "TargetRva": "0x1488CBD8",
+      "InstructionRva": "0xAB5D3",
+      "ContextRva": "0xAB5C3",
+      "Bytes": "0B 48 89 D9 E8 14 ED FB 0A 8A 43 11 3C 01 75 35 48 8B 05 FE 15 7E 14 48 85 C0 74 29 48 83 78 10 00 74 22 48 8B 50 50 48 89 F9 E8 AE E1 7E 03 84 C0 74 12 EB 6D 48 89 F9 BA 46 00 00 00 45 31 C0"
+    },
+    {
+      "Target": "CameraManager",
+      "TargetRva": "0x147A3238",
+      "InstructionRva": "0xB4F62",
+      "ContextRva": "0xB4F52",
+      "Bytes": "E8 E9 B5 D2 08 48 89 F9 48 89 F2 E8 4E B7 D2 08 48 8B 15 CF E2 6E 14 48 89 F9 E8 7F 1D F9 FF 8B 98 80 00 00 00 39 9E 88 00 00 00 74 2B 48 8B 46 70 48 85 C0 74 22 48 8B 48 10 48 85 C9 74 06 80"
+    },
+    {
+      "Target": "PauseManager",
+      "TargetRva": "0x1488CBD8",
+      "InstructionRva": "0xC6DAB",
+      "ContextRva": "0xC6D9B",
+      "Bytes": "48 89 F1 48 89 DA 41 B0 01 E8 C7 8D 10 07 EB 13 48 8B 15 26 5E 7C 14 48 89 F1 E8 F6 48 08 08 84 C0 74 11 49 FF C4 49 63 47 1C 49 39 C4 7C 9E E9 B3 00 00 00 48 89 F1 48 89 DA 45 31 C0 E8 93 8D"
+    },
+    {
+      "Target": "CameraManager",
+      "TargetRva": "0x147A3238",
+      "InstructionRva": "0xCABF0",
+      "ContextRva": "0xCABE0",
+      "Bytes": "40 06 80 0F 85 B2 02 00 00 48 8B 0D 08 23 70 14 48 8B 15 41 86 6D 14 44 8B 42 08 48 81 C2 F8 00 00 00 49 8D 44 24 10 48 09 D0 45 85 C0 48 0F 48 C2 80 B9 43 01 00 00 00 74 28 49 8D 4C 24 0F 48"
+    },
+    {
+      "Target": "NpcManager",
+      "TargetRva": "0x147D1FF8",
+      "InstructionRva": "0x13EB5B",
+      "ContextRva": "0x13EB4B",
+      "Bytes": "24 60 83 F8 FF 74 47 83 F8 0D 0F 84 BE 00 00 00 48 8B 15 96 34 69 14 48 8B 52 58 48 8B 52 10 48 98 48 8B 44 C2 20 48 85 C0 0F 84 9F 00 00 00 48 83 78 10 00 0F 84 94 00 00 00 8B 50 08 48 05 A0"
+    },
+    {
+      "Target": "CameraManager",
+      "TargetRva": "0x147A3238",
+      "InstructionRva": "0x13F8B8",
+      "ContextRva": "0x13F8A8",
+      "Bytes": "EB EA CC CC CC CC CC CC 56 48 83 EC 20 48 89 CE 48 8B 15 79 39 66 14 E8 2C 74 F0 FF 48 85 C0 74 22 80 B8 8D 00 00 00 00 74 19 F6 40 64 60 75 13 48 89 F1 48 89 C2 E8 5D 57 CF 03 89 C1 B0 01 84"
+    },
+    {
+      "Target": "CameraManager",
+      "TargetRva": "0x147A3238",
+      "InstructionRva": "0x1493E3",
+      "ContextRva": "0x1493D3",
+      "Bytes": "05 68 63 57 14 48 31 E0 48 89 84 24 08 01 00 00 48 8B 1D 4E 9E 65 14 4C 8D B4 24 C0 00 00 00 4C 89 F1 48 89 FA 49 89 D8 45 31 C9 E8 0D A6 B9 03 C4 C1 7C 10 06 C4 C1 7C 10 4E 20 C4 C1 7C 11 06"
+    },
+    {
+      "Target": "PauseManager",
+      "TargetRva": "0x1488CBD8",
+      "InstructionRva": "0x3B0DD5D",
+      "ContextRva": "0x3B0DD4D",
+      "Bytes": "90 00 00 00 80 7E 20 00 74 20 83 7E 1C 00 74 1A 48 8B 15 74 EE D7 10 4C 8B 05 D5 B1 D7 10 48 89 F9 E8 4D 62 D9 FF C6 46 20 00 48 83 C4 28 5F 5E C3 CC CC 56 48 83 EC 20 48 89 D6 48 8B 15 49 EE"
+    },
+    {
+      "Target": "HealthEncryptionRound",
+      "TargetRva": "0x14963130",
+      "InstructionRva": "0xA9FD04B",
+      "ContextRva": "0xA9FD03B",
+      "Bytes": "05 DC 60 F6 09 07 00 00 00 48 89 05 CD 60 F6 09 48 8D 0D DE 60 F6 09 48 8D 15 97 A4 65 03 45 31 C0 45 31 C9 E9 EC 75 3A 02 CC CC CC CC CC CC CC CC CC CC CC CC 48 8D 0D A9 61 F6 09 48 FF 25 D2"
+    },
+    {
+      "Target": "HealthEncryptionRound",
+      "TargetRva": "0x14963130",
+      "InstructionRva": "0xB078334",
+      "ContextRva": "0xB078324",
+      "Bytes": "6C 0B 87 09 66 41 89 48 09 C1 E9 10 41 88 48 0B 48 8D 15 F5 AD 8E 09 48 8D 7C 24 20 41 B9 01 00 00 00 48 89 F9 E8 02 AC FD F4 C5 F8 28 07 C5 F8 11 06 48 8B 4C 24 40 48 31 E1 E8 8D 12 0B 00 48"
+    }
+  ]
+}
