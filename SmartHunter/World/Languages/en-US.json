@@ -805,6 +805,8 @@
         "LOC_LOG_UPDATE_TIMEOUT": "The update request timed out. Local game reading is unaffected; check for updates again later.",
         "LOC_UI_UPDATE_URL": "Update URL",
         "LOC_UI_UPDATE_URL_DESC": "Uses the unified branch by default. Paste the GitHub release folder URL.",
-        "LOC_UI_UPDATE_URL_INVALID": "Enter the full HTTPS URL of a GitHub release folder."
+        "LOC_UI_UPDATE_URL_INVALID": "Enter the full HTTPS URL of a GitHub release folder.",
+        "LOC_LOG_LEGACY_ARCHIVED": "Moved {0} legacy files or folders to {1}. You may delete them after confirming they are no longer needed.",
+        "LOC_LOG_LEGACY_ARCHIVE_FAILED": "Could not move a legacy item. It remains in place and will be retried on the next launch: {0}"
     }
 }

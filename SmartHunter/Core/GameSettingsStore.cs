@@ -144,10 +144,10 @@ namespace SmartHunter.Core
             foreach (var game in new[] { GameChoice.World, GameChoice.Wilds })
                 if (!only.HasValue || only == game) AtomicFile.Write(PathFor(root, game), Document(values, game).ToString(Formatting.Indented));
         }
-        internal static int MigrateLegacy(string root)
+        internal static int MigrateLegacy(string root, LegacyFileArchive archive)
         {
             string[] sources = { Path.Combine(root, "Config", "Shared", "Settings.json"), Path.Combine(root, "Config.SmartHunter.json") };
-            string source = sources.FirstOrDefault(File.Exists);
+            string source = sources.FirstOrDefault(path => File.Exists(path) && archive.SafePath(path));
             if (source == null) return 0;
             // Validate all source/target documents before removing anything.
             var legacyDocument=JObject.Parse(File.ReadAllText(source));
@@ -162,12 +162,13 @@ namespace SmartHunter.Core
             foreach (var game in new[] { GameChoice.World, GameChoice.Wilds })
             {
                 string path = PathFor(root, game);
+                if (!archive.SafePath(path)) throw new IOException("Migration destination contains a reparse point.");
                 if (File.Exists(path)) JObject.Parse(File.ReadAllText(path));
             }
             foreach (var game in new[] { GameChoice.World, GameChoice.Wilds })
                 if (!File.Exists(PathFor(root, game))) Write(root, legacy, game);
             int count = 0;
-            foreach (string path in sources) if (File.Exists(path)) { File.Delete(path); count++; }
+            foreach (string path in sources) if (archive.Move(path)) count++;
             string shared = Path.Combine(root, "Config", "Shared");
             if (Directory.Exists(shared) && !Directory.EnumerateFileSystemEntries(shared).Any()) Directory.Delete(shared);
             return count;

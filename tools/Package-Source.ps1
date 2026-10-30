@@ -1,4 +1,4 @@
-param([string]$Version='2026.10.31.1',[string]$ArchiveDirectory='')
+param([string]$Version='2026.10.31.2',[string]$ArchiveDirectory='')
 $ErrorActionPreference='Stop'
 if($Version -notmatch '^\d+\.\d+\.\d+\.\d+$'){throw 'Use a four-part version.'}
 $clientRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))

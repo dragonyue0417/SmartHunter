@@ -242,7 +242,7 @@ internal static void Preflight()
         string root=Folder(),source=Path.Combine(root,"Config.json");const string original="{\"Overlay\":{\"MonsterWidget\":{\"X\":42}}}";File.WriteAllText(source,original);File.WriteAllText(Path.Combine(root,"Memory.json"),"{invalid");
         Reject(()=>StorageLayout.Prepare(root),"invalid original data");Assert(File.ReadAllText(source)==original && !Directory.Exists(Path.Combine(root,"Config")),"preflight retains originals with no partial target");
         string current=Folder();GameSettingsStore.Write(current,new MainConfig());string target=GameSettingsStore.PathFor(current,GameChoice.World),before=File.ReadAllText(target);File.WriteAllText(Path.Combine(current,"Config.json"),original);
-        StorageLayout.Prepare(current);Assert(File.ReadAllText(target)==before && File.ReadAllText(Path.Combine(current,"Config.json"))==original,"current classified settings win without silently overwriting either configuration");
+        StorageLayout.Prepare(current);Assert(File.ReadAllText(target)==before && !File.Exists(Path.Combine(current,"Config.json")) && File.ReadAllText(Path.Combine(StorageLayout.LastArchiveDirectory,"Config.json"))==original,"current classified settings win and the old configuration remains in the archive");
     }
 internal static void Ui()
     {

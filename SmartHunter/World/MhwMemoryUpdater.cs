@@ -76,22 +76,6 @@ namespace SmartHunter.Game
             }
         }
 
-        protected override string UserDataPath
-        {
-            get
-            {
-                return "";
-            }
-        }
-
-        protected override bool BackupWhenProcessExits
-        {
-            get
-            {
-                return false;
-            }
-        }
-
         protected override bool StartMHWWhenSmartHunterStart
         {
             get

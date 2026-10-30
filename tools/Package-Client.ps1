@@ -1,5 +1,5 @@
 param(
-    [string]$Version='2026.10.31.1',
+    [string]$Version='2026.10.31.2',
     [string]$DotnetPath='dotnet',
     [string]$BuildOutput='',
     [string]$ReleaseDirectory='',

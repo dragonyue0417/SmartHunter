@@ -12,17 +12,31 @@ namespace SmartHunter.Core
     public static class LegacySettingsMigration
     {
         public static int Convert(string root)
+            => Convert(root, new LegacyFileArchive(root));
+
+        internal static int Convert(string root, LegacyFileArchive archive)
+        {
+            int count = ConvertFrom(root, root, archive);
+            string nested = archive.NestedInstallation();
+            if (nested != null) count += ConvertFrom(root, nested, archive);
+            return count;
+        }
+
+        static int ConvertFrom(string root, string sourceRoot, LegacyFileArchive archive)
         {
             int count=0;
             foreach(var item in new[]{new{File="Config.json",Game=GameChoice.World},new{File="Config.Wilds.json",Game=GameChoice.Wilds}})
             {
-                string source=Path.Combine(root,item.File),target=GameSettingsStore.PathFor(root,item.Game);
-                if(!File.Exists(source) || File.Exists(target))continue;
+                string source=Path.Combine(sourceRoot,item.File),target=GameSettingsStore.PathFor(root,item.Game);
+                if(!File.Exists(source) || !archive.SafePath(source) || File.Exists(target))continue;
+                if (!archive.SafePath(target) || !archive.SafePath(Path.Combine(root, "Languages", item.Game.ToString())))
+                    throw new IOException("Migration destination contains a reparse point.");
                 var document=JObject.Parse(File.ReadAllText(source));
                 if(!(document["Overlay"] is JObject))throw new InvalidDataException("Legacy settings have no Overlay: "+item.File);
                 var data=new Dictionary<string,string>();var languages=new List<string>();
-                foreach(string file in Directory.GetFiles(root,"*.json"))
+                foreach(string file in Directory.GetFiles(sourceRoot,"*.json"))
                 {
+                    if (!archive.SafePath(file)) continue;
                     string name=Path.GetFileName(file);
                     if(item.Game==GameChoice.World && name.EndsWith(".Wilds.json",StringComparison.OrdinalIgnoreCase) || item.Game==GameChoice.Wilds && name.EndsWith(".World.json",StringComparison.OrdinalIgnoreCase))continue;
                     if(new[]{"Memory.json","MonsterData.json","PlayerData.json"}.Contains(name) && item.Game==GameChoice.World)
@@ -44,6 +58,17 @@ namespace SmartHunter.Core
                 SettingsImporter.Import(new[]{source}.Concat(languages),temporary,item.Game,(string)document["LocalizationFileName"]??"en-US.json",values);
                 var converted=JObject.Parse(File.ReadAllText(GameSettingsStore.PathFor(temporary,item.Game)));
                 foreach(string option in new[]{"ShutdownWhenProcessExits","SkinFileName","BackgroundImagePath","InterfaceFontSize"})if(document[option]!=null)converted[option]=document[option].DeepClone();
+                if (!String.Equals(root, sourceRoot, StringComparison.OrdinalIgnoreCase))
+                    foreach (string key in new[] { "SkinFileName", "BackgroundImagePath" })
+                    {
+                        string value = (string)converted[key];
+                        if (Uri.TryCreate(value, UriKind.Absolute, out var uri) && !uri.IsFile) continue;
+                        if (!String.IsNullOrWhiteSpace(value) && !Path.IsPathRooted(value) && value != "Default.xaml")
+                        {
+                            string asset = Path.GetFullPath(Path.Combine(sourceRoot, value));
+                            if (archive.SafePath(asset) && File.Exists(asset)) converted[key] = asset;
+                        }
+                    }
                 if(document["StartMHWWhenSmartHunterStart"]!=null)converted["StartGameWithSmartHunter"]=document["StartMHWWhenSmartHunterStart"].DeepClone();
                 if(document["Keybinds"] is JObject keys)
                 {
@@ -57,9 +82,15 @@ namespace SmartHunter.Core
                 foreach(var pair in data)if(!File.Exists(pair.Value))AtomicFile.Write(pair.Value,File.ReadAllText(pair.Key));
                 foreach(string language in Directory.GetFiles(stagedLanguages,"*.json"))AtomicFile.Write(Path.Combine(languageFolder,Path.GetFileName(language)),File.ReadAllText(language));
                 AtomicFile.Write(target,converted.ToString(Formatting.Indented));
-                File.Delete(source);count++;
-                foreach(var file in languages){string destination=Path.Combine(root,"Languages",item.Game.ToString(),Path.GetFileName(file));if(File.Exists(destination)){File.Delete(file);count++;}}
-                foreach(var pair in data)if(File.Exists(pair.Value)){File.Delete(pair.Key);count++;}
+                count++;
+                // A nested installation is kept intact until it can be moved
+                // as a whole. Root-level originals are retained in the archive.
+                if (String.Equals(root, sourceRoot, StringComparison.OrdinalIgnoreCase))
+                {
+                    archive.Move(source);
+                    foreach(var file in languages){string destination=Path.Combine(root,"Languages",item.Game.ToString(),Path.GetFileName(file));if(File.Exists(destination) && archive.Move(file))count++;}
+                    foreach(var pair in data)if(File.Exists(pair.Value) && archive.Move(pair.Key))count++;
+                }
                 }
                 finally{if(Directory.Exists(temporary))Directory.Delete(temporary,true);}
             }

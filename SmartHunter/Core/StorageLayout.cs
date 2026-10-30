@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using SmartHunter.World;
 using SmartHunter.Game.Helpers;
 using Newtonsoft.Json.Linq;
@@ -8,6 +10,9 @@ namespace SmartHunter.Core
 {
     public static class StorageLayout
     {
+        public static string LastArchiveDirectory { get; private set; }
+        public static int LastArchivedItems { get; private set; }
+        public static string[] LastArchiveErrors { get; private set; } = new string[0];
         public static string Resolve(string root, string name)
         {
             if (Path.IsPathRooted(name) || name.IndexOfAny(new[] { '/', '\\' }) >= 0) return Path.GetFullPath(Path.Combine(root, name));
@@ -29,24 +34,32 @@ namespace SmartHunter.Core
         public static int Prepare(string root)
         {
             root = Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar);
-            int migrated = LegacySettingsMigration.Convert(root)+GameSettingsStore.MigrateLegacy(root);
+            LastArchiveDirectory = null; LastArchivedItems = 0; LastArchiveErrors = new string[0];
+            var archive = new LegacyFileArchive(root);
+            int migrated = LegacySettingsMigration.Convert(root, archive)+GameSettingsStore.MigrateLegacy(root, archive);
             foreach (string directory in new[] { "Config/World", "Config/Wilds", "Languages/World", "Languages/Wilds", "Logs", "Diagnostics/World", "Diagnostics/Wilds", "Themes" })
-                Directory.CreateDirectory(Path.Combine(root, directory));
+            {
+                string path = Path.Combine(root, directory);
+                if (!archive.SafePath(path)) throw new IOException("Application data path contains a reparse point: " + path);
+                Directory.CreateDirectory(path);
+            }
             foreach (string source in Directory.GetFiles(root))
             {
+                if (!archive.SafePath(source)) continue;
                 string name = Path.GetFileName(source), destination = Resolve(root, name);
                 if (String.Equals(source, destination, StringComparison.OrdinalIgnoreCase)) continue;
+                if (!archive.SafePath(destination)) continue;
                 if (name.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
                 { try { JObject.Parse(File.ReadAllText(source)); } catch { continue; } }
-                // Only recognized root-level aliases move. Existing classified
-                // files win; source copies are retired after validation.
+                // Existing classified files win. Keep every retired original
+                // so the user can inspect or restore it before deletion.
                 if (File.Exists(destination) && name.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
                     JObject.Parse(File.ReadAllText(destination));
                 Directory.CreateDirectory(Path.GetDirectoryName(destination));
-                if (!File.Exists(destination)) File.Move(source, destination);
-                else File.Delete(source);
-                migrated++;
+                if (!File.Exists(destination)) File.Copy(source, destination);
+                if (archive.Move(source)) migrated++;
             }
+            migrated += RetireLegacyFiles(root, archive);
             foreach (string game in new[] { "World", "Wilds" })
             {
                 foreach (string path in Directory.EnumerateFiles(Path.Combine(root, "Languages", game), "*.json"))
@@ -60,31 +73,64 @@ namespace SmartHunter.Core
                     if (File.Exists(path)) AtomicFile.Write(path, TextKeyNames.UpgradeData(File.ReadAllText(path), game == "Wilds" && type == "PlayerData", game == "Wilds" && type == "MonsterData"));
                 }
             }
-            // These directories are obsolete, explicitly retired by the user.
-            // Do not follow junctions or symbolic links out of the app folder.
-            foreach (string name in new[] { "Backups", "Imports" })
-            {
-                string path = Path.GetFullPath(Path.Combine(root, name));
-                if (!path.StartsWith(root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
-                    throw new InvalidOperationException("Cleanup path outside application folder.");
-                if (Directory.Exists(path)) RemoveDirectory(path);
-            }
+            LastArchiveDirectory = archive.DirectoryPath;
+            LastArchivedItems = archive.Count;
+            LastArchiveErrors = archive.Errors.ToArray();
             return migrated;
         }
-        static void RemoveDirectory(string path)
+
+        static JObject LegacyDocument(string path, LegacyFileArchive archive)
         {
-            if ((File.GetAttributes(path) & FileAttributes.ReparsePoint) == 0)
+            try { return JObject.Parse(File.ReadAllText(path)); }
+            catch (Newtonsoft.Json.JsonException) { return null; }
+            catch (Exception error) when (error is IOException || error is UnauthorizedAccessException || error is System.Security.SecurityException)
+            { archive.Errors.Add(path + ": " + error.Message); return null; }
+        }
+
+        static int RetireLegacyFiles(string root, LegacyFileArchive archive)
+        {
+            int count = 0;
+            foreach (string name in new[] { "Config.json", "Config.Wilds.json" })
             {
-                foreach (string child in Directory.GetDirectories(path)) RemoveDirectory(child);
-                foreach (string file in Directory.GetFiles(path))
-                {
-                    var attributes = File.GetAttributes(file);
-                    if ((attributes & FileAttributes.ReparsePoint) == 0 && (attributes & FileAttributes.ReadOnly) != 0)
-                        File.SetAttributes(file, attributes & ~FileAttributes.ReadOnly);
-                    File.Delete(file);
-                }
+                string path = Path.Combine(root, name);
+                string target = GameSettingsStore.PathFor(root, name == "Config.json" ? GameChoice.World : GameChoice.Wilds);
+                if (archive.SafePath(path) && archive.SafePath(target) && File.Exists(path) && File.Exists(target) &&
+                    LegacyDocument(path, archive)?["Overlay"] is JObject && LegacyDocument(target, archive) != null && archive.Move(path)) count++;
             }
-            Directory.Delete(path);
+            foreach (string name in new[] { "Memory.json", "MonsterData.json", "PlayerData.json", "zh-TW.json", "zh-CN.json", "en-US.json" })
+            {
+                string path = Path.Combine(root, name);
+                if (!archive.SafePath(path) || !File.Exists(path)) continue;
+                var document = LegacyDocument(path, archive);
+                if (document == null) continue;
+                bool language = name == "zh-TW.json" || name == "zh-CN.json" || name == "en-US.json";
+                if (language && !(document["Strings"] is JObject)) continue;
+                string target = Path.Combine(root, language ? "Languages" : "Config", "World", name);
+                if (!archive.SafePath(target)) continue;
+                if (File.Exists(target) && LegacyDocument(target, archive) == null) continue;
+                Directory.CreateDirectory(Path.GetDirectoryName(target));
+                if (!File.Exists(target)) File.Copy(path, target);
+                if (archive.Move(path)) count++;
+            }
+            foreach (string path in Directory.GetFiles(root))
+            {
+                if (!archive.SafePath(path)) continue;
+                string name = Path.GetFileName(path);
+                bool obsolete = name.Equals("Log.txt", StringComparison.OrdinalIgnoreCase) ||
+                    name.Equals("Versions.json", StringComparison.OrdinalIgnoreCase) && LegacyDocument(path, archive) != null;
+                if (Regex.IsMatch(name, @"^Config\(\d+x\d+\)\.json$", RegexOptions.IgnoreCase))
+                    obsolete = LegacyDocument(path, archive)?["Overlay"] is JObject;
+                if (obsolete && archive.Move(path)) count++;
+            }
+            foreach (string name in new[] { "UserDataBackup", "Backups", "Imports" })
+                if (archive.Move(Path.Combine(root, name))) count++;
+            string nested = archive.NestedInstallation();
+            if (nested != null)
+            {
+                string target = GameSettingsStore.PathFor(root, GameChoice.World);
+                if (File.Exists(target) && LegacyDocument(target, archive) != null && archive.Move(nested)) count++;
+            }
+            return count;
         }
     }
 }

@@ -801,6 +801,8 @@
         "LOC_LOG_UPDATE_TIMEOUT": "更新请求超时，本地游戏读取仍正常运行；稍后可再次检查更新。",
         "LOC_UI_UPDATE_URL": "更新网址",
         "LOC_UI_UPDATE_URL_DESC": "默认使用 unified 分支；直接粘贴 GitHub 的 release 文件夹网址即可。",
-        "LOC_UI_UPDATE_URL_INVALID": "请输入 GitHub release 文件夹的完整 HTTPS 网址。"
+        "LOC_UI_UPDATE_URL_INVALID": "请输入 GitHub release 文件夹的完整 HTTPS 网址。",
+        "LOC_LOG_LEGACY_ARCHIVED": "已将 {0} 项旧版文件或文件夹移至 {1}；确认不再需要后可自行删除。",
+        "LOC_LOG_LEGACY_ARCHIVE_FAILED": "旧版文件暂时无法移动，已保留原位，下次启动会重试：{0}"
     }
 }

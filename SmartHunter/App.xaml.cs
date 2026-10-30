@@ -20,6 +20,9 @@ namespace SmartHunter
         FileContainer m_SkinFile;
 
         string m_LastSkinFileName;
+        string m_LegacyArchive;
+        int m_LegacyArchivedItems;
+        string[] m_LegacyArchiveErrors;
 
         public App()
         {
@@ -32,6 +35,9 @@ namespace SmartHunter
             // InitializeComponent, before OnStartup. Migrate before any of
             // those models can create a default classified configuration.
             StorageLayout.Prepare(FileContainer.GetFullPath());
+            m_LegacyArchive = StorageLayout.LastArchiveDirectory;
+            m_LegacyArchivedItems = StorageLayout.LastArchivedItems;
+            m_LegacyArchiveErrors = StorageLayout.LastArchiveErrors;
             DefaultFiles.Ensure(FileContainer.GetFullPath());
         }
 
@@ -51,6 +57,10 @@ namespace SmartHunter
             SetPerMonitorDpiAwareness();
 
             ConfigHelper.EnsureConfigs();
+            if (m_LegacyArchivedItems > 0)
+                Log.WriteLine(String.Format(UiText.Instance["LOC_LOG_LEGACY_ARCHIVED"], m_LegacyArchivedItems, m_LegacyArchive));
+            foreach (string error in m_LegacyArchiveErrors ?? new string[0])
+                Log.WriteLine(String.Format(UiText.Instance["LOC_LOG_LEGACY_ARCHIVE_FAILED"], error));
             ConfigHelper.Main.Loaded += Config_Loaded;
             ConfigHelper.SettingsSaved += Config_Loaded;
 

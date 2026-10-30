@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -44,11 +43,9 @@ namespace SmartHunter.Core
 
         protected abstract string ProcessName { get; }
         protected abstract BytePattern[] Patterns { get; }
-        protected virtual string UserDataPath { get { return @"C:\Program Files (x86)\Steam\userdata"; } }
         protected virtual int ThreadsPerScan { get { return 2; } }
         protected virtual int UpdatesPerSecond { get { return 20; } }
         protected virtual bool ShutdownWhenProcessExits { get { return false; } }
-        protected virtual bool BackupWhenProcessExits { get { return false; } }
         protected virtual bool StartMHWWhenSmartHunterStart { get { return false; } }
         protected virtual int InitialScanDelaySeconds { get { return 10; } }
         protected virtual int ScanRetryIntervalSeconds { get { return 5; } }
@@ -392,32 +389,6 @@ namespace SmartHunter.Core
             m_MemoryScans = new List<ThreadedMemoryScan>();
 
             OverlayViewModel.Instance.IsGameActive = false;
-            if (processExited && BackupWhenProcessExits)
-            {
-                try
-                {
-                    string zipPath = @"UserDataBackup\";
-                    string fileName = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".zip";
-                    string filepath = Path.Combine(zipPath, fileName);
-                    if (!Directory.Exists(zipPath))
-                        Directory.CreateDirectory(zipPath);
-                    if (File.Exists(filepath))
-                        File.Delete(filepath);
-                    if (Directory.Exists(UserDataPath))
-                    {
-                        ZipFile.CreateFromDirectory(UserDataPath, filepath);
-                        Log.WriteLine("MonsterHunterWorld process exits. Start backup 'UserData'.");
-                    }
-                    else
-                    {
-                        Log.WriteLine("Backup fail 'UserData' path not exist.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Log.WriteException(ex);
-                }
-            }
             if (processExited && ShutdownWhenProcessExits)
             {
                 Log.WriteLine("Process exited. Shutting down");

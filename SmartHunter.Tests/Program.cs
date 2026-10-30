@@ -191,6 +191,12 @@ internal static class Program
             test("release migration disables diagnostics once, removes chat settings and preserves later user choices", UpdateTests.Defaults);
             test("original World and Wilds files convert in place with servers, languages and independent overlays", UpdateTests.Legacy);
             test("invalid legacy data is retained without partial conversion and current settings take precedence", UpdateTests.Preflight);
+            test("retired root files and save backups retain their original bytes in one archive", LegacyArchiveTests.FlatFiles);
+            test("a nested legacy installation migrates settings and languages before archiving", LegacyArchiveTests.NestedMigration);
+            test("current settings and source project folders are protected during cleanup", LegacyArchiveTests.CurrentFilesWin);
+            test("active custom themes keep their original path until no longer used", LegacyArchiveTests.ActiveAssets);
+            test("locked legacy files remain available and are retried on a later launch", LegacyArchiveTests.LockedFile);
+            test("legacy archiving cannot follow a junction outside the installation", LegacyArchiveTests.LinkedArchive);
             test("release UI opens Logs with visible share/update controls and no damage sharing section", UpdateTests.Ui);
         }},
         {"performance", test => {

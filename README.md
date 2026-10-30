@@ -25,6 +25,8 @@
 
 兩款遊戲的資料分別儲存在 `Config/World`、`Config/Wilds` 與對應的 `Languages` 資料夾。自動更新預設從本專案 `unified` 分支的 `release/` 取得程式檔，保留個人設定。
 
+升級完成後，已轉換的舊設定與確認不再使用的舊版檔案會移至 `LegacyFiles/日期時間/`，保留原始內容；確認不再需要後可自行刪除。仍在使用的自訂資源會保留原位。
+
 ## 建置
 
 需要 Windows 與 .NET SDK 8。執行 `dotnet build SmartHunter.sln -c Release -p:Platform=x64`；本機發布檔案由 `tools/Package-Client.ps1` 產生。
@@ -32,5 +34,6 @@
 ## 致謝與來源
 
 - [r00telement/SmartHunter](https://github.com/r00telement/SmartHunter) 與 [gabrielefilipp/SmartHunter](https://github.com/gabrielefilipp/SmartHunter)：原版功能與更新流程。
+- [HunterPie](https://github.com/HunterPie/HunterPie)：荒野讀取與資料研究參考。
 - Marcus101RR Cheat Table：最初四組荒野管理器特徵碼的研究來源；[作者討論串](https://opencheattables.com/viewtopic.php?t=1331)。
 - 協助實機測試與翻譯的使用者。原版授權見 [LICENSE.txt](LICENSE.txt)。
