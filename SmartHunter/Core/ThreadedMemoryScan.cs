@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -73,7 +73,9 @@ namespace SmartHunter.Core
         public BytePattern Pattern { get; private set; }
         public bool StopAfterFirst { get; private set; }
 
-        public bool HasCompleted { get; private set; }
+        volatile bool m_HasCompleted;
+        int m_PendingTasks;
+        public bool HasCompleted { get { return m_HasCompleted; } }
         public float ExecutionMilliseconds { get { return m_Stopwatch.ElapsedMilliseconds; } }
 
         public List<Result> Results
@@ -104,26 +106,32 @@ namespace SmartHunter.Core
             var addressRangeDivisions = MemoryHelper.DivideAddressRange(addressRange, threads);
             foreach (var addressRangeDivision in addressRangeDivisions)
             {
-                AddScanTask(addressRangeDivision);
+                ulong overlap = (ulong)Math.Max(0, pattern.Bytes.Length - 1);
+                AddScanTask(new AddressRange(addressRangeDivision.Start,
+                    Math.Min(addressRange.End - addressRangeDivision.Start, addressRangeDivision.Size + overlap)));
             }
+            // Register every task before any can finish (including empty ranges).
+            m_PendingTasks = m_Tasks.Count;
+            if (m_PendingTasks == 0) TryComplete();
+            foreach (var task in m_Tasks.Keys) task.Start(TaskScheduler.Default);
         }
 
         void AddScanTask(AddressRange addressRange)
         {
             var cancellationTokenSource = new CancellationTokenSource();
 
-            Task<List<ulong>> task = Task.Run(() =>
+            Task<List<ulong>> task = new Task<List<ulong>>(() =>
             {
                 try
                 {
-                    return MemoryHelper.FindPatternAddresses(Process, addressRange, Pattern, StopAfterFirst);
+                    return MemoryHelper.FindPatternAddresses(Process, addressRange, Pattern, StopAfterFirst, cancellationTokenSource.Token);
                 }
-                catch (TaskCanceledException)
+                catch (OperationCanceledException)
                 {
                 }
                 catch (Exception ex)
                 {
-                    Log.WriteException(ex);
+                    if (!cancellationTokenSource.IsCancellationRequested) Log.WriteException(ex);
                 }
 
                 return null as List<ulong>;
@@ -133,50 +141,26 @@ namespace SmartHunter.Core
             {
                 try
                 {
-                    TaskData data = null;
+                    bool complete;
+                    bool cancel;
                     lock (m_Tasks)
                     {
-                        m_Tasks.TryGetValue(continuingTask, out data);
-                    }
-
-                    if (data == null)
-                    {
-                        return;
-                    }
-
-                    data.Result.Complete();
-
-                    if (HasCompleted)
-                    {
-                        return;
-                    }
-
-                    if (continuingTask.Result != null && continuingTask.Result.Any())
-                    {           
-                        Pattern.MatchedAddresses.AddRange(continuingTask.Result.Select(address => address));
-                        data.Result.Matches.AddRange(continuingTask.Result);
-
-                        // Cancel all other threads and complete the scan because we needed only 1 result
-                        if (StopAfterFirst)
+                        TaskData data;
+                        if (!m_Tasks.TryGetValue(continuingTask, out data)) return;
+                        data.Result.Complete();
+                        if (HasCompleted) return;
+                        var matches = continuingTask.Status == TaskStatus.RanToCompletion ? continuingTask.Result : null;
+                        if (matches != null)
                         {
-                            TryCancel();
+                            foreach (ulong address in matches)
+                                if (!Pattern.MatchedAddresses.Contains(address)) Pattern.MatchedAddresses.Add(address);
+                            data.Result.Matches.AddRange(matches);
                         }
+                        cancel = StopAfterFirst && matches != null && matches.Count > 0;
+                        complete = --m_PendingTasks == 0;
                     }
-
-                    // Complete the scan if this is the last thread to finish
-                    if (!HasCompleted)
-                    {
-                        int completedTaskCount = 0;
-                        lock (m_Tasks)
-                        {
-                            completedTaskCount = m_Tasks.Select(t => t.Key).Where(thisTask => thisTask.IsCompleted).Count();
-                        }
-
-                        if (completedTaskCount == m_Tasks.Count)
-                        {
-                            TryComplete();
-                        }
-                    }
+                    if (cancel) TryCancel();
+                    else if (complete) TryComplete();
                 }
                 catch (TaskCanceledException)
                 {
@@ -205,17 +189,13 @@ namespace SmartHunter.Core
 
         void TryComplete()
         {
-            m_Stopwatch.Stop();
-
-            if (!HasCompleted)
+            lock (m_Tasks)
             {
-                HasCompleted = true;
-
-                if (Completed != null)
-                {
-                    Completed(this, new CompletedEventArgs(Results));
-                }
+                if (HasCompleted) return;
+                m_Stopwatch.Stop();
+                m_HasCompleted = true;
             }
+            Completed?.Invoke(this, new CompletedEventArgs(Results));
         }
     }
 }

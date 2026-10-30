@@ -1,4 +1,4 @@
-namespace SmartHunter.Core.Config
+﻿namespace SmartHunter.Core.Config
 {
     public class WidgetConfig
     {
@@ -6,6 +6,8 @@ namespace SmartHunter.Core.Config
         public float X;
         public float Y;
         public float Scale = 1f;
+        public int FontSize = 16;
+        public WidgetAppearanceConfig Appearance = new WidgetAppearanceConfig();
 
         public WidgetConfig(float x, float y)
         {

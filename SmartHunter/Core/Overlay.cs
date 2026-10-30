@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using SmartHunter.Core.Helpers;
@@ -109,9 +110,12 @@ namespace SmartHunter.Core
 
         private void KeyboardInput_InputReceived(object sender, KeyboardInputEventArgs e)
         {
-            InputReceived(e.Key, e.IsDown);
+            // Editing settings must not also trigger a global overlay action.
+            if (Application.Current.Windows.Cast<Window>().Any(window=>window.IsActive) && Keyboard.FocusedElement is System.Windows.Controls.Primitives.TextBoxBase editor && !editor.IsReadOnly) return;
+            if(!e.Handled && !e.IsRepeat) InputReceived(e.Key, e.IsDown);
         }
 
+        protected void StopInput() { m_KeyboardInput.InputReceived -= KeyboardInput_InputReceived; m_KeyboardInput.Dispose(); }
         abstract protected void InputReceived(Key key, bool down);
     }
 }

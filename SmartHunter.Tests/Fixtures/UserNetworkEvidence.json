@@ -1,0 +1,34 @@
+{
+  "GameVersion": "1.42.0.2",
+  "RootCandidateRva": "0x147A7F50",
+  "Nodes": [
+    {
+      "Path": "NetworkManager",
+      "Type": "app.NetworkManager",
+      "Size": 464
+    },
+    {
+      "Path": "NetworkManager+0x90",
+      "Type": "app.Net_SessionService",
+      "Size": 104
+    },
+    {
+      "Path": "NetworkManager+0xB8",
+      "Type": "app.Net_UserInfoManager",
+      "Size": 96
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18",
+      "Type": "app.net_lobby_session.cLobbySession",
+      "Size": 496
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20",
+      "Type": "app.net_quest_session.cQuestSession",
+      "Size": 600
+    }
+  ],
+  "OldReadLimit": 4096,
+  "AllChecksHitReadLimit": true,
+  "CheckCount": 24
+}

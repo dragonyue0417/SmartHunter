@@ -4,8 +4,9 @@ namespace SmartHunter.Game.Config
     {
         public bool UseInternalSkin = false;
         public bool UseSampleData = false;
+        public bool CollectNetworkDiagnostics = false;
+        public bool ShowServerLogs = false;
         public bool TraceUniquePointers = false;
         public bool ShowWeirdRemovableParts = false;
-        public bool ShowServerLogs = false;
     }
 }

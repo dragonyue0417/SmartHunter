@@ -8,6 +8,7 @@
                     xmlns:wbComponentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
 
                     xmlns:converters="clr-namespace:SmartHunter.Ui.Converters"
+                    xmlns:controls="clr-namespace:SmartHunter.Ui.Controls"
                     xmlns:behaviors="clr-namespace:SmartHunter.Ui.Behaviors"
                     xmlns:coreData="clr-namespace:SmartHunter.Core.Data"
                     xmlns:data="clr-namespace:SmartHunter.Game.Data"
@@ -26,15 +27,18 @@
     <converters:PlayerToPlayerIndexConverter x:Key="A_Converter_PlayerToPlayerIndex" />
     <converters:FractionToPercentageConverter x:Key="A_Converter_FractionToPercentage" />
     <converters:BoolToVisibilityConverter x:Key="A_Converter_BoolToVisibility" />
+    <converters:FontSizeScaleConverter x:Key="A_Converter_FontSizeScale" />
     <converters:LocalizerConverter x:Key="A_Converter_Localizer" />
     <converters:NumberComparisonConverter x:Key="A_Converter_NumberGreater" Comparison="Greater" />
     <converters:NumberComparisonConverter x:Key="A_Converter_NumberNotEqual" Comparison="NotEqual" />
     <converters:EnumComparisonConverter x:Key="A_Converter_EnumComparison" />
     <converters:ColorTransformConverter x:Key="A_Converter_BackgroundColorTransform" SaturationAdjustment="-0.8" BrightnessAdjustment="0.66" OpacityOverride="0.3" />
     <converters:StringFormatConverter x:Key="A_Converter_StringFormat" />
-    <converters:NumberToCenteredMarginConverter x:Key="A_Converter_NumberToCenteredMargin" />
     <converters:WeaponTypeToNameConverter x:Key="A_Converter_WeaponTypeToName" />
 
+    <converters:OverlayBrushConverter x:Key="A_Converter_OverlayBrush"/>
+    <Color x:Key="A_Color_Text_Default">White</Color>
+    <Color x:Key="A_Color_Debug_Background">#99000000</Color>
     <Color x:Key="A_Color_Widget_Background">#00000000</Color>
     <system:Double x:Key="A_Double_Widget_Opacity">1</system:Double>
 
@@ -44,6 +48,7 @@
     <Color x:Key="A_Color_Player_3">#33BB33</Color>
 
     <Color x:Key="A_Color_Monster_Bar">#CC0000</Color>
+    <Color x:Key="A_Color_Monster_Other_Bar">#7F98AE</Color>
     <Color x:Key="A_Color_Monster_Part_Bar">#CC0000</Color>
     <Color x:Key="A_Color_Monster_Part_Soften_Bar">#FCB252</Color>
     <Color x:Key="A_Color_Monster_StatusEffect_Bar">#00CCCC</Color>
@@ -71,29 +76,42 @@
 
     <DropShadowEffect x:Key="A_Effect_DropShadow" ShadowDepth="1" Direction="-45" Color="Black" Opacity="0.66" BlurRadius="1" RenderingBias="Quality" />
 
-    <FontFamily x:Key="Roboto">pack://application:,,,/Ui/Fonts/#Roboto</FontFamily>
+    <FontFamily x:Key="Roboto">pack://application:,,,/SmartHunter;component/Ui/Fonts/#Roboto</FontFamily>
 
     <Style x:Key="A_Style_TextBlock_Heading" TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="FontSize" Value="20" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="{Binding Path=(behaviors:OverlayTypography.FontSize), RelativeSource={RelativeSource Self}, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=1.25}"/>
+        <Setter Property="Foreground"><Setter.Value><MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Text_Default}"/></MultiBinding></Setter.Value></Setter>
 
         <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
-        <Setter Property="LineHeight" Value="20" />
+        <Setter Property="LineHeight" Value="{Binding FontSize, RelativeSource={RelativeSource Self}}"/>
     </Style>
 
     <Style x:Key="A_Style_TextBlock_Standard" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource A_Style_TextBlock_Heading}">
         <Setter Property="FontWeight" Value="Medium" />
-        <Setter Property="FontSize" Value="16" />
-        <Setter Property="LineHeight" Value="16" />
+        <Setter Property="FontSize" Value="{Binding Path=(behaviors:OverlayTypography.FontSize), RelativeSource={RelativeSource Self}, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=1}"/>
+        <Setter Property="LineHeight" Value="{Binding FontSize, RelativeSource={RelativeSource Self}}"/>
     </Style>
 
     <Style x:Key="A_Style_TextBlock_Standard_Centered" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource A_Style_TextBlock_Heading}">
         <Setter Property="FontWeight" Value="Medium" />
-        <Setter Property="FontSize" Value="13" />
-        <Setter Property="LineHeight" Value="13" />
+        <Setter Property="FontSize" Value="{Binding Path=(behaviors:OverlayTypography.FontSize), RelativeSource={RelativeSource Self}, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=0.8125}"/>
+        <Setter Property="LineHeight" Value="{Binding FontSize, RelativeSource={RelativeSource Self}}"/>
         <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="A_Style_TextBlock_MonsterHeading" TargetType="TextBlock" BasedOn="{StaticResource A_Style_TextBlock_Heading}">
+        <Setter Property="FontSize" Value="{Binding Path=(behaviors:OverlayTypography.FontSize), RelativeSource={RelativeSource Self}, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=1.25}"/><Setter Property="LineHeight" Value="{Binding FontSize, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    <Style x:Key="A_Style_TextBlock_MonsterDetail" TargetType="TextBlock" BasedOn="{StaticResource A_Style_TextBlock_Standard}">
+        <Setter Property="FontSize" Value="{Binding Path=(behaviors:OverlayTypography.FontSize), RelativeSource={RelativeSource Self}, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=1}"/><Setter Property="LineHeight" Value="{Binding FontSize, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="A_Style_TextBlock_MonsterSize" TargetType="TextBlock" BasedOn="{StaticResource A_Style_TextBlock_Standard_Centered}">
+        <Setter Property="FontSize" Value="{Binding Path=(behaviors:OverlayTypography.FontSize), RelativeSource={RelativeSource Self}, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=0.8125}"/><Setter Property="LineHeight" Value="{Binding FontSize, RelativeSource={RelativeSource Self}}"/>
     </Style>
 
     <DataTemplate x:Key="A_DataTemplate_BarProgress">
@@ -199,7 +217,7 @@
             </Grid.OpacityMask>
             <Border x:Name="Border1" CornerRadius="3" Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3 2 3 1">
-                    <TextBlock Text="{Binding .}" Style="{StaticResource A_Style_TextBlock_Heading}" Foreground="{StaticResource A_Brush_DropShadow}" FontSize="11" LineHeight="11">
+                    <TextBlock Text="{Binding .}" Style="{StaticResource A_Style_TextBlock_Heading}" Foreground="{StaticResource A_Brush_DropShadow}" FontSize="{Binding Path=(behaviors:OverlayTypography.FontSize), RelativeSource={RelativeSource Self}, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=0.6875}" LineHeight="{Binding FontSize, RelativeSource={RelativeSource Self}}">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <TranslateTransform X="1" Y="1" />
@@ -207,7 +225,7 @@
                         </TextBlock.RenderTransform>
                     </TextBlock>
 
-                    <TextBlock Text="{Binding .}" Style="{StaticResource A_Style_TextBlock_Heading}" FontSize="12" LineHeight="12" Foreground="{Binding Foreground, FallbackValue=White, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+                    <TextBlock Text="{Binding .}" Style="{StaticResource A_Style_TextBlock_Heading}" FontSize="{Binding Path=(behaviors:OverlayTypography.FontSize), RelativeSource={RelativeSource Self}, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=0.75}" LineHeight="{Binding FontSize, RelativeSource={RelativeSource Self}}" Foreground="{Binding Foreground, FallbackValue=White, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
                 </Grid>
             </Border>
         </Grid>
@@ -295,23 +313,24 @@
     </Storyboard>
 
     <DataTemplate DataType="{x:Type data:MonsterStatusEffect}">
-        <StackPanel x:Name="Root" Margin="0 9 0 0" Visibility="Collapsed" Opacity="0">
-            <DockPanel>
+        <StackPanel behaviors:OverlayAppearance.StateId="{Binding Index}" x:Name="Root" Margin="0 4 0 0" Visibility="Collapsed" Opacity="0">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                 <Grid>
-                    <TextBlock x:Name="NameBlockShadow" Text="{Binding Name}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-                    <TextBlock x:Name="NameBlock" Text="{Binding Name}" Style="{StaticResource A_Style_TextBlock_Standard}" />
+                    <TextBlock x:Name="NameBlockShadow" Text="{Binding Name}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Name}" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
+                    <TextBlock x:Name="NameBlock" Text="{Binding Name}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Name}" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" />
                 </Grid>
 
-                <ContentControl x:Name="TimesActivatedGraphic" Visibility="Collapsed" Margin="6 -3 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" ContentTemplate="{StaticResource A_DataTemplate_SquareInfoGraphic}">
+                <ContentControl x:Name="TimesActivatedGraphic" Grid.Column="1" Visibility="Collapsed" Margin="3 -1 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" ContentTemplate="{StaticResource A_DataTemplate_SquareInfoGraphic}"><ContentControl.Foreground><MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Text_Default}"/></MultiBinding></ContentControl.Foreground>
                     <ContentControl.Background>
-                        <SolidColorBrush Color="{Binding Source={StaticResource A_Color_Monster_StatusEffect_Bar}}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="StateBar"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Monster_StatusEffect_Bar}"/></MultiBinding>
                     </ContentControl.Background>
                     <MultiBinding ConverterParameter="{}{0}" Converter="{StaticResource A_Converter_StringFormat}">
                         <Binding Path="TimesActivatedCount" Mode="OneWay" />
                     </MultiBinding>
                 </ContentControl>
 
-                <Grid x:Name="IsActiveContainer" Margin="6 -3 0 0" Visibility="Collapsed">
+                <Grid x:Name="IsActiveContainer" Grid.Column="2" Margin="3 -1 0 0" Visibility="Collapsed">
                     <Ellipse x:Name="Pulse" Width="1" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5 0.5" Fill="#FFFFF300">
                         <Ellipse.RenderTransform>
                             <TransformGroup>
@@ -329,8 +348,8 @@
                     </ContentControl>
                 </Grid>
 
-                <Grid HorizontalAlignment="Right" Margin="12 0 0 0">
-                    <TextBlock x:Name="BuildupBlockShadow" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
+                <Grid Grid.Column="3" HorizontalAlignment="Right" Margin="6 0 0 0">
+                    <TextBlock x:Name="BuildupBlockShadow" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                 <Binding Path="Buildup.Current" Mode="OneWay" />
@@ -339,7 +358,7 @@
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
-                    <TextBlock x:Name="BuildupBlock" Style="{StaticResource A_Style_TextBlock_Standard}">
+                    <TextBlock x:Name="BuildupBlock" Style="{StaticResource A_Style_TextBlock_MonsterDetail}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                 <Binding Path="Buildup.Current" Mode="OneWay" />
@@ -349,7 +368,7 @@
                         </TextBlock.Text>
                     </TextBlock>
 
-                    <TextBlock x:Name="DurationBlockShadow" Visibility="Collapsed" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
+                    <TextBlock x:Name="DurationBlockShadow" Visibility="Collapsed" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                 <Binding Path="Duration.Current" Mode="OneWay" />
@@ -358,7 +377,7 @@
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
-                    <TextBlock x:Name="DurationBlock" Visibility="Collapsed" Style="{StaticResource A_Style_TextBlock_Standard}">
+                    <TextBlock x:Name="DurationBlock" Visibility="Collapsed" Style="{StaticResource A_Style_TextBlock_MonsterDetail}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                 <Binding Path="Duration.Current" Mode="OneWay" />
@@ -368,11 +387,11 @@
                         </TextBlock.Text>
                     </TextBlock>
                 </Grid>
-            </DockPanel>
+            </Grid>
 
             <ContentControl x:Name="Bar" Content="{Binding Buildup.Fraction}" ContentTemplate="{StaticResource A_DataTemplate_BarProgress}" Height="3" Margin="0 2 0 0">
                 <ContentControl.Foreground>
-                    <SolidColorBrush Color="{StaticResource A_Color_Monster_StatusEffect_Bar}" />
+                    <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="StateBar"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Monster_StatusEffect_Bar}"/></MultiBinding>
                 </ContentControl.Foreground>
             </ContentControl>
         </StackPanel>
@@ -594,14 +613,15 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type data:MonsterPartSoften}">
-        <StackPanel x:Name="Root" Margin="0 9 0 0" Visibility="Collapsed" Opacity="0">
-            <DockPanel>
+        <StackPanel x:Name="Root" Margin="0 4 0 0" Visibility="Collapsed" Opacity="0">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                 <Grid>
-                    <TextBlock x:Name="NameBlockShadow" Text="{Binding Name}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-                    <TextBlock x:Name="NameBlock" Text="{Binding Name}" Style="{StaticResource A_Style_TextBlock_Standard}" />
+                    <TextBlock x:Name="NameBlockShadow" Text="{Binding Name}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Name}" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
+                    <TextBlock x:Name="NameBlock" Text="{Binding Name}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Name}" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" />
                 </Grid>
 
-                <ContentControl x:Name="TimesBrokenGraphic" Visibility="Collapsed" Margin="6 -3 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" ContentTemplate="{StaticResource A_DataTemplate_SquareInfoGraphic}">
+                <ContentControl x:Name="TimesBrokenGraphic" Grid.Column="1" Visibility="Collapsed" Margin="3 -1 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" ContentTemplate="{StaticResource A_DataTemplate_SquareInfoGraphic}"><ContentControl.Foreground><MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Text_Default}"/></MultiBinding></ContentControl.Foreground>
                     <ContentControl.Background>
                         <SolidColorBrush Color="{Binding Source={StaticResource A_Color_Monster_Part_Soften_Bar}}" />
                     </ContentControl.Background>
@@ -610,8 +630,8 @@
                     </MultiBinding>
                 </ContentControl>
 
-                <Grid HorizontalAlignment="Right" Margin="12 0 0 0">
-                    <TextBlock x:Name="HealthBlockShadow" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
+                <Grid Grid.Column="3" HorizontalAlignment="Right" Margin="6 0 0 0">
+                    <TextBlock x:Name="HealthBlockShadow" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                 <Binding Path="Time.Current" Mode="OneWay" />
@@ -621,7 +641,7 @@
                         </TextBlock.Text>
                     </TextBlock>
 
-                    <TextBlock x:Name="HealthBlock" Style="{StaticResource A_Style_TextBlock_Standard}">
+                    <TextBlock x:Name="HealthBlock" Style="{StaticResource A_Style_TextBlock_MonsterDetail}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                 <Binding Path="Time.Current" Mode="OneWay" />
@@ -631,7 +651,7 @@
                         </TextBlock.Text>
                     </TextBlock>
                 </Grid>
-            </DockPanel>
+            </Grid>
 
             <ContentControl x:Name="Bar" Content="{Binding Time.Fraction}" ContentTemplate="{StaticResource A_DataTemplate_BarProgress}" Height="3" Margin="0 2 0 0">
                 <ContentControl.Foreground>
@@ -759,14 +779,15 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type data:MonsterPart}">
-        <StackPanel x:Name="Root" Margin="0 9 0 0" Visibility="Collapsed" Opacity="0">
-            <DockPanel>
+        <StackPanel x:Name="Root" Margin="0 4 0 0" Visibility="Collapsed" Opacity="0">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                 <Grid>
-                    <TextBlock x:Name="NameBlockShadow" Text="{Binding Name}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-                    <TextBlock x:Name="NameBlock" Text="{Binding Name}" Style="{StaticResource A_Style_TextBlock_Standard}" />
+                    <TextBlock x:Name="NameBlockShadow" Text="{Binding Name}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Name}" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
+                    <TextBlock x:Name="NameBlock" Text="{Binding Name}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Name}" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" />
                 </Grid>
 
-                <ContentControl x:Name="TimesBrokenGraphic" Visibility="Collapsed" Margin="6 -3 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" ContentTemplate="{StaticResource A_DataTemplate_SquareInfoGraphic}">
+                <ContentControl x:Name="TimesBrokenGraphic" Grid.Column="1" Visibility="Collapsed" Margin="3 -1 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" ContentTemplate="{StaticResource A_DataTemplate_SquareInfoGraphic}"><ContentControl.Foreground><MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Text_Default}"/></MultiBinding></ContentControl.Foreground>
                     <ContentControl.Background>
                         <SolidColorBrush Color="{Binding Source={StaticResource A_Color_Monster_Part_Bar}}" />
                     </ContentControl.Background>
@@ -775,8 +796,8 @@
                     </MultiBinding>
                 </ContentControl>
 
-                <Grid HorizontalAlignment="Right" Margin="12 0 0 0">
-                    <TextBlock x:Name="HealthBlockShadow" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
+                <Grid Grid.Column="3" HorizontalAlignment="Right" Margin="6 0 0 0">
+                    <TextBlock x:Name="HealthBlockShadow" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                 <Binding Path="Health.Current" Mode="OneWay" />
@@ -786,7 +807,7 @@
                         </TextBlock.Text>
                     </TextBlock>
 
-                    <TextBlock x:Name="HealthBlock" Style="{StaticResource A_Style_TextBlock_Standard}">
+                    <TextBlock x:Name="HealthBlock" Style="{StaticResource A_Style_TextBlock_MonsterDetail}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                 <Binding Path="Health.Current" Mode="OneWay" />
@@ -796,7 +817,7 @@
                         </TextBlock.Text>
                     </TextBlock>
                 </Grid>
-            </DockPanel>
+            </Grid>
 
             <ContentControl x:Name="Bar" Content="{Binding Health.Fraction}" ContentTemplate="{StaticResource A_DataTemplate_BarProgress}" Height="3" Margin="0 2 0 0">
                 <ContentControl.Foreground>
@@ -924,7 +945,7 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type data:Monster}">
-        <StackPanel x:Name="Root" Width="300" Visibility="Collapsed" Opacity="0">
+        <StackPanel x:Name="Root" Width="{Binding DataContext.CardWidth, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" MinWidth="{Binding Width, RelativeSource={RelativeSource Self}}" Visibility="Collapsed" Opacity="0" Margin="0,0,12,10">
             <StackPanel.Resources>
                 <CollectionViewSource x:Key="CollectionViewSource" Source="{Binding Parts}" IsLiveSortingRequested="True">
                     <CollectionViewSource.SortDescriptions>
@@ -933,11 +954,7 @@
                 </CollectionViewSource>
             </StackPanel.Resources>
 
-            <StackPanel.Margin>
-                <Binding Converter="{StaticResource A_Converter_NumberToCenteredMargin}" Path="DataContext.MonsterWidget.Context.Monsters.Count" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Windows:MonsterWidgetWindow}}"/>
-            </StackPanel.Margin>
-
-            <StackPanel>
+<StackPanel>
                 <StackPanel HorizontalAlignment="Center">
                     <Grid x:Name="Crown" Height="20">
                         <Grid x:Name="InnerCrown" VerticalAlignment="Bottom">
@@ -954,14 +971,14 @@
                         </Grid>
                     </Grid>
                     <!--Size-->
-                    <Grid x:Name="Size" VerticalAlignment="Bottom">
-                        <TextBlock Text="{Binding Size, StringFormat=\{0:N2\}}" Style="{StaticResource A_Style_TextBlock_Standard_Centered}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-                        <TextBlock Text="{Binding Size, StringFormat=\{0:N2\}}" Style="{StaticResource A_Style_TextBlock_Standard_Centered}" />
+                    <Grid x:Name="Size" VerticalAlignment="Bottom" Margin="0,1,0,2">
+                        <TextBlock Text="{Binding Size, StringFormat=\{0:N2\}}" Style="{StaticResource A_Style_TextBlock_MonsterSize}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
+                        <TextBlock Text="{Binding Size, StringFormat=\{0:N2\}}" Style="{StaticResource A_Style_TextBlock_MonsterSize}" />
                     </Grid>
                     <!--/Size-->
-                    <Grid VerticalAlignment="Bottom">
-                        <TextBlock Text="{Binding Name}" Style="{StaticResource A_Style_TextBlock_Heading}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-                        <TextBlock Text="{Binding Name}" Style="{StaticResource A_Style_TextBlock_Heading}" />
+                    <Grid VerticalAlignment="Bottom" MaxWidth="{Binding Width, ElementName=Root}" Margin="0,2,0,2">
+                        <TextBlock Text="{Binding Name}" ToolTip="{Binding Name}" Style="{StaticResource A_Style_TextBlock_MonsterHeading}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
+                        <TextBlock Text="{Binding Name}" ToolTip="{Binding Name}" Style="{StaticResource A_Style_TextBlock_MonsterHeading}" />
 
                     </Grid>
                 </StackPanel>
@@ -969,12 +986,12 @@
                 <Grid Margin="0 2 0 0">
                     <ContentControl x:Name="HealthBar" Content="{Binding Health.Fraction}" ContentTemplate="{StaticResource A_DataTemplate_BarProgress}" Height="20">
                         <ContentControl.Foreground>
-                            <SolidColorBrush Color="{StaticResource A_Color_Monster_Bar}" />
+                            <SolidColorBrush Color="{StaticResource A_Color_Monster_Other_Bar}" />
                         </ContentControl.Foreground>
                     </ContentControl>
 
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 2 0 0">
-                        <TextBlock x:Name="HealthBlockShadow" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
+                        <TextBlock x:Name="HealthBlockShadow" TextWrapping="Wrap" Style="{StaticResource A_Style_TextBlock_MonsterDetail}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                     <Binding Path="Health.Current" Mode="OneWay" />
@@ -983,7 +1000,7 @@
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
-                        <TextBlock x:Name="HealthBlock" Style="{StaticResource A_Style_TextBlock_Standard}">
+                        <TextBlock x:Name="HealthBlock" TextWrapping="Wrap" Style="{StaticResource A_Style_TextBlock_MonsterDetail}">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0:0}/{1:0} ({2})">
                                     <Binding Path="Health.Current" Mode="OneWay" />
@@ -997,8 +1014,8 @@
             </StackPanel>
 
             <ItemsControl x:Name="PartsControl" ItemsSource="{Binding Source={StaticResource CollectionViewSource}}" />
-            <ItemsControl ItemsSource="{Binding StatusEffects}" />
-            <ItemsControl ItemsSource="{Binding PartSoftens}" />
+            <ItemsControl x:Name="MonsterStatusControl" ItemsSource="{Binding StatusEffects}" />
+            <ItemsControl x:Name="MonsterSoftenControl" ItemsSource="{Binding PartSoftens}" />
         </StackPanel>
 
         <DataTemplate.Triggers>
@@ -1030,6 +1047,11 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding DataContext.ShowSize, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" Value="False">
                 <Setter TargetName="Size" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                <Setter TargetName="HealthBar" Property="Foreground">
+                    <Setter.Value><SolidColorBrush Color="{StaticResource A_Color_Monster_Bar}" /></Setter.Value>
+                </Setter>
             </DataTrigger>
 
             <!--Show Numbers AND Percents-->
@@ -1149,6 +1171,18 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.SelectedDetailsOnly, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" Value="True"/>
+                    <Condition Binding="{Binding DataContext.HasSelectedMonster, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" Value="True"/>
+                    <Condition Binding="{Binding IsSelected}" Value="False"/>
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="PartsControl" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="MonsterStatusControl" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="MonsterSoftenControl" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="Crown" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="Size" Property="Visibility" Value="Collapsed"/>
+            </MultiDataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 
@@ -1348,7 +1382,7 @@
     </Storyboard>
 
     <DataTemplate DataType="{x:Type data:PlayerStatusEffect}">
-        <StackPanel x:Name="Root" Margin="0 0 0 3" Visibility="Collapsed" Opacity="0">
+        <StackPanel behaviors:OverlayAppearance.StateId="{Binding Index}" x:Name="Root" Margin="0 0 0 3" Visibility="Collapsed" Opacity="0">
             <StackPanel.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="0" />
@@ -1425,12 +1459,12 @@
             <DataTrigger Binding="{Binding GroupId}" Value="Horn">
                 <Setter TargetName="NameBlock" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Horn}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Horn}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="CircleProgress" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Horn}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="StateBar"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Horn}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
@@ -1438,12 +1472,12 @@
             <DataTrigger Binding="{Binding GroupId}" Value="Coral">
                 <Setter TargetName="NameBlock" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Coral}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Coral}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="CircleProgress" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Coral}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="StateBar"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Coral}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
@@ -1451,12 +1485,12 @@
             <DataTrigger Binding="{Binding GroupId}" Value="Debuff">
                 <Setter TargetName="NameBlock" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Debuff}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Debuff}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="CircleProgress" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Debuff}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="StateBar"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Debuff}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
@@ -1464,12 +1498,12 @@
             <DataTrigger Binding="{Binding GroupId}" Value="Buff">
                 <Setter TargetName="NameBlock" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Buff}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Buff}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="CircleProgress" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Buff}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="StateBar"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Buff}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
@@ -1477,12 +1511,12 @@
             <DataTrigger Binding="{Binding GroupId}" Value="Equipment">
                 <Setter TargetName="NameBlock" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Equipment}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Equipment}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="CircleProgress" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Equipment}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="StateBar"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Equipment}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
@@ -1490,12 +1524,12 @@
             <DataTrigger Binding="{Binding GroupId}" Value="Weapon">
                 <Setter TargetName="NameBlock" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Weapon}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Weapon}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="CircleProgress" Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource A_Color_PlayerStatusEffect_Group_Weapon}" />
+                        <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="StateBar"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_PlayerStatusEffect_Group_Weapon}"/></MultiBinding>
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
@@ -1517,14 +1551,14 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
+                    <controls:CenteredWrapPanel Orientation="Horizontal" CenterRows="{Binding CenterMonsters}" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
     <DataTemplate DataType="{x:Type widgetContexts:MonsterWidgetContext}">
-        <Grid>
+        <Grid behaviors:OverlayTypography.FontSize="{Binding FontSize}" behaviors:OverlayAppearance.Palette="{Binding Palette}">
 
             <Grid.Resources>
                 <CollectionViewSource x:Key="CollectionViewSource" Source="{Binding Monsters}" />
@@ -1534,13 +1568,18 @@
                 <StaticResource ResourceKey="A_Double_Widget_Opacity"/>
             </Grid.Opacity>
             <Grid.Background>
-                <SolidColorBrush Color="{StaticResource A_Color_Widget_Background}" />
+                <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Background"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Widget_Background}"/></MultiBinding>
             </Grid.Background>
 
-            <ItemsControl x:Name="MonstersControl" ItemsSource="{Binding Source={StaticResource CollectionViewSource}}" Style="{StaticResource A_Style_ItemsControl_Monsters}" />
+            <ItemsControl x:Name="MonstersControl" Width="{Binding LayoutWidth}" HorizontalAlignment="Left" ItemsSource="{Binding Source={StaticResource CollectionViewSource}}" Style="{StaticResource A_Style_ItemsControl_Monsters}" />
         </Grid>
 
         <DataTemplate.Triggers>
+            <MultiDataTrigger><MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding HasCustomWidth}" Value="True"/>
+                <Condition Binding="{Binding CenterMonsters}" Value="True"/>
+                <Condition Binding="{Binding IsSingleRow}" Value="False"/>
+            </MultiDataTrigger.Conditions><Setter TargetName="MonstersControl" Property="HorizontalAlignment" Value="Center"/></MultiDataTrigger>
             <Trigger Property="pfComponentModel:DesignerProperties.IsInDesignMode" Value="True">
                 <Setter TargetName="MonstersControl" Property="ItemsSource" Value="{Binding Monsters}" />
             </Trigger>
@@ -1568,7 +1607,7 @@
     </Style>
 
     <DataTemplate DataType="{x:Type widgetContexts:PlayerWidgetContext}">
-        <Grid>
+        <Grid behaviors:OverlayTypography.FontSize="{Binding FontSize}" behaviors:OverlayAppearance.Palette="{Binding Palette}">
 
             <Grid.Resources>
                 <CollectionViewSource x:Key="CollectionViewSource" Source="{Binding StatusEffects}" IsLiveSortingRequested="True">
@@ -1587,7 +1626,7 @@
                 <StaticResource ResourceKey="A_Double_Widget_Opacity"/>
             </Grid.Opacity>
             <Grid.Background>
-                <SolidColorBrush Color="{StaticResource A_Color_Widget_Background}" />
+                <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Background"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Widget_Background}"/></MultiBinding>
             </Grid.Background>
 
             <ItemsControl x:Name="StatusEffectsControl" ItemsSource="{Binding Source={StaticResource CollectionViewSource}}" Style="{StaticResource A_Style_ItemsControl_PlayerStatusEffects}" />
@@ -1621,7 +1660,7 @@
     </Style>
 
     <DataTemplate DataType="{x:Type widgetContexts:TeamWidgetContext}">
-        <Grid>
+        <Grid behaviors:OverlayTypography.FontSize="{Binding FontSize}" behaviors:OverlayAppearance.Palette="{Binding Palette}">
 
             <Grid.Resources>
                 <CollectionViewSource x:Key="CollectionViewSource" Source="{Binding Fake_Players}" IsLiveSortingRequested="True">
@@ -1639,7 +1678,7 @@
                 <StaticResource ResourceKey="A_Double_Widget_Opacity"/>
             </Grid.Opacity>
             <Grid.Background>
-                <SolidColorBrush Color="{StaticResource A_Color_Widget_Background}" />
+                <MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Background"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Widget_Background}"/></MultiBinding>
             </Grid.Background>
 
             <Grid.RowDefinitions>
@@ -1679,42 +1718,39 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type widgetContexts:DebugWidgetContext}">
-        <Grid Margin="0 23 0 0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding CurrentGame.CurrentPlayerName, StringFormat=Player: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding CurrentGame.CurrentPlayerName, StringFormat=Player: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" />
-
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding CurrentGame.SessionID, StringFormat=Session ID: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding CurrentGame.SessionID, StringFormat=Session ID: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" />
-
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding CurrentGame.SessionHostPlayerName, StringFormat=Session Host: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding CurrentGame.SessionHostPlayerName, StringFormat=Session Host: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" />
-
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding CurrentGame.LobbyID, StringFormat=Lobby ID: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding CurrentGame.LobbyID, StringFormat=Lobby ID: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" />
-
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding CurrentGame.LobbyHostPlayerName, StringFormat=Lobby Host: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding CurrentGame.LobbyHostPlayerName, StringFormat=Lobby Host: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" />
-
-            <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding CurrentGame.EquippedWeaponType, Converter={StaticResource A_Converter_WeaponTypeToName}, StringFormat=Weapon Type: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}" />
-            <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding CurrentGame.EquippedWeaponType, Converter={StaticResource A_Converter_WeaponTypeToName}, StringFormat=Weapon Type: {0:C}}" Style="{StaticResource A_Style_TextBlock_Standard}" />
-
-            <Grid.Opacity>
-                <StaticResource ResourceKey="A_Double_Widget_Opacity"/>
-            </Grid.Opacity>
-            <Grid.Background>
-                <SolidColorBrush Color="{StaticResource A_Color_Widget_Background}" />
-            </Grid.Background>
-
+    <DataTemplate x:Key="A_DataTemplate_DebugText">
+        <Grid>
+            <TextBlock Text="{Binding}" TextWrapping="Wrap" Foreground="{StaticResource A_Brush_DropShadow}" RenderTransform="{StaticResource A_Transform_DropShadow}"/>
+            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
         </Grid>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type widgetContexts:DebugWidgetContext}">
+        <Border x:Name="DebugCard" Width="420" Padding="14" VerticalAlignment="Top" HorizontalAlignment="Left" Opacity="{StaticResource A_Double_Widget_Opacity}"
+                TextElement.FontFamily="{StaticResource Roboto}" TextElement.FontWeight="Medium" TextElement.FontSize="{Binding FontSize}" behaviors:OverlayAppearance.Palette="{Binding Palette}">
+            <TextElement.Foreground><MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Text"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Text_Default}"/></MultiBinding></TextElement.Foreground>
+            <Border.Background><MultiBinding Converter="{StaticResource A_Converter_OverlayBrush}" ConverterParameter="Background"><Binding Path="(behaviors:OverlayAppearance.Palette)" RelativeSource="{RelativeSource Self}"/><Binding Path="(behaviors:OverlayAppearance.StateId)" RelativeSource="{RelativeSource Self}"/><Binding Source="{StaticResource A_Color_Debug_Background}"/></MultiBinding></Border.Background>
+            <StackPanel>
+                <ContentControl Content="{Binding Heading}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" FontSize="{Binding HeadingFontSize}" FontWeight="Bold" Margin="0,0,0,5"/>
+                <ContentControl Content="{Binding GameLine}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" Margin="0,0,0,8"/>
+                <Border Padding="8,5" Margin="0,0,0,8">
+                    <ContentControl Content="{Binding SessionLine}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}"/>
+                </Border>
+                <ItemsControl ItemsSource="{Binding WorldDetails}" Margin="0,0,0,6">
+                    <ItemsControl.ItemTemplate><DataTemplate><ContentControl Content="{Binding}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" Margin="0,0,0,4"/></DataTemplate></ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <ItemsControl ItemsSource="{Binding WildsDetails}">
+                    <ItemsControl.ItemTemplate><DataTemplate><ContentControl Content="{Binding}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" Margin="0,0,0,5"/></DataTemplate></ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <ContentControl Content="{Binding PartyLine}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" Margin="0,0,0,5"/>
+                <ContentControl Content="{Binding MemberLine}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" Margin="0,0,0,5"/>
+                <ContentControl Content="{Binding ScanLine}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" Margin="0,0,0,5"/>
+                <ContentControl Content="{Binding TimingLine}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}"/>
+                <ContentControl Content="{Binding RelayLine}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" Margin="0,5,0,0" Visibility="{Binding IsRelayEnabled, Converter={StaticResource A_Converter_BoolToVisibility}}"/>
+                <Border Margin="0,9,0,0" Padding="0,7,0,0">
+                    <ContentControl Content="{Binding NoteLine}" ContentTemplate="{StaticResource A_DataTemplate_DebugText}" FontSize="{Binding FontSize, Converter={StaticResource A_Converter_FontSizeScale}, ConverterParameter=0.875}"/>
+                </Border>
+            </StackPanel>
+        </Border>
     </DataTemplate>
 </ResourceDictionary>

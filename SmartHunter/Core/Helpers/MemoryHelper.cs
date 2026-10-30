@@ -1,308 +1,199 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using SmartHunter.Game.Helpers;
+using System.Threading;
 
 namespace SmartHunter.Core.Helpers
-{    
+{
     public static class MemoryHelper
     {
-        static List<PointerTrace> s_UniquePointerTraces = new List<PointerTrace>();
+        static readonly List<PointerTrace> s_UniquePointerTraces = new List<PointerTrace>();
+        [ThreadStatic] static byte[] s_ReadBuffer;
+        const int ScanChunkSize = 1024 * 1024;
 
-        static WindowsApi.RegionPageProtection[] ProtectionExclusions
+        static class ValueSize<T> where T : struct
         {
-            get
-            {
-                return new WindowsApi.RegionPageProtection[]
-                {
-                    WindowsApi.RegionPageProtection.PAGE_GUARD,
-                    WindowsApi.RegionPageProtection.PAGE_NOACCESS
-                };
-            }
+            public static readonly int Size = Marshal.SizeOf(typeof(T));
+        }
+
+        static byte[] GetReadBuffer(int size)
+        {
+            if (s_ReadBuffer == null || s_ReadBuffer.Length < size)
+                s_ReadBuffer = new byte[Math.Max(size, 128)];
+            return s_ReadBuffer;
         }
 
         static bool CheckProtection(uint flags)
         {
-            var protectionFlags = (WindowsApi.RegionPageProtection)flags;
-
-            foreach (var protectionExclusion in ProtectionExclusions)
-            {
-                if (protectionFlags.HasFlag(protectionExclusion))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return (flags & (uint)(WindowsApi.RegionPageProtection.PAGE_GUARD |
+                                  WindowsApi.RegionPageProtection.PAGE_NOACCESS)) == 0;
         }
 
-        public static List<ulong> FindPatternAddresses(Process process, AddressRange addressRange, BytePattern pattern, bool stopAfterFirst)
+        public static List<ulong> FindPatternAddresses(Process process, AddressRange addressRange,
+            BytePattern pattern, bool stopAfterFirst, CancellationToken cancellationToken = default(CancellationToken))
         {
-            List<ulong> matchAddresses = new List<ulong>();
-
+            var matches = new List<ulong>();
+            if (pattern.Bytes.Length == 0 || addressRange.Size == 0) return matches;
+            // Bound allocation independently of the game's committed region size.
+            var buffer = new byte[checked(ScanChunkSize + pattern.Bytes.Length - 1)];
             ulong currentAddress = addressRange.Start;
-
             while (currentAddress < addressRange.End && !process.HasExited)
             {
-                WindowsApi.MEMORY_BASIC_INFORMATION64 memoryRegion;
-                if (WindowsApi.VirtualQueryEx(process.Handle, (IntPtr)currentAddress, out memoryRegion, (uint)Marshal.SizeOf(typeof(WindowsApi.MEMORY_BASIC_INFORMATION64))) > 0
-                    && memoryRegion.RegionSize > 0
-                    && memoryRegion.State == (uint)WindowsApi.RegionPageState.MEM_COMMIT
-                    && CheckProtection(memoryRegion.Protect))
+                cancellationToken.ThrowIfCancellationRequested();
+                WindowsApi.MEMORY_BASIC_INFORMATION64 region;
+                if (WindowsApi.VirtualQueryEx(process.Handle, (IntPtr)currentAddress, out region,
+                    (uint)Marshal.SizeOf(typeof(WindowsApi.MEMORY_BASIC_INFORMATION64))) == 0) break;
+                ulong regionEnd = region.BaseAddress + region.RegionSize;
+                if (region.RegionSize == 0 || regionEnd <= currentAddress) break;
+                if (region.State == (uint)WindowsApi.RegionPageState.MEM_COMMIT && CheckProtection(region.Protect))
                 {
-                    var regionStartAddress = memoryRegion.BaseAddress;
-                    if (addressRange.Start > regionStartAddress)
+                    ulong end = Math.Min(regionEnd, addressRange.End);
+                    for (ulong start = Math.Max(currentAddress, region.BaseAddress); start < end;)
                     {
-                        regionStartAddress = addressRange.Start;
-                    }
-                    var regionEndAddress = memoryRegion.BaseAddress + memoryRegion.RegionSize;
-                    if (addressRange.End < regionEndAddress)
-                    {
-                        regionEndAddress = addressRange.End;
-                    }
-                    if (regionEndAddress <= regionStartAddress)
-                    {
-                        regionEndAddress = regionStartAddress + addressRange.Size;
-                    }
-                    ulong regionBytesToRead = regionEndAddress - regionStartAddress;
-                    byte[] regionBytes = new byte[regionBytesToRead];
-
-                    if (process.HasExited)
-                    {
-                        break;
-                    }
-
-                    int lpNumberOfBytesRead = 0;
-                    WindowsApi.ReadProcessMemory(process.Handle, (IntPtr)regionStartAddress, regionBytes, regionBytes.Length, ref lpNumberOfBytesRead);
-
-                    var matchIndices = FindPatternMatchIndices(regionBytes, pattern, stopAfterFirst);
-                    foreach (var matchIndex in matchIndices)
-                    {
-                        var matchAddress = regionStartAddress + (ulong)matchIndex;
-                        matchAddresses.Add(matchAddress);
-
-                        pattern.Config.LastResultAddress = matchAddress.ToString("X8");
-
-                        Log.WriteLine($"Found '{pattern.Config.Name}' at address 0x{matchAddress.ToString("X8")}"); //TODO: Rimetti
-                    }
-                    if (matchAddresses.Any() && stopAfterFirst)
-                    {
-                        break;
+                        cancellationToken.ThrowIfCancellationRequested();
+                        int count = (int)Math.Min((ulong)buffer.Length, end - start);
+                        UIntPtr bytesRead;
+                        WindowsApi.ReadProcessMemory(process.Handle, (IntPtr)start, buffer, (UIntPtr)(uint)count, out bytesRead);
+                        int actual = (int)Math.Min((ulong)count, bytesRead.ToUInt64());
+                        // Never search the unread (possibly previously filled) buffer tail.
+                        foreach (int offset in FindPatternMatchIndices(buffer, pattern, stopAfterFirst, actual))
+                        {
+                            ulong address = start + (ulong)offset;
+                            matches.Add(address);
+                            pattern.Config.LastResultAddress = address.ToString("X8");
+                            Log.WriteLine($"Found '{pattern.Config.Name}' at address 0x{address:X8}");
+                        }
+                        if (stopAfterFirst && matches.Count > 0) return matches;
+                        if ((ulong)count == end - start) break;
+                        start += ScanChunkSize; // pattern-length overlap between chunks
                     }
                 }
-
-                currentAddress = memoryRegion.BaseAddress + memoryRegion.RegionSize;
+                currentAddress = regionEnd;
             }
-
-            return matchAddresses;
+            return matches;
         }
 
-        // KMP algorithm modified to search bytes with a nullable/wildcard search
-        static List<int> FindPatternMatchIndices(byte[] bytes, BytePattern pattern, bool stopAfterFirst)
+        // A KMP prefix table cannot safely treat arbitrary '?' bytes as equal.
+        // Anchor search retains overlapping matches and validates every fixed byte.
+        internal static List<int> FindPatternMatchIndices(byte[] bytes, BytePattern pattern,
+            bool stopAfterFirst, int count = -1)
         {
-            List<int> matchedIndices = new List<int>();
-
-            int textLength = bytes.Length;
-            int patternLength = pattern.Bytes.Length;
-
-            if (textLength == 0 || patternLength == 0 || textLength < patternLength)
+            var matches = new List<int>();
+            int length = count < 0 ? bytes.Length : Math.Min(count, bytes.Length);
+            int size = pattern.Bytes.Length;
+            if (size == 0 || length < size) return matches;
+            int anchor = size - 1;
+            while (anchor >= 0 && !pattern.Bytes[anchor].HasValue) anchor--;
+            int last = length - size;
+            int start = 0;
+            while (start <= last)
             {
-                return matchedIndices;
+                if (anchor >= 0)
+                {
+                    int found = Array.IndexOf(bytes, pattern.Bytes[anchor].Value, start + anchor, last - start + 1);
+                    if (found < 0) break;
+                    start = found - anchor;
+                }
+                bool match = true;
+                for (int i = 0; i < size; i++)
+                {
+                    if (pattern.Bytes[i].HasValue && bytes[start + i] != pattern.Bytes[i].Value)
+                    { match = false; break; }
+                }
+                if (match)
+                {
+                    matches.Add(start);
+                    if (stopAfterFirst) break;
+                }
+                start++;
             }
-
-            int[] longestPrefixSuffices = new int[patternLength];
-
-            GetLongestPrefixSuffices(pattern, ref longestPrefixSuffices);
-
-            int textIndex = 0;
-            int patternIndex = 0;
-
-            while (textIndex < textLength)
-            {
-                if (!pattern.Bytes[patternIndex].HasValue // Ignore compare if the pattern index is nullable - this treats it like a * wildcard
-                    || bytes[textIndex] == pattern.Bytes[patternIndex])
-                {
-                    textIndex++;
-                    patternIndex++;
-                }
-
-                if (patternIndex == patternLength)
-                {
-                    matchedIndices.Add(textIndex - patternIndex);
-                    patternIndex = longestPrefixSuffices[patternIndex - 1];
-
-                    if (stopAfterFirst)
-                    {
-                        break;
-                    }
-                }
-                else if (textIndex < textLength
-                    && (pattern.Bytes[patternIndex].HasValue // Only compare disparity if the pattern byte isn't a null wildcard
-                    && bytes[textIndex] != pattern.Bytes[patternIndex]))
-                {
-                    if (patternIndex != 0)
-                    {
-                        patternIndex = longestPrefixSuffices[patternIndex - 1];
-                    }
-                    else
-                    {
-                        textIndex++;
-                    }
-                }
-            }
-
-            return matchedIndices;
+            return matches;
         }
 
-        static void GetLongestPrefixSuffices(BytePattern pattern, ref int[] longestPrefixSuffices)
+        public static List<AddressRange> DivideAddressRange(AddressRange range, int divisionCount)
         {
-            int patternLength = pattern.Bytes.Length;
-            int length = 0;
-            int patternIndex = 1;
-
-            longestPrefixSuffices[0] = 0;
-
-            while (patternIndex < patternLength)
+            if (divisionCount <= 0) throw new ArgumentOutOfRangeException(nameof(divisionCount));
+            var divisions = new List<AddressRange>();
+            ulong start = range.Start;
+            ulong quotient = range.Size / (ulong)divisionCount;
+            ulong remainder = range.Size % (ulong)divisionCount;
+            for (int i = 0; i < divisionCount; i++)
             {
-                if (pattern.Bytes[patternIndex] == pattern.Bytes[length])
-                {
-                    length++;
-                    longestPrefixSuffices[patternIndex] = length;
-                    patternIndex++;
-                }
-                else
-                {
-                    if (length == 0)
-                    {
-                        longestPrefixSuffices[patternIndex] = 0;
-                        patternIndex++;
-                    }
-                    else
-                    {
-                        length = longestPrefixSuffices[length - 1];
-                    }
-                }
+                ulong size = quotient + ((ulong)i < remainder ? 1UL : 0UL);
+                if (size == 0) break;
+                divisions.Add(new AddressRange(start, size));
+                start += size;
             }
-        }
-
-        public static List<AddressRange> DivideAddressRange(AddressRange addressRange, int divisionCount)
-        {
-            List<AddressRange> addressRangeDivisions = new List<AddressRange>();
-
-            ulong start = addressRange.Start;
-            ulong end = addressRange.End;
-
-            ulong range = end - start;
-            float rangePerDivision = range / (float)divisionCount;
-
-            end = start + (ulong)Math.Ceiling(rangePerDivision);
-            for (int index = 0; index < divisionCount; ++index)
-            {
-                ulong startAddress = start;
-                ulong endAddress = end;
-
-                if (index + 1 == divisionCount)
-                {
-                    endAddress = addressRange.End;
-                }
-
-                addressRangeDivisions.Add(new AddressRange(startAddress, endAddress - startAddress));
-
-                start = end;
-                end += (ulong)Math.Floor(rangePerDivision);
-            }
-
-            return addressRangeDivisions;
+            return divisions;
         }
 
         public static T Read<T>(Process process, ulong address) where T : struct
         {
-            byte[] bytes = new byte[Marshal.SizeOf(typeof(T))];
-
-            int lpNumberOfBytesRead = 0;
-            WindowsApi.ReadProcessMemory(process.Handle, (IntPtr)address, bytes, bytes.Length, ref lpNumberOfBytesRead);
-
-            T result;
+            if (address == 0) return default(T);
+            int size = ValueSize<T>.Size;
+            byte[] bytes = GetReadBuffer(size);
+            UIntPtr bytesRead;
+            if (!WindowsApi.ReadProcessMemory(process.Handle, (IntPtr)address, bytes, (UIntPtr)(uint)size, out bytesRead)
+                || bytesRead.ToUInt64() != (ulong)size) return default(T);
+            // Reuse scalar buffers and avoid a pinned GC handle for every read.
+            if (typeof(T) == typeof(ulong)) return (T)(object)BitConverter.ToUInt64(bytes, 0);
+            if (typeof(T) == typeof(long)) return (T)(object)BitConverter.ToInt64(bytes, 0);
+            if (typeof(T) == typeof(float)) return (T)(object)BitConverter.ToSingle(bytes, 0);
+            if (typeof(T) == typeof(int)) return (T)(object)BitConverter.ToInt32(bytes, 0);
+            if (typeof(T) == typeof(uint)) return (T)(object)BitConverter.ToUInt32(bytes, 0);
+            if (typeof(T) == typeof(byte)) return (T)(object)bytes[0];
+            if (typeof(T) == typeof(short)) return (T)(object)BitConverter.ToInt16(bytes, 0);
+            if (typeof(T) == typeof(ushort)) return (T)(object)BitConverter.ToUInt16(bytes, 0);
+            if (typeof(T) == typeof(double)) return (T)(object)BitConverter.ToDouble(bytes, 0);
             GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-
-            try
-            {
-                result = (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
-            }
-            finally
-            {
-                handle.Free();
-            }
-
-            return result;
+            try { return (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T)); }
+            finally { handle.Free(); }
         }
 
         public static string ReadString(Process process, ulong address, uint length)
         {
-            byte[] bytes = new byte[length];
-
-            int lpNumberOfBytesRead = 0;
-            WindowsApi.ReadProcessMemory(process.Handle, (IntPtr)address, bytes, bytes.Length, ref lpNumberOfBytesRead);
-
-            int nullTerminatorIndex = Array.FindIndex(bytes, (byte b) => b == 0);
-            if (nullTerminatorIndex >= 0)
-            {
-                Array.Resize(ref bytes, nullTerminatorIndex);
-                return Encoding.UTF8.GetString(bytes);
-            }
-
-            return null;
+            if (address == 0 || length == 0) return string.Empty;
+            byte[] bytes = GetReadBuffer(checked((int)length));
+            UIntPtr bytesRead;
+            if (!WindowsApi.ReadProcessMemory(process.Handle, (IntPtr)address, bytes, (UIntPtr)length, out bytesRead)
+                || bytesRead.ToUInt64() != length) return string.Empty;
+            int end = Array.IndexOf(bytes, (byte)0, 0, (int)length);
+            return Encoding.UTF8.GetString(bytes, 0, end < 0 ? (int)length : end);
         }
 
         public static ulong ReadMultiLevelPointer(bool traceUniquePointers, Process process, ulong address, params long[] offsets)
         {
-            PointerTrace trace = new PointerTrace();
-
-            ulong result = address;
-            foreach (var offset in offsets)
+            PointerTrace trace = traceUniquePointers ? new PointerTrace() : null;
+            foreach (long offset in offsets)
             {
-                var readResult = Read<ulong>(process, address);
-                result = (ulong)((long)readResult + offset);
-
-                trace.Levels.Add(new PointerTraceLevel(address, readResult, offset, result));
-
+                if (address == 0) return 0;
+                ulong read = Read<ulong>(process, address);
+                if (read == 0) return 0;
+                ulong result = unchecked((ulong)((long)read + offset));
+                if (trace != null) trace.Levels.Add(new PointerTraceLevel(address, read, offset, result));
                 address = result;
             }
-
-            if (traceUniquePointers && !s_UniquePointerTraces.Contains(trace))
+            if (trace != null)
             {
-                s_UniquePointerTraces.Add(trace);
-                Log.WriteLine($"Unique Pointer Trace:\r\n{trace}");
+                lock (s_UniquePointerTraces)
+                {
+                    if (!s_UniquePointerTraces.Contains(trace))
+                    {
+                        s_UniquePointerTraces.Add(trace);
+                        Log.WriteLine($"Unique Pointer Trace:\r\n{trace}");
+                    }
+                }
             }
-
-            return result;
+            return address;
         }
 
         public static ulong LoadEffectiveAddressRelative(Process process, ulong address)
         {
-            const uint opcodeLength = 3;
-            const uint paramLength = 4;
-            const uint instructionLength = opcodeLength + paramLength;
-
-            uint operand = Read<uint>(process, address + opcodeLength);
-            ulong operand64 = operand;
-
-            // 64 bit relative addressing 
-            if (operand64 > Int32.MaxValue)
-            {
-                operand64 = 0xffffffff00000000 | operand64;
-            }
-
-            return address + operand64 + instructionLength;
+            int operand = Read<int>(process, address + 3);
+            return unchecked((ulong)((long)address + operand + 7));
         }
 
-        public static uint ReadStaticOffset(Process process, ulong address)
-        {
-            const uint opcodeLength = 3;
-            return Read<uint>(process, address + opcodeLength);
-        }
     }
 }

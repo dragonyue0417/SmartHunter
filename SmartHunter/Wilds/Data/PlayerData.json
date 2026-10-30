@@ -1,0 +1,1461 @@
+{
+  "StatusEffects": [
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_SELF_IMPROVEMENT",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 1,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_HEALTH_RECOVERY",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 2,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_HEALTH_RECOVERY_M",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 3,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_HEALTH_RECOVERY_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 4,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_HEALTH_RECOVERY_S_ANTIDOTE",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 5,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_HEALTH_RECOVERY_L_ANTIDOTE",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 6,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_RECOVERY_SPEED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 7,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_RECOVERY_SPEED_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 8,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_STAMINA_USE_REDUCED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 9,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_STAMINA_USE_REDUCED_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 10,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ATTACK_UP",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 11,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ATTACK_UP_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 12,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ELEMENTAL_ATTACK_BOOST",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 13,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ABNORMAL_STATUS_ATTACK_INCREASED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 14,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_DEFENSE_UP",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 15,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_DEFENSE_UP_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 16,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_DIVINE_PROTECTION",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 17,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_FIRE_RESISTANCE_BOOST",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 18,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_FIRE_RESISTANCE_BOOST_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 19,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_WATER_RESISTANCE_BOOST",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 20,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_WATER_RESISTANCE_BOOST_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 21,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_THUNDER_RESISTANCE_BOOST",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 22,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_THUNDER_RESISTANCE_BOOST_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 23,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ICE_RESISTANCE_BOOST",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 24,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ICE_RESISTANCE_BOOST_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 25,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_DRAGON_RESISTANCE_BOOST",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 26,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_DRAGON_RESISTANCE_BOOST_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 27,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_EARPLUGS_S",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 28,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_EARPLUGS_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 29,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_TREMORS_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 30,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_PARALYSIS_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 31,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_STUN_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 32,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_WIND_PRESSURE_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 33,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ALL_WIND_PRESSURE_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 34,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ENVIRONMENTAL_DAMAGE_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 36,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_KNOCKBACKS_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 37,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ALL_AILMENTS_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 38,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_BLIGHT_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 39,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ATTACK_AND_DEFENSE_UP",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 42,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_AFFINITY_UP",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 43,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_TOOL_USE_DRAIN_REDUCED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 44,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_TOOL_USE_DRAIN_REDUCED_L",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 45,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_SONIC_BARRIER",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 46,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ECHO_BUBBLE_EVASION_AND_MOVEMENT_SPEED_UP",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 53,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ECHO_BUBBLE_HEALTH_REGENERATION",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 54,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ECHO_BUBBLE_STAMINA_REGENERATION",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 55,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ECHO_BUBBLE_ATTACK_AND_AFFINITY_UP",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 56,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ECHO_BUBBLE_DEFENSE_AND_ELEMENTAL_RESISTANCE_UP",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 57,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Horn",
+      "NameStringId": "LOC_STATUS_EFFECT_ECHO_BUBBLE_AILMENTS_AND_BLIGHTS_NEGATED",
+      "Source": 2,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 58,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_WIGGLY_LITCHI",
+      "Source": 1,
+      "TimerOffset": "10",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_MIGHT_SEED",
+      "Source": 1,
+      "TimerOffset": "14",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_MIGHT_PILL",
+      "Source": 1,
+      "TimerOffset": "1C",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_DEMON_AMMO",
+      "Source": 1,
+      "TimerOffset": "24",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_DEMON_POWDER",
+      "Source": 1,
+      "TimerOffset": "30",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_ADAMANT_SEED",
+      "Source": 1,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_ADAMANT_PILL",
+      "Source": 1,
+      "TimerOffset": "40",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_ARMOR_AMMO",
+      "Source": 1,
+      "TimerOffset": "48",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_HARDSHELL_POWDER",
+      "Source": 1,
+      "TimerOffset": "54",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_DASH_JUICE",
+      "Source": 1,
+      "TimerOffset": "5C",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_NATURAL_HEALING",
+      "Source": 1,
+      "TimerOffset": "64",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_HOT_DRINK",
+      "Source": 1,
+      "TimerOffset": "6C",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_COOL_DRINK",
+      "Source": 1,
+      "TimerOffset": "74",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_DEMONDRUG",
+      "Source": 1,
+      "TimerOffset": "7C",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_MEGA_DEMONDRUG",
+      "Source": 1,
+      "TimerOffset": "88",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_ARMORSKIN",
+      "Source": 1,
+      "TimerOffset": "94",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_MEGA_ARMORSKIN",
+      "Source": 1,
+      "TimerOffset": "A0",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_PLAYER_POISON",
+      "Source": 5,
+      "TimerOffset": "40",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_POISON_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_STENCH",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 1,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_STENCH_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 1,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_BLASTBLIGHT",
+      "Source": 5,
+      "TimerOffset": "48",
+      "Conditions": [],
+      "Index": 2,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_BLAST_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 2,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_BLEEDING",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 3,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_BLEEDING_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 3,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_DEFENSE_DOWN",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 4,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_DEFENSE_DOWN_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 4,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_FRENZY",
+      "Source": 5,
+      "TimerOffset": "3C",
+      "Conditions": [
+        {
+          "Offsets": [
+            "38"
+          ],
+          "IntValue": 1
+        }
+      ],
+      "Index": 5,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_FRENZY_IMMUNITY",
+      "Source": 5,
+      "TimerOffset": "3C",
+      "Conditions": [
+        {
+          "Offsets": [
+            "38"
+          ],
+          "IntValue": 2
+        }
+      ],
+      "Index": 5,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_FRENZY_BUILDUP",
+      "Source": 5,
+      "TimerOffset": "3C",
+      "Conditions": [
+        {
+          "Offsets": [
+            "38"
+          ],
+          "IntValue": 0
+        }
+      ],
+      "Index": 5,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_PLAYER_STUN",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 6,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_STUN_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 6,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_PLAYER_PARALYSIS",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 7,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_PARALYSIS_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 7,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_PLAYER_SLEEP",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 8,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_SLEEP_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 8,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_WEBBED",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 9,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_WEBBED_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 9,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_FROZEN",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 10,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_FROZEN_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 10,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_FIREBLIGHT",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 11,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_FIREBLIGHT_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 11,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_THUNDERBLIGHT",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 12,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_THUNDERBLIGHT_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 12,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_WATERBLIGHT",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 13,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_WATERBLIGHT_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 13,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_ICEBLIGHT",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 14,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_ICEBLIGHT_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 14,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_DRAGONBLIGHT",
+      "Source": 5,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 15,
+      "HasMaxDuration": false,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_DRAGONBLIGHT_BUILDUP",
+      "Source": 5,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 15,
+      "HasMaxDuration": true,
+      "IsBuildup": true,
+      "MaxBuildup": 100
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_BUBBLES",
+      "Source": 5,
+      "TimerOffset": "40",
+      "Conditions": [
+        {
+          "Offsets": [
+            "38"
+          ],
+          "IntValue": 1
+        }
+      ],
+      "Index": 16,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Debuff",
+      "NameStringId": "LOC_STATUS_EFFECT_BUBBLES_PLUS",
+      "Source": 5,
+      "TimerOffset": "40",
+      "Conditions": [
+        {
+          "Offsets": [
+            "38"
+          ],
+          "IntValue": 2
+        }
+      ],
+      "Index": 16,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Coral",
+      "NameStringId": "LOC_STATUS_EFFECT_SPORENET_PURRTECTION",
+      "Source": 3,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 1,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Coral",
+      "NameStringId": "LOC_STATUS_EFFECT_SPORENET_PURRTECTION_L",
+      "Source": 3,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 2,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Coral",
+      "NameStringId": "LOC_STATUS_EFFECT_SPORENET_POWER",
+      "Source": 3,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 4,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Coral",
+      "NameStringId": "LOC_STATUS_EFFECT_SPORENET_POWER_L",
+      "Source": 3,
+      "TimerOffset": null,
+      "Conditions": [],
+      "Index": 5,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_PROTECTIVE_POLISH",
+      "Source": 4,
+      "TimerOffset": "20",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_JIN_DAHAAD_REVOLT",
+      "Source": 4,
+      "TimerOffset": "28",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_ELEMENTAL_ABSORPTION",
+      "Source": 4,
+      "TimerOffset": "30",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_ELEMENT_CONVERSION",
+      "Source": 4,
+      "TimerOffset": "38",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_DOSHAGUMA_MIGHT",
+      "Source": 4,
+      "TimerOffset": "40",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_XU_WU_VIGOR",
+      "Source": 4,
+      "TimerOffset": "48",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_LATENT_POWER",
+      "Source": 4,
+      "TimerOffset": "50",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_GUARDIANS_PULSE",
+      "Source": 4,
+      "TimerOffset": "58",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_BURST",
+      "Source": 4,
+      "TimerOffset": "60",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_GUARDIANS_PROTECTION",
+      "Source": 4,
+      "TimerOffset": "68",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_OFFENSIVE_GUARD",
+      "Source": 4,
+      "TimerOffset": "80",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_WAR_CRY_I",
+      "Source": 4,
+      "TimerOffset": "88",
+      "Conditions": [
+        {
+          "Offsets": [
+            "1C"
+          ],
+          "IntValue": 1077936128
+        }
+      ],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_WAR_CRY_II",
+      "Source": 4,
+      "TimerOffset": "88",
+      "Conditions": [
+        {
+          "Offsets": [
+            "1C"
+          ],
+          "IntValue": 1086324736
+        }
+      ],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_CRITICAL_DRAW",
+      "Source": 4,
+      "TimerOffset": "C8",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_BUTTERY_LEATHERCRAFT",
+      "Source": 4,
+      "TimerOffset": "D8",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_COUNTERSTRIKE",
+      "Source": 4,
+      "TimerOffset": "E0",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_COALESCENCE",
+      "Source": 4,
+      "TimerOffset": "E8",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_UTH_DUNA_COVER",
+      "Source": 4,
+      "TimerOffset": "F0",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_AMBUSH",
+      "Source": 4,
+      "TimerOffset": "F8",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_ADRENALINE_RUSH",
+      "Source": 4,
+      "TimerOffset": "108",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_LEVIATHANS_FURY",
+      "Source": 4,
+      "TimerOffset": "110",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_POWER_STONE",
+      "Source": 4,
+      "TimerOffset": "118",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    },
+    {
+      "GroupId": "Buff",
+      "NameStringId": "LOC_STATUS_EFFECT_DARKSIDE",
+      "Source": 4,
+      "TimerOffset": "120",
+      "Conditions": [],
+      "Index": 0,
+      "HasMaxDuration": true,
+      "IsBuildup": false,
+      "MaxBuildup": 0
+    }
+  ]
+}

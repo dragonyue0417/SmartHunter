@@ -1,4 +1,4 @@
-<windows:WidgetWindow
+﻿<windows:WidgetWindow
         x:Class="SmartHunter.Ui.Windows.DebugWidgetWindow"                          
         Left="{Binding DebugWidget.X, Mode=TwoWay}"
         Top="{Binding DebugWidget.Y, Mode=TwoWay}"
@@ -23,22 +23,22 @@
         ShowInTaskbar="False"
         Background="#01000000"        
         SizeToContent="WidthAndHeight" 
-        Width="250"
-        Height="100">
+        Width="Auto"
+        Height="Auto">
 
-    <Grid Name="Root" UseLayoutRounding="True" Margin="25" MinWidth="50" MinHeight="50">
+    <Grid Name="Root" UseLayoutRounding="True" Margin="8" MinWidth="50" MinHeight="50">
         <Grid>
             <Grid.LayoutTransform>
                 <ScaleTransform ScaleX="{Binding DebugWidget.Scale}" ScaleY="{Binding DebugWidget.Scale}" />
             </Grid.LayoutTransform>
 
-            <Grid Visibility="{Binding IsVisible, Converter={StaticResource A_Converter_BoolToVisibility}}">
+            <Grid Visibility="{Binding IsDebugVisible, Converter={StaticResource A_Converter_BoolToVisibility}}">
                 <ContentControl DataContext="{Binding DebugWidget.Context}" Content="{Binding}" />
             </Grid>
         </Grid>
 
-        <StackPanel DockPanel.Dock="Top" Background="#aa000000" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="{Binding CanManipulateWindows, Converter={StaticResource A_Converter_BoolToVisibility}}">
-            <TextBlock Style="{StaticResource A_Style_TextBlock_Standard}" Margin="4">
+        <StackPanel DockPanel.Dock="Top" Background="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="{Binding CanManipulateWindows, Converter={StaticResource A_Converter_BoolToVisibility}}">
+            <TextBlock Style="{StaticResource A_Style_TextBlock_Standard}" Foreground="White" Margin="4">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{}{0} ({3})">
                         <Binding ConverterParameter="LOC_WIDGET_DEBUG" Converter="{StaticResource A_Converter_Localizer}" />

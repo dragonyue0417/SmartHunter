@@ -1,4 +1,4 @@
-using SmartHunter.Core.Config;
+﻿using SmartHunter.Core.Config;
 
 namespace SmartHunter.Core.Data
 {
@@ -12,7 +12,7 @@ namespace SmartHunter.Core.Data
             get { return m_X; }
             set
             {
-                if (SetProperty(ref m_X, value) && m_X != m_WidgetConfig.X)
+                if (SetProperty(ref m_X, value) && !loadingConfig && m_X != m_WidgetConfig.X)
                 {
                     UpdateConfig();
                 }
@@ -25,7 +25,7 @@ namespace SmartHunter.Core.Data
             get { return m_Y; }
             set
             {
-                if (SetProperty(ref m_Y, value) && m_Y != m_WidgetConfig.Y)
+                if (SetProperty(ref m_Y, value) && !loadingConfig && m_Y != m_WidgetConfig.Y)
                 {
                     UpdateConfig();
                 }
@@ -38,20 +38,21 @@ namespace SmartHunter.Core.Data
             get { return m_Scale; }
             set
             {
-                if (SetProperty(ref m_Scale, value) && m_Scale != m_WidgetConfig.Scale)
+                if (SetProperty(ref m_Scale, value) && !loadingConfig && m_Scale != m_WidgetConfig.Scale)
                 {
                     UpdateConfig();
                 }
             }
         }
 
+        bool loadingConfig;
         bool m_IsVisible = true;
         public bool IsVisible
         {
             get { return m_IsVisible; }
             set
             {
-                if (SetProperty(ref m_IsVisible, value) && m_IsVisible != m_WidgetConfig.IsVisible)
+                if (SetProperty(ref m_IsVisible, value) && !loadingConfig && m_IsVisible != m_WidgetConfig.IsVisible)
                 {
                     UpdateConfig();
                 }
@@ -76,12 +77,15 @@ namespace SmartHunter.Core.Data
             CanSaveConfig = true;
         }
 
+        public void UseConfig(WidgetConfig config)
+        {
+            m_WidgetConfig = config; UpdateFromConfig(); CanSaveConfig = false;
+        }
         public virtual void UpdateFromConfig()
         {
-            X = m_WidgetConfig.X;
-            Y = m_WidgetConfig.Y;
-            Scale = m_WidgetConfig.Scale;
-            IsVisible = m_WidgetConfig.IsVisible;
+            loadingConfig = true;
+            try { X = m_WidgetConfig.X; Y = m_WidgetConfig.Y; Scale = m_WidgetConfig.Scale; IsVisible = m_WidgetConfig.IsVisible; }
+            finally { loadingConfig = false; }
         }
     }
 }

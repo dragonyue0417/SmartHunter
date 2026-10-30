@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using SmartHunter.Core.Data;
 using SmartHunter.Game.Helpers;
 

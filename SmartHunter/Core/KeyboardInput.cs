@@ -4,8 +4,11 @@ using System.Windows.Input;
 
 namespace SmartHunter.Core
 {
-    public class KeyboardInput
+    public class KeyboardInput : IDisposable
     {
+        readonly System.Collections.Generic.HashSet<Key> pressed = new System.Collections.Generic.HashSet<Key>();
+        readonly System.Collections.Generic.HashSet<Key> consumed = new System.Collections.Generic.HashSet<Key>();
+        public void Dispose() { Unhook(); GC.SuppressFinalize(this); }
         IntPtr m_User32Handle;
         IntPtr m_KeyboardHookHandle;
 
@@ -69,16 +72,33 @@ namespace SmartHunter.Core
                 var keyboardMessage = (WindowsApi.KeyboardMessage)wParam.ToInt32();
                 var keyboardData = (WindowsApi.KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(WindowsApi.KBDLLHOOKSTRUCT));
 
+                if ((keyboardData.Flags & 0x10) != 0) return WindowsApi.CallNextHookEx(IntPtr.Zero,nCode,wParam,lParam);
                 var key = KeyFromVirtualCode(keyboardData.VkCode);
                 bool isDown = keyboardMessage == WindowsApi.KeyboardMessage.WM_KEYDOWN || keyboardMessage == WindowsApi.KeyboardMessage.WM_SYSKEYDOWN;
 
-                if (InputReceived != null)
-                {
-                    InputReceived(this, new KeyboardInputEventArgs(key, isDown));
-                }
+                bool repeat = isDown && !pressed.Add(key);
+                if(!isDown) pressed.Remove(key);
+                var args = new KeyboardInputEventArgs(key,isDown) { IsRepeat=repeat, Handled=consumed.Contains(key) };
+                Dispatch(args);
+                if(args.Handled && isDown) consumed.Add(key);
+                if(!isDown) consumed.Remove(key);
+                if(args.Handled) return new IntPtr(1);
             }
 
             return WindowsApi.CallNextHookEx(IntPtr.Zero, nCode, wParam, lParam);
+        }
+
+        // Managed exceptions must never cross a native hook callback. In
+        // particular, clipboard and WPF errors otherwise surface as c000041d.
+        void Dispatch(KeyboardInputEventArgs args)
+        {
+            try { InputReceived?.Invoke(this, args); }
+            catch (Exception error)
+            {
+                args.Handled = false;
+                pressed.Clear(); consumed.Clear();
+                Log.WriteException(error);
+            }
         }
     }
 }

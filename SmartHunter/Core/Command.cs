@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Input;
 
 #pragma warning disable 67

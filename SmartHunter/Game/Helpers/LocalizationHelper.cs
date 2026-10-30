@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using SmartHunter.Core;
 
 namespace SmartHunter.Game.Helpers
@@ -10,12 +10,13 @@ namespace SmartHunter.Game.Helpers
         public static readonly string UnknownPartStringId = "LOC_PART_UKNOWN";
         public static readonly string UnknownSoftenPartId = "LOC_SOFTEN_PARTID_UKNOWN";
         public static readonly string UnknownRemovablePartStringId = "LOC_REMOVABLE_PART_UKNOWN";
-        public static readonly string UnknownMonsterStatusEffectStringId = "LOC_STATUS_EFFECT_UKNOWN";
-        public static readonly string UnknownPlayerStatusEffectStringId = "LOC_STATUS_EFFECT_UKNOWN";
+        public static readonly string UnknownMonsterStatusEffectStringId = "LOC_STATUS_EFFECT_UNKNOWN";
+        public static readonly string UnknownPlayerStatusEffectStringId = "LOC_STATUS_EFFECT_UNKNOWN";
         public static readonly string UnknownPlayerStringId = "LOC_UNKNOWN_PLAYER";
 
         public static string GetString(string stringId)
         {
+            stringId = TextKeyNames.Canonical(stringId);
             if (ConfigHelper.Localization.Values.Strings.TryGetValue(stringId, out var value))
             {
                 return value;

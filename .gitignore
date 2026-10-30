@@ -1,10 +1,25 @@
-SmartHunter/bin/Debug/*
-SmartHunter/bin/Release/*
-SmartHunter/SmartHunter.csproj.user
-obj/
+**/bin/
+**/obj/
+.tools/
+.reference/
+artifacts/
+*.user
 .vs/
+TestResults/
+*.suo
+*.pdb
+*.log
+*.tmp
 
-# allow for auto updates
-!SmartHunter/bin/Debug/Default.xaml
-!SmartHunter/bin/Debug/Newtonsoft.Json.dll
-!SmartHunter/bin/Debug/SmartHunter.exe
+# Only the generated program payload belongs in the published release folder.
+/release/*
+!/release/SmartHunter.exe
+!/release/SmartHunter.exe.config
+!/release/Newtonsoft.Json.dll
+!/release/Microsoft.Xaml.Behaviors.dll
+!/release/OxyPlot.dll
+!/release/OxyPlot.Wpf.dll
+!/release/UpdateManifest.json
+!/release/Themes/
+/release/Themes/*
+!/release/Themes/Default.xaml

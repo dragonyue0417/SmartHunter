@@ -1,4 +1,4 @@
-// Monster Size Differences
+﻿// Monster Size Differences
 // https://docs.google.com/spreadsheets/d/1zoRCvF4qKUZCgMGQw3vdtjVS-laX7-px6k1oPCJMg5E
 
 // Monster Crown Sizes

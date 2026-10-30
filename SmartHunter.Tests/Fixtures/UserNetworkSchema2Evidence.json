@@ -1,0 +1,419 @@
+{
+  "GameVersion": "1.42.0.2",
+  "Samples": 16,
+  "Nodes": [
+    {
+      "Path": "NetworkManager+0x90+0x20",
+      "Type": "app.net_quest_session.cQuestSession",
+      "ScanStatus": "Completed",
+      "Size": 600
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18",
+      "Type": "app.net_lobby_session.cLobbySession",
+      "ScanStatus": "Completed",
+      "Size": 496
+    },
+    {
+      "Path": "NetworkManager+0x90",
+      "Type": "app.Net_SessionService",
+      "ScanStatus": "Completed",
+      "Size": 104
+    },
+    {
+      "Path": "NetworkManager+0xB8",
+      "Type": "app.Net_UserInfoManager",
+      "ScanStatus": "Completed",
+      "Size": 96
+    },
+    {
+      "Path": "NetworkManager",
+      "Type": "app.NetworkManager",
+      "ScanStatus": "Completed",
+      "Size": 464
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x10",
+      "Type": "via.network.SessionPlayFab",
+      "ScanStatus": "Completed",
+      "Size": 392
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x30",
+      "Type": "via.network.RemoteProcedure",
+      "ScanStatus": "Completed",
+      "Size": 280
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x38",
+      "Type": "via.network.ProtocolBroadcast",
+      "ScanStatus": "Completed",
+      "Size": 216
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x40",
+      "Type": "via.network.AutoMaster",
+      "ScanStatus": "Completed",
+      "Size": 320
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x60",
+      "Type": "via.network.utility.SessionId",
+      "ScanStatus": "Completed",
+      "Size": 96
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x68",
+      "Type": "app.net_session_manager.SessionManager.RequestParam",
+      "ScanStatus": "Completed",
+      "Size": 56
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x70",
+      "Type": "via.network.session.VoiceChatBaseStatus",
+      "ScanStatus": "Completed",
+      "Size": 24
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x78",
+      "Type": "via.network.session.VoiceChatPeerStatus",
+      "ScanStatus": "Completed",
+      "Size": 24
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x80",
+      "Type": "via.network.session.VoiceChatSelfStatus",
+      "ScanStatus": "Completed",
+      "Size": 24
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x98",
+      "Type": "app.net_session_manager.SessionManager.cSearchResultTblLobby",
+      "ScanStatus": "Completed",
+      "Size": 24
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xA0",
+      "Type": "app.net_session_manager.SessionManager.cSearchResultTblQuest",
+      "ScanStatus": "Completed",
+      "Size": 24
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xA8",
+      "Type": "via.network.session.MemberInfoTbl",
+      "ScanStatus": "Completed",
+      "Size": 528
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xB0",
+      "Type": "System.Collections.Generic.List`1<via.network.session.MemberInfo>",
+      "ScanStatus": "Completed",
+      "Size": 32
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xB8",
+      "Type": "app.net_session_manager.onReceiveSystem",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xC0",
+      "Type": "app.net_session_manager.onReceivePlayer",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xC8",
+      "Type": "app.net_session_manager.onReceiveEnemy",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xD0",
+      "Type": "app.net_session_manager.onReceiveOtomo",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xD8",
+      "Type": "app.net_session_manager.onReceiveGimmick",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xE0",
+      "Type": "app.net_session_manager.onReceiveEnvAnimal",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xE8",
+      "Type": "app.net_session_manager.onReceiveQuest",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0xF8",
+      "Type": "app.net_session_manager.onReceivePorter",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x100",
+      "Type": "app.net_session_manager.onReceiveNpc",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x108",
+      "Type": "app.net_session_manager.onReceiveEnvironment",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x110",
+      "Type": "app.net_session_manager.onReceiveOther",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x118",
+      "Type": "app.net_session_manager.onSendCompleteBroadcast",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x128",
+      "Type": "ace.cLimitedArray`1<app.net_session_manager.SessionManager.BroadCastInfo>",
+      "ScanStatus": "Completed",
+      "Size": 32
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x130",
+      "Type": "app.net_session_manager.onJoinMember",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x138",
+      "Type": "app.net_session_manager.onLeaveMember",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x140",
+      "Type": "app.net_session_manager.onLeaveSession",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x148",
+      "Type": "app.net_session_manager.onJoinMember",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x150",
+      "Type": "app.net_session_manager.onLeaveMember",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x158",
+      "Type": "app.net_session_manager.onLeaveSession",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x160",
+      "Type": "app.net_session_manager.onHostChange",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x168",
+      "Type": "app.net_session_manager.onHostChange",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x180",
+      "Type": "via.network.session.SearchKey",
+      "ScanStatus": "Completed",
+      "Size": 104
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x188",
+      "Type": "app.net_quest_session.cSessionBinaryQuest",
+      "ScanStatus": "Completed",
+      "Size": 32
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x1B8",
+      "Type": "app.net_quest_session.cSessionInfo",
+      "ScanStatus": "Completed",
+      "Size": 40
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x1C8",
+      "Type": "app.Net_RankingService.cRankingQuestScore",
+      "ScanStatus": "Completed",
+      "Size": 72
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x1E0",
+      "Type": "app.net_quest_session.QuestMatchmakeSystem",
+      "ScanStatus": "Completed",
+      "Size": 32
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x1E8",
+      "Type": "app.net_quest_session.LoadWaitSync",
+      "ScanStatus": "Completed",
+      "Size": 32
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x1F0",
+      "Type": "app.net_quest_session.cCheckMemberList",
+      "ScanStatus": "Completed",
+      "Size": 20
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x200",
+      "Type": "app.Net_LateJoinSync.StackRPC",
+      "ScanStatus": "Completed",
+      "Size": 48
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x208",
+      "Type": "app.net_quest_session.cJoinQuestMemberList",
+      "ScanStatus": "Completed",
+      "Size": 21
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x28",
+      "Type": "app.Net_CloudSessionRequest",
+      "ScanStatus": "Completed",
+      "Size": 240
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x60",
+      "Type": "via.network.utility.SessionId",
+      "ScanStatus": "Completed",
+      "Size": 96
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x68",
+      "Type": "app.net_session_manager.SessionManager.RequestParam",
+      "ScanStatus": "Completed",
+      "Size": 56
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x98",
+      "Type": "app.net_session_manager.SessionManager.cSearchResultTblLobby",
+      "ScanStatus": "Completed",
+      "Size": 24
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0xA0",
+      "Type": "app.net_session_manager.SessionManager.cSearchResultTblQuest",
+      "ScanStatus": "Completed",
+      "Size": 24
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0xA8",
+      "Type": "via.network.session.MemberInfoTbl",
+      "ScanStatus": "Completed",
+      "Size": 528
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0xB0",
+      "Type": "System.Collections.Generic.List`1<via.network.session.MemberInfo>",
+      "ScanStatus": "Completed",
+      "Size": 32
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0xB8",
+      "Type": "app.net_session_manager.onReceiveSystem",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0xC0",
+      "Type": "app.net_session_manager.onReceivePlayer",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0xD0",
+      "Type": "app.net_session_manager.onReceiveOtomo",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0xE0",
+      "Type": "app.net_session_manager.onReceiveEnvAnimal",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0xF8",
+      "Type": "app.net_session_manager.onReceivePorter",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x128",
+      "Type": "ace.cLimitedArray`1<app.net_session_manager.SessionManager.BroadCastInfo>",
+      "ScanStatus": "Completed",
+      "Size": 32
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x130",
+      "Type": "app.net_session_manager.onJoinMember",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x138",
+      "Type": "app.net_session_manager.onLeaveMember",
+      "ScanStatus": "Completed",
+      "Size": 16
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x140",
+      "Type": "app.net_session_manager.onLeaveSession",
+      "ScanStatus": "Completed",
+      "Size": 16
+    }
+  ],
+  "StringCandidates": [
+    {
+      "Path": "NetworkManager+0x90+0x20+0x1D8",
+      "Sha256": "e6cacc70e3b4af0896df8a607df288bdee78b482dc920705c3e01dfd3c4e299e",
+      "Length": 36
+    },
+    {
+      "Path": "NetworkManager+0x90+0x20+0x1E0+0x10",
+      "Sha256": "e6cacc70e3b4af0896df8a607df288bdee78b482dc920705c3e01dfd3c4e299e",
+      "Length": 36
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x28+0x18",
+      "Sha256": "9fb25f95d0f485c60ae95db6cc41a42ec677f6d60cef47958d7f6ee78ed8d589",
+      "Length": 49
+    },
+    {
+      "Path": "NetworkManager+0x90+0x18+0x28+0x50",
+      "Sha256": "3ae179b4dcfdc170d5a68a09a59490637fa81108d001fd04a29c4c7f7491270b",
+      "Length": 48
+    }
+  ],
+  "AllChecksHitObjectLimit": true,
+  "RemainingObjects": 60,
+  "MaximumReads": 1229,
+  "MatchedStringPaths": [
+    "NetworkManager+0x90+0x20+0x1D8",
+    "NetworkManager+0x90+0x20+0x1E0+0x10"
+  ]
+}

@@ -1,16 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
     <PropertyGroup>
-        <ProjectGuid>{F5F99CEF-1C16-48E6-A88B-1A66D3B53998}</ProjectGuid>
+        <ProjectGuid>{D8C789AE-703B-4B12-8DA4-D169D63F919D}</ProjectGuid>
         <OutputType>WinExe</OutputType>
+        <StartupObject>SmartHunter.Program</StartupObject>
         <TargetFramework>net461</TargetFramework>
         <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-        <Deterministic>false</Deterministic>
         <LangVersion>latest</LangVersion>
         <AssemblyTitle>SmartHunter</AssemblyTitle>
+        <AssemblyName>SmartHunter</AssemblyName>
+        <RootNamespace>SmartHunter</RootNamespace>
         <Deterministic>false</Deterministic>
-        <AssemblyVersion>2024.10.08.00</AssemblyVersion>
-        <FileVersion>2024.10.08.00</FileVersion>
+        <AssemblyVersion>2026.10.31.1</AssemblyVersion>
+        <FileVersion>2026.10.31.1</FileVersion>
         <OutputPath>bin\$(Configuration)</OutputPath>
         <UseWPF>true</UseWPF>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -24,24 +26,21 @@
         <DebugType>pdbonly</DebugType>
     </PropertyGroup>
     <Target Name="PostBuild" BeforeTargets="PostBuildEvent">
-        <Exec Command="xcopy /E /Y &quot;$(ProjectDir)Ui\Resources&quot; &quot;$(TargetDir)&quot;" />
+        <Exec Command="xcopy /E /I /Y &quot;$(ProjectDir)Ui\Resources&quot; &quot;$(TargetDir)Themes\&quot;" />
     </Target>
     <ItemGroup>
-        <PackageReference Include="Costura.Fody" Version="4.1.0">
-            <PrivateAssets>All</PrivateAssets>
-        </PackageReference>
-        <PackageReference Include="Fody" Version="6.3.0">
-            <PrivateAssets>All</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <!-- Ship dependency DLLs explicitly. The legacy Costura/Fody weaver
+             imports incompatible build-host runtime references with modern SDKs. -->
         <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
         <PackageReference Include="OxyPlot.Wpf" Version="2.0.0" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="Microsoft.CSharp" />
         <Reference Include="System.Data.DataSetExtensions" />
         <Reference Include="System.Net.Http" />
+        <Reference Include="System.IO.Compression" />
+        <Reference Include="System.IO.Compression.FileSystem" />
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xaml" />
         <Reference Include="WindowsBase" />
@@ -49,7 +48,11 @@
         <Reference Include="PresentationFramework" />
     </ItemGroup>
     <ItemGroup>
+        <EmbeddedResource Include="Languages\*.json" />
+        <EmbeddedResource Include="World\Languages\*.json" />
+        <EmbeddedResource Include="Wilds\Data\*.json" />
         <Resource Include="Ui\Fonts\Roboto-Bold.ttf" />
         <Resource Include="Ui\Fonts\Roboto-Medium.ttf" />
+        <Resource Include="Ui\Images\WildsBackdrop.jpg" />
     </ItemGroup>
 </Project>

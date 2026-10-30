@@ -76,9 +76,9 @@ namespace SmartHunter.Core
                 if (!String.IsNullOrEmpty(FileName))
                 {
                     m_FileWatcher = new FileSystemWatcher();
-                    m_FileWatcher.Path = FullPath;
+                    m_FileWatcher.Path = Path.GetDirectoryName(FullPathFileName);
                     m_FileWatcher.NotifyFilter = NotifyFilters.LastWrite;
-                    m_FileWatcher.Filter = FileName;
+                    m_FileWatcher.Filter = Path.GetFileName(FullPathFileName);
                     m_FileWatcher.Changed += FileWatcher_Changed;
                     m_FileWatcher.EnableRaisingEvents = true;
                 }
@@ -117,6 +117,9 @@ namespace SmartHunter.Core
             }
         }
 
+        internal void PauseWatching() => TryPauseWatching();
+        internal void ResumeWatching() => TryUnpauseWatching();
+
         protected void TryUnpauseWatching()
         {
             if (m_FileWatcher != null)
@@ -129,12 +132,14 @@ namespace SmartHunter.Core
 
         public static string GetFullPath()
         {
-            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase).Replace("file:\\", "") + "\\";
+            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + Path.DirectorySeparatorChar;
         }
 
         public static string GetFullPathFileName(string fileName)
         {
-            return GetFullPath() + fileName;
+            string path=StorageLayout.Resolve(GetFullPath(), fileName);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            return path;
         }
     }
 }

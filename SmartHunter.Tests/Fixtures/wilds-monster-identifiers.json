@@ -1,0 +1,282 @@
+[
+  {
+    "RuntimeIndex": 0,
+    "PreviousId": "em000_00",
+    "Id": "em001_00",
+    "NameStringId": "LOC_MONSTER_RATHIAN",
+    "Name": "Rathian",
+    "PartCount": 8
+  },
+  {
+    "RuntimeIndex": 1,
+    "PreviousId": "em001_00",
+    "Id": "em002_00",
+    "NameStringId": "LOC_MONSTER_RATHALOS",
+    "Name": "Rathalos",
+    "PartCount": 15
+  },
+  {
+    "RuntimeIndex": 2,
+    "PreviousId": "em002_00",
+    "Id": "em002_50",
+    "NameStringId": "LOC_MONSTER_GUARDIAN_RATHALOS",
+    "Name": "Guardian Rathalos",
+    "PartCount": 14
+  },
+  {
+    "RuntimeIndex": 3,
+    "PreviousId": "em003_00",
+    "Id": "em005_00",
+    "NameStringId": "LOC_MONSTER_GRAVIOS",
+    "Name": "Gravios",
+    "PartCount": 12
+  },
+  {
+    "RuntimeIndex": 4,
+    "PreviousId": "em004_00",
+    "Id": "em008_00",
+    "NameStringId": "LOC_MONSTER_YIAN_KUT_KU",
+    "Name": "Yian Kut-Ku",
+    "PartCount": 8
+  },
+  {
+    "RuntimeIndex": 5,
+    "PreviousId": "em005_00",
+    "Id": "em009_00",
+    "NameStringId": "LOC_MONSTER_GYPCEROS",
+    "Name": "Gypceros",
+    "PartCount": 12
+  },
+  {
+    "RuntimeIndex": 6,
+    "PreviousId": "em006_00",
+    "Id": "em021_00",
+    "NameStringId": "LOC_MONSTER_CONGALALA",
+    "Name": "Congalala",
+    "PartCount": 7
+  },
+  {
+    "RuntimeIndex": 7,
+    "PreviousId": "em007_00",
+    "Id": "em022_00",
+    "NameStringId": "LOC_MONSTER_BLANGONGA",
+    "Name": "Blangonga",
+    "PartCount": 9
+  },
+  {
+    "RuntimeIndex": 8,
+    "PreviousId": "em008_00",
+    "Id": "em046_00",
+    "NameStringId": "LOC_MONSTER_LAGIACRUS",
+    "Name": "Lagiacrus",
+    "PartCount": 8
+  },
+  {
+    "RuntimeIndex": 9,
+    "PreviousId": "em009_00",
+    "Id": "em070_00",
+    "NameStringId": "LOC_MONSTER_NERSCYLLA",
+    "Name": "Nerscylla",
+    "PartCount": 17
+  },
+  {
+    "RuntimeIndex": 10,
+    "PreviousId": "em010_00",
+    "Id": "em071_00",
+    "NameStringId": "LOC_MONSTER_GORE_MAGALA",
+    "Name": "Gore Magala",
+    "PartCount": 16
+  },
+  {
+    "RuntimeIndex": 11,
+    "PreviousId": "em011_00",
+    "Id": "em077_00",
+    "NameStringId": "LOC_MONSTER_SEREGIOS",
+    "Name": "Seregios",
+    "PartCount": 10
+  },
+  {
+    "RuntimeIndex": 12,
+    "PreviousId": "em012_00",
+    "Id": "em078_00",
+    "NameStringId": "LOC_MONSTER_GOGMAZIOS",
+    "Name": "Gogmazios",
+    "PartCount": 42
+  },
+  {
+    "RuntimeIndex": 13,
+    "PreviousId": "em013_00",
+    "Id": "em082_00",
+    "NameStringId": "LOC_MONSTER_MIZUTSUNE",
+    "Name": "Mizutsune",
+    "PartCount": 17
+  },
+  {
+    "RuntimeIndex": 14,
+    "PreviousId": "em014_00",
+    "Id": "em100_51",
+    "NameStringId": "LOC_MONSTER_GUARDIAN_FULGUR_ANJANATH",
+    "Name": "Guardian Fulgur Anjanath",
+    "PartCount": 13
+  },
+  {
+    "RuntimeIndex": 15,
+    "PreviousId": "em015_00",
+    "Id": "em113_51",
+    "NameStringId": "LOC_MONSTER_GUARDIAN_EBONY_ODOGARON",
+    "Name": "Guardian Ebony Odogaron",
+    "PartCount": 16
+  },
+  {
+    "RuntimeIndex": 16,
+    "PreviousId": "em016_00",
+    "Id": "em150_00",
+    "NameStringId": "LOC_MONSTER_DOSHAGUMA",
+    "Name": "Doshaguma",
+    "PartCount": 7
+  },
+  {
+    "RuntimeIndex": 17,
+    "PreviousId": "em017_00",
+    "Id": "em150_50",
+    "NameStringId": "LOC_MONSTER_GUARDIAN_DOSHAGUMA",
+    "Name": "Guardian Doshaguma",
+    "PartCount": 7
+  },
+  {
+    "RuntimeIndex": 18,
+    "PreviousId": "em018_00",
+    "Id": "em151_00",
+    "NameStringId": "LOC_MONSTER_BALAHARA",
+    "Name": "Balahara",
+    "PartCount": 8
+  },
+  {
+    "RuntimeIndex": 19,
+    "PreviousId": "em019_00",
+    "Id": "em152_00",
+    "NameStringId": "LOC_MONSTER_CHATACABRA",
+    "Name": "Chatacabra",
+    "PartCount": 20
+  },
+  {
+    "RuntimeIndex": 20,
+    "PreviousId": "em020_00",
+    "Id": "em153_00",
+    "NameStringId": "LOC_MONSTER_QUEMATRICE",
+    "Name": "Quematrice",
+    "PartCount": 9
+  },
+  {
+    "RuntimeIndex": 21,
+    "PreviousId": "em021_00",
+    "Id": "em154_00",
+    "NameStringId": "LOC_MONSTER_LALA_BARINA",
+    "Name": "Lala Barina",
+    "PartCount": 10
+  },
+  {
+    "RuntimeIndex": 22,
+    "PreviousId": "em022_00",
+    "Id": "em155_00",
+    "NameStringId": "LOC_MONSTER_ROMPOPOLO",
+    "Name": "Rompopolo",
+    "PartCount": 17
+  },
+  {
+    "RuntimeIndex": 23,
+    "PreviousId": "em023_00",
+    "Id": "em156_00",
+    "NameStringId": "LOC_MONSTER_REY_DAU",
+    "Name": "Rey Dau",
+    "PartCount": 14
+  },
+  {
+    "RuntimeIndex": 24,
+    "PreviousId": "em024_00",
+    "Id": "em157_00",
+    "NameStringId": "LOC_MONSTER_UTH_DUNA",
+    "Name": "Uth Duna",
+    "PartCount": 18
+  },
+  {
+    "RuntimeIndex": 25,
+    "PreviousId": "em025_00",
+    "Id": "em158_00",
+    "NameStringId": "LOC_MONSTER_NU_UDRA",
+    "Name": "Nu Udra",
+    "PartCount": 32
+  },
+  {
+    "RuntimeIndex": 26,
+    "PreviousId": "em026_00",
+    "Id": "em159_00",
+    "NameStringId": "LOC_MONSTER_AJARAKAN",
+    "Name": "Ajarakan",
+    "PartCount": 16
+  },
+  {
+    "RuntimeIndex": 27,
+    "PreviousId": "em027_00",
+    "Id": "em160_00",
+    "NameStringId": "LOC_MONSTER_ARKVELD",
+    "Name": "Arkveld",
+    "PartCount": 13
+  },
+  {
+    "RuntimeIndex": 28,
+    "PreviousId": "em028_00",
+    "Id": "em160_50",
+    "NameStringId": "LOC_MONSTER_GUARDIAN_ARKVELD",
+    "Name": "Guardian Arkveld",
+    "PartCount": 10
+  },
+  {
+    "RuntimeIndex": 29,
+    "PreviousId": "em029_00",
+    "Id": "em161_00",
+    "NameStringId": "LOC_MONSTER_HIRABAMI",
+    "Name": "Hirabami",
+    "PartCount": 14
+  },
+  {
+    "RuntimeIndex": 30,
+    "PreviousId": "em030_00",
+    "Id": "em162_00",
+    "NameStringId": "LOC_MONSTER_JIN_DAHAAD",
+    "Name": "Jin Dahaad",
+    "PartCount": 18
+  },
+  {
+    "RuntimeIndex": 31,
+    "PreviousId": "em031_00",
+    "Id": "em163_00",
+    "NameStringId": "LOC_MONSTER_XU_WU",
+    "Name": "Xu Wu",
+    "PartCount": 19
+  },
+  {
+    "RuntimeIndex": 32,
+    "PreviousId": "em032_00",
+    "Id": "em164_50",
+    "NameStringId": "LOC_MONSTER_ZOH_SHIA",
+    "Name": "Zoh Shia",
+    "PartCount": 19
+  },
+  {
+    "RuntimeIndex": 33,
+    "PreviousId": "em033_00",
+    "Id": "em165_00",
+    "NameStringId": "LOC_MONSTER_HIGH_PURRFORMANCE_BARREL_PUNCHER",
+    "Name": "High Purrformance Barrel Puncher",
+    "PartCount": 6
+  },
+  {
+    "RuntimeIndex": 34,
+    "PreviousId": "em034_00",
+    "Id": "em166_00",
+    "NameStringId": "LOC_MONSTER_OMEGA_PLANETES",
+    "Name": "Omega Planetes",
+    "PartCount": 8
+  }
+]

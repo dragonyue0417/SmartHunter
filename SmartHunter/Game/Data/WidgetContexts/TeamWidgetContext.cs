@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using SmartHunter.Core.Data;
@@ -9,6 +9,7 @@ namespace SmartHunter.Game.Data.WidgetContexts
 {
     public class TeamWidgetContext : WidgetContext
     {
+        protected override SmartHunter.Core.Config.WidgetConfig FontConfig => ConfigHelper.Main.Values.Overlay.TeamWidget;
         public Collection<Player> Players { get; private set; }
         public ObservableCollection<Player> Fake_Players { get; private set; } // TODO: Can dis be done inside the xaml file?
 
@@ -16,7 +17,7 @@ namespace SmartHunter.Game.Data.WidgetContexts
         public bool DontShowIfAlone
         {
             get { return m_DontShowIfAlone; }
-            set { SetProperty(ref m_DontShowIfAlone, value); }
+            set { if (SetProperty(ref m_DontShowIfAlone, value) && Players != null) RefreshVisiblePlayers(); }
         }
 
         bool m_ShowBars = true;
@@ -59,87 +60,63 @@ namespace SmartHunter.Game.Data.WidgetContexts
 
         public Player UpdateAndGetPlayer(int index, string name, int damage)
         {
+            // A lobby slot is stable; collection positions change when someone leaves.
+            Player player = Players.FirstOrDefault(p => p.Index == index);
             if (String.IsNullOrEmpty(name) && damage == 0)
             {
-                if (index < Players.Count)
+                if (player != null)
                 {
-                    Players.RemoveAt(index);
-                    if (DontShowIfAlone && Players.Count() <= 1)
-                    {
-                        Fake_Players.Clear();
-                    }
-                    else
-                    {
-                        Fake_Players.RemoveAt(index);
-                    }
+                    Players.Remove(player);
+                    RefreshVisiblePlayers();
                 }
                 return null;
             }
-
-            while (index >= Players.Count)
+            if (player != null && !String.IsNullOrEmpty(name) && player.Name != name)
             {
-                Players.Add(new Player() { Index = Players.Count, Name = LocalizationHelper.GetString(LocalizationHelper.UnknownPlayerStringId) });
-
-                if (DontShowIfAlone && Players.Count() <= 1)
-                {
-                    Fake_Players.Clear();
-                }
-                else
-                {
-                    Fake_Players.Add(Players[Players.Count() - 1]);
-                }
+                Players.Remove(player);
+                player = null; // a new player occupying this slot needs a fresh chart
             }
-
-            Player player = Players[index];
-            if (!String.IsNullOrEmpty(name))
+            if (player == null)
             {
-                player.Name = name;
+                player = new Player { Index = index, Name = String.IsNullOrEmpty(name)
+                    ? LocalizationHelper.GetString(LocalizationHelper.UnknownPlayerStringId) : name };
+                int position = 0;
+                while (position < Players.Count && Players[position].Index < index) position++;
+                Players.Insert(position, player);
+                RefreshVisiblePlayers();
             }
-            else if (String.IsNullOrEmpty(player.Name))
-            {
-                player.Name = LocalizationHelper.GetString(LocalizationHelper.UnknownPlayerStringId);
-            }
-
-            if (!OverlayViewModel.Instance.DebugWidget.Context.CurrentGame.IsPlayerInExpedition)
-            {
-                player.Damage = damage;
-            }
-
+            else if (!String.IsNullOrEmpty(name)) player.Name = name;
+            player.Damage = damage;
             return player;
+        }
+
+        void RefreshVisiblePlayers()
+        {
+            int expected = DontShowIfAlone && Players.Count <= 1 ? 0 : Players.Count;
+            bool unchanged = Fake_Players.Count == expected;
+            for (int i = 0; unchanged && i < expected; i++)
+                unchanged = ReferenceEquals(Fake_Players[i], Players[i]);
+            if (unchanged) return;
+            Fake_Players.Clear();
+            for (int i = 0; i < expected; i++) Fake_Players.Add(Players[i]);
         }
 
         public void UpdateFractions()
         {
-            var playersWithDamage = Players.Where(player => player.Damage > 0);
-            if (!playersWithDamage.Any())
+            long totalDamage = 0;
+            int highestDamage = 0;
+            foreach (var player in Players)
             {
-                foreach (var player in Players)
-                {
-                    player.DamageFraction = 0;
-                    player.BarFraction = 0;
-                }
-
-                return;
+                totalDamage += Math.Max(0, player.Damage);
+                highestDamage = Math.Max(highestDamage, player.Damage);
             }
-
-            NormalizeDamagePoints();
+            foreach (var player in Players)
+            {
+                player.DamageFraction = totalDamage > 0 ? (float)((double)Math.Max(0, player.Damage) / totalDamage) : 0;
+                player.BarFraction = highestDamage > 0 ? (float)Math.Max(0, player.Damage) / highestDamage : 0;
+            }
+            if (ShowChart) NormalizeDamagePoints();
             PlayersDamageUpdated?.Invoke(this, EventArgs.Empty);
-
-            var highestDamagePlayers = Players.OrderByDescending(player => player.Damage).Take(1);
-            if (highestDamagePlayers.Any())
-            {
-                int totalDamage = Players.Sum(player => player.Damage);
-
-                var highestDamagePlayer = highestDamagePlayers.First();
-                highestDamagePlayer.DamageFraction = (float)highestDamagePlayer.Damage / (float)totalDamage;
-                highestDamagePlayer.BarFraction = 1;
-                //Log.WriteLine(String.Format("{0} {1} {2}", highestDamagePlayer.Damage.ToString(), highestDamagePlayer.DamageFraction.ToString(), highestDamagePlayer.BarFraction.ToString()));
-                foreach (var otherPlayer in Players.Except(highestDamagePlayers))
-                {
-                    otherPlayer.DamageFraction = (float)otherPlayer.Damage / (float)totalDamage;
-                    otherPlayer.BarFraction = (float)otherPlayer.Damage / (float)highestDamagePlayer.Damage;
-                }
-            }
         }
 
         public void ClearPlayers()
@@ -185,7 +162,7 @@ namespace SmartHunter.Game.Data.WidgetContexts
             }
 
             var now = DateTime.Now.ToFileTime();
-            if (msThreshold != 0 && now - maxTimeStamp <= msThreshold)
+            if (msThreshold > 0 && now - maxTimeStamp <= msThreshold * TimeSpan.TicksPerMillisecond)
             {
                 return;
             }

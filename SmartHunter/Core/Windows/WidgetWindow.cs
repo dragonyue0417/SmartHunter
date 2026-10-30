@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 using SmartHunter.Core.Data;
@@ -40,7 +40,7 @@ namespace SmartHunter.Core.Windows
 
             float currentScale = Widget.Scale;
             currentScale += ScaleStep * direction;
-            Widget.Scale = Math.Min(Math.Max(currentScale, ScaleMin), ScaleMax);
+            Widget.Scale = (float)Math.Round(Math.Min(Math.Max(currentScale, ScaleMin), ScaleMax), 4);
         }
     }
 }

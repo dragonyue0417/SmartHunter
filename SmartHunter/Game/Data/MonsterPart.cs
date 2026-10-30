@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using SmartHunter.Core.Data;
 using SmartHunter.Game.Helpers;
@@ -17,6 +17,8 @@ namespace SmartHunter.Game.Data
             set { SetProperty(ref m_IsRemovable, value); }
         }
 
+        public string NameId { get; set; }
+
         public Progress Health { get; private set; }
 
         int m_TimesBrokenCount;
@@ -30,6 +32,7 @@ namespace SmartHunter.Game.Data
         {
             get
             {
+                if (NameId != null) return LocalizationHelper.GetString(NameId);
                 return LocalizationHelper.GetMonsterPartName(m_Owner.Id, m_Owner.Parts.Where(part => part.IsRemovable == IsRemovable).ToList().IndexOf(this), IsRemovable);
             }
         }
@@ -38,6 +41,7 @@ namespace SmartHunter.Game.Data
         {
             get
             {
+                if (NameId != null) return IsRemovable ? "Removable" : "Part";
                 return GetGroupIdFromIndex(m_Owner.Id, m_Owner.Parts.Where(part => part.IsRemovable == IsRemovable).ToList().IndexOf(this), IsRemovable);
             }
         }

@@ -1,0 +1,1051 @@
+{
+  "GameVersion": "1.42.0.2",
+  "Samples": 24,
+  "UserKinds": [
+    {
+      "Type": "app.Net_QuestUserInfo",
+      "Size": 56
+    }
+  ],
+  "NativeKinds": [
+    "via.network.utility.UniqueId"
+  ],
+  "IdentityWrapper": {
+    "Name": "Valid",
+    "Type": "bool",
+    "GetterRva": "0xD123030",
+    "GetterBytes": "56 48 83 EC 20 4C 89 C6 48 89 D1 E8 F0 2A 5D FD 88 06 48 83 C4 20 5E C3 CC CC CC CC CC CC CC CC 56 48 83 EC 20 4C 89 C6 48 89 D1 E8 D0 D5 D3 FF 89 06 48 83 C4 20 5E C3 CC CC CC CC CC CC CC CC",
+    "Flags": 1026,
+    "VariableType": 0,
+    "GetterParameter": 0
+  },
+  "Sample": {
+    "TimestampUtc": "2026-10-24T17:53:15.7283715Z",
+    "Status": "MetadataVerifiedCandidatesOnly",
+    "RootCandidateRva": "0x147A7F50",
+    "RootValidationReason": "MetadataValidated",
+    "TraversalStopReason": "ObjectLimit",
+    "StageId": 0,
+    "PartyCount": 3,
+    "SuccessState": 0,
+    "FailureState": 0,
+    "ReportedHumanCount": 3,
+    "ReportedNpcCount": 0,
+    "InHuntingZone": false,
+    "IsLoading": false,
+    "CanDisplayData": true,
+    "DamageFrozen": false,
+    "TraversalCompleted": false,
+    "QuestElapsed": 0.0,
+    "Nodes": [
+      {
+        "Path": "NetworkManager+0x90+0x20",
+        "Type": "app.net_quest_session.cQuestSession",
+        "ScanStatus": "Completed",
+        "Size": 600
+      },
+      {
+        "Path": "NetworkManager+0xB8",
+        "Type": "app.Net_UserInfoManager",
+        "ScanStatus": "Completed",
+        "Size": 96
+      },
+      {
+        "Path": "NetworkManager+0x90",
+        "Type": "app.Net_SessionService",
+        "ScanStatus": "Completed",
+        "Size": 104
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18",
+        "Type": "app.net_lobby_session.cLobbySession",
+        "ScanStatus": "Completed",
+        "Size": 496
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28",
+        "Type": "app.cLinkSession",
+        "ScanStatus": "Completed",
+        "Size": 472
+      },
+      {
+        "Path": "NetworkManager",
+        "Type": "app.NetworkManager",
+        "ScanStatus": "Completed",
+        "Size": 464
+      },
+      {
+        "Path": "NetworkManager+0xB8+0x18",
+        "Type": "app.Net_UserInfoList",
+        "ScanStatus": "Completed",
+        "Size": 40
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0xA8",
+        "Type": "via.network.session.MemberInfoTbl",
+        "ScanStatus": "Completed",
+        "Size": 528
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0xA8+0x10",
+        "Type": "via.network.session.MemberInfo",
+        "ScanStatus": "Completed",
+        "Size": 160
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0xA8+0x18",
+        "Type": "via.network.session.MemberInfo",
+        "ScanStatus": "Completed",
+        "Size": 160
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0xA8+0x20",
+        "Type": "via.network.session.MemberInfo",
+        "ScanStatus": "Completed",
+        "Size": 160
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x60",
+        "Type": "via.network.utility.SessionId",
+        "ScanStatus": "Completed",
+        "Size": 96
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0xB0",
+        "Type": "System.Collections.Generic.List`1<via.network.session.MemberInfo>",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0xB8+0x10",
+        "Type": "app.Net_UserInfoList",
+        "ScanStatus": "Completed",
+        "Size": 40
+      },
+      {
+        "Path": "NetworkManager+0xB8+0x20",
+        "Type": "app.Net_UserInfoList",
+        "ScanStatus": "Completed",
+        "Size": 40
+      },
+      {
+        "Path": "NetworkManager+0xB8+0x28",
+        "Type": "app.Net_UserInfoList",
+        "ScanStatus": "Completed",
+        "Size": 40
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0x60",
+        "Type": "via.network.utility.SessionId",
+        "ScanStatus": "Completed",
+        "Size": 96
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0xA8",
+        "Type": "via.network.session.MemberInfoTbl",
+        "ScanStatus": "Completed",
+        "Size": 528
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0xB0",
+        "Type": "System.Collections.Generic.List`1<via.network.session.MemberInfo>",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x60",
+        "Type": "via.network.utility.SessionId",
+        "ScanStatus": "Completed",
+        "Size": 96
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0xA8",
+        "Type": "via.network.session.MemberInfoTbl",
+        "ScanStatus": "Completed",
+        "Size": 528
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0xB0",
+        "Type": "System.Collections.Generic.List`1<via.network.session.MemberInfo>",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x1B8",
+        "Type": "app.net_quest_session.cSessionInfo",
+        "ScanStatus": "Completed",
+        "Size": 40
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x1E0",
+        "Type": "app.net_quest_session.QuestMatchmakeSystem",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10",
+        "Type": "via.network.SessionPlayFab",
+        "ScanStatus": "Completed",
+        "Size": 392
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x30",
+        "Type": "via.network.RemoteProcedure",
+        "ScanStatus": "Completed",
+        "Size": 280
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x38",
+        "Type": "via.network.ProtocolBroadcast",
+        "ScanStatus": "Completed",
+        "Size": 216
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x40",
+        "Type": "via.network.AutoMaster",
+        "ScanStatus": "Completed",
+        "Size": 320
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x68",
+        "Type": "app.net_session_manager.SessionManager.RequestParam",
+        "ScanStatus": "Completed",
+        "Size": 56
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x70",
+        "Type": "via.network.session.VoiceChatBaseStatus",
+        "ScanStatus": "Completed",
+        "Size": 24
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x78",
+        "Type": "via.network.session.VoiceChatPeerStatus",
+        "ScanStatus": "Completed",
+        "Size": 24
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x80",
+        "Type": "via.network.session.VoiceChatSelfStatus",
+        "ScanStatus": "Completed",
+        "Size": 24
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x128",
+        "Type": "ace.cLimitedArray`1<app.net_session_manager.SessionManager.BroadCastInfo>",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x180",
+        "Type": "via.network.session.SearchKey",
+        "ScanStatus": "Completed",
+        "Size": 104
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x188",
+        "Type": "app.net_quest_session.cSessionBinaryQuest",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x1C8",
+        "Type": "app.Net_RankingService.cRankingQuestScore",
+        "ScanStatus": "Completed",
+        "Size": 72
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x1E8",
+        "Type": "app.net_quest_session.LoadWaitSync",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x1F0",
+        "Type": "app.net_quest_session.cCheckMemberList",
+        "ScanStatus": "Completed",
+        "Size": 20
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x200",
+        "Type": "app.Net_LateJoinSync.StackRPC",
+        "ScanStatus": "Completed",
+        "Size": 48
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x208",
+        "Type": "app.net_quest_session.cJoinQuestMemberList",
+        "ScanStatus": "Completed",
+        "Size": 21
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0x68",
+        "Type": "app.net_session_manager.SessionManager.RequestParam",
+        "ScanStatus": "Completed",
+        "Size": 56
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0x128",
+        "Type": "ace.cLimitedArray`1<app.net_session_manager.SessionManager.BroadCastInfo>",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0x180",
+        "Type": "via.network.session.SearchKey",
+        "ScanStatus": "Completed",
+        "Size": 104
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0x1B0",
+        "Type": "app.net_lobby_session.cLobbySettings",
+        "ScanStatus": "Completed",
+        "Size": 96
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0x1C0",
+        "Type": "app.net_lobby_session.LobbyMatchmakeSystem",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10",
+        "Type": "via.network.SessionPlayFab",
+        "ScanStatus": "Completed",
+        "Size": 392
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x18",
+        "Type": "via.network.InvitationPlayFab",
+        "ScanStatus": "Completed",
+        "Size": 144
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x20",
+        "Type": "via.network.InvitationSteam",
+        "ScanStatus": "Completed",
+        "Size": 144
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x30",
+        "Type": "via.network.RemoteProcedure",
+        "ScanStatus": "Completed",
+        "Size": 280
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x40",
+        "Type": "via.network.AutoMaster",
+        "ScanStatus": "Completed",
+        "Size": 320
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x68",
+        "Type": "app.net_session_manager.SessionManager.RequestParam",
+        "ScanStatus": "Completed",
+        "Size": 56
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x70",
+        "Type": "via.network.session.VoiceChatBaseStatus",
+        "ScanStatus": "Completed",
+        "Size": 24
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x78",
+        "Type": "via.network.session.VoiceChatPeerStatus",
+        "ScanStatus": "Completed",
+        "Size": 24
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x80",
+        "Type": "via.network.session.VoiceChatSelfStatus",
+        "ScanStatus": "Completed",
+        "Size": 24
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x128",
+        "Type": "ace.cLimitedArray`1<app.net_session_manager.SessionManager.BroadCastInfo>",
+        "ScanStatus": "Completed",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x180",
+        "Type": "via.network.session.SearchKey",
+        "ScanStatus": "Completed",
+        "Size": 104
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x188",
+        "Type": "via.network.session.CustomProperty",
+        "ScanStatus": "Completed",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x80",
+        "Type": "app.Net_APIServer",
+        "ScanStatus": "Completed",
+        "Size": 248
+      },
+      {
+        "Path": "NetworkManager+0x98",
+        "Type": "app.Net_Party",
+        "ScanStatus": "Completed",
+        "Size": 64
+      },
+      {
+        "Path": "NetworkManager+0xC0",
+        "Type": "app.Net_SocialUserList",
+        "ScanStatus": "Completed",
+        "Size": 64
+      },
+      {
+        "Path": "NetworkManager+0xC8",
+        "Type": "app.Net_PacketReplay",
+        "ScanStatus": "Completed",
+        "Size": 160
+      },
+      {
+        "Path": "NetworkManager+0xD0",
+        "Type": "app.Net_ReplayEvent",
+        "ScanStatus": "Completed",
+        "Size": 168
+      },
+      {
+        "Path": "NetworkManager+0xD8",
+        "Type": "app.Net_NotifyService",
+        "ScanStatus": "Completed",
+        "Size": 232
+      },
+      {
+        "Path": "NetworkManager+0xE0",
+        "Type": "app.Net_ChatService",
+        "ScanStatus": "Completed",
+        "Size": 40
+      }
+    ],
+    "SessionStringCandidates": [
+      {
+        "Path": "NetworkManager+0x90+0x20+0x1D8",
+        "Sha256": "1905647336cc8d98898e6f6c0478a0a23684250f5e5000f7e0afea7cf28f3011",
+        "Length": 36
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x1E0+0x10",
+        "Sha256": "1905647336cc8d98898e6f6c0478a0a23684250f5e5000f7e0afea7cf28f3011",
+        "Length": 36
+      },
+      {
+        "Path": "NetworkManager+0x90+0x18+0x1B0+0x28",
+        "Sha256": "a6e0b7acecae00a9ea920e005182bbbea5bc50cd6f17c3fc616a2caae76309fa",
+        "Length": 36
+      }
+    ],
+    "ShortSessionStringFields": [
+      {
+        "Path": "NetworkManager+0x90+0x18+0x1B0+0x10",
+        "Sha256": null,
+        "Length": 8
+      }
+    ],
+    "UnfollowedReferences": [
+      {
+        "Path": "NetworkManager+0x90+0x30",
+        "Type": "app.cMemoriesSession",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 425
+      },
+      {
+        "Path": "NetworkManager+0xA8",
+        "Type": "app.NetworkRequestManager",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 104
+      },
+      {
+        "Path": "NetworkManager+0xB0",
+        "Type": "app.NetworkErrorManager",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 32
+      },
+      {
+        "Path": "NetworkManager+0xB8+0x18+0x18",
+        "Type": "System.Collections.Generic.Dictionary`2<System.Guid,app.Net_UserInfo>",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 64
+      },
+      {
+        "Path": "NetworkManager+0xB8+0x10+0x18",
+        "Type": "System.Collections.Generic.Dictionary`2<System.Guid,app.Net_UserInfo>",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 64
+      },
+      {
+        "Path": "NetworkManager+0xB8+0x20+0x18",
+        "Type": "System.Collections.Generic.Dictionary`2<System.Guid,app.Net_UserInfo>",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 64
+      },
+      {
+        "Path": "NetworkManager+0xB8+0x28+0x18",
+        "Type": "System.Collections.Generic.Dictionary`2<System.Guid,app.Net_UserInfo>",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 64
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10+0x50",
+        "Type": "void__via_network_Error___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10+0x58",
+        "Type": "void__s32__via_network_session_MemberInfo___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10+0x68",
+        "Type": "void__s32__via_network_session_MemberInfo___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10+0x98",
+        "Type": "void__s32__via_network_session_MemberInfo____via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10+0xA0",
+        "Type": "void__via_network_utility_Request____s32__via_network_session_MemberInfo____via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10+0xA8",
+        "Type": "void__via_network_utility_Request____via_network_Error___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10+0xE0",
+        "Type": "void__via_network_utility_Request____s32__via_network_session_MemberInfo____via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x10+0xE8",
+        "Type": "void__via_network_utility_Request____via_network_Error___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x20+0x30+0x108",
+        "Type": "void__s32__via_network_protocol_SendOption__via_clr_ManagedObject____bool_",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10+0x50",
+        "Type": "void__via_network_Error___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10+0x58",
+        "Type": "void__s32__via_network_session_MemberInfo___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10+0x68",
+        "Type": "void__s32__via_network_session_MemberInfo___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10+0x98",
+        "Type": "void__s32__via_network_session_MemberInfo____via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10+0xA0",
+        "Type": "void__via_network_utility_Request____s32__via_network_session_MemberInfo____via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10+0xA8",
+        "Type": "void__via_network_utility_Request____via_network_Error___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10+0xE0",
+        "Type": "void__via_network_utility_Request____s32__via_network_session_MemberInfo____via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x10+0xE8",
+        "Type": "void__via_network_utility_Request____via_network_Error___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x18+0x58",
+        "Type": "void__via_UserIndex__via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x18+0x60",
+        "Type": "void__via_network_Error____via_UserIndex_",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x18+0x68",
+        "Type": "void__via_network_utility_Request____via_UserIndex__s32__via_network_session_MemberInfo____via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x18+0x70",
+        "Type": "void__via_network_utility_Request____via_network_Error____via_UserIndex_",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x20+0x58",
+        "Type": "void__via_UserIndex__via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x20+0x60",
+        "Type": "void__via_network_Error____via_UserIndex_",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x20+0x68",
+        "Type": "void__via_network_utility_Request____via_UserIndex__s32__via_network_session_MemberInfo____via_network_session_Info___",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      },
+      {
+        "Path": "NetworkManager+0x90+0x28+0x20+0x70",
+        "Type": "void__via_network_utility_Request____via_network_Error____via_UserIndex_",
+        "Reason": "TypeOutsideTraversalRules",
+        "Size": 16
+      }
+    ],
+    "TypeMetadata": [
+      {
+        "Type": "via.network.utility.SessionId",
+        "Status": "Completed",
+        "PropertyCount": 5,
+        "Properties": [
+          {
+            "Name": "Valid",
+            "Type": "bool",
+            "GetterRva": "0xD123030",
+            "GetterBytes": "56 48 83 EC 20 4C 89 C6 48 89 D1 E8 F0 2A 5D FD 88 06 48 83 C4 20 5E C3 CC CC CC CC CC CC CC CC 56 48 83 EC 20 4C 89 C6 48 89 D1 E8 D0 D5 D3 FF 89 06 48 83 C4 20 5E C3 CC CC CC CC CC CC CC CC",
+            "Flags": 1026,
+            "VariableType": 0,
+            "GetterParameter": 0
+          }
+        ]
+      },
+      {
+        "Type": "app.Net_UserInfoList",
+        "Status": "NotAvailable",
+        "PropertyCount": 0,
+        "Properties": []
+      },
+      {
+        "Type": "app.Net_UserInfoManager",
+        "Status": "Completed",
+        "PropertyCount": 7,
+        "Properties": [
+          {
+            "Name": "_IsUpdateHostChange",
+            "Type": "bool",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 1026,
+            "VariableType": 1,
+            "GetterParameter": 0
+          }
+        ]
+      },
+      {
+        "Type": "app.net_quest_session.cSessionInfo",
+        "Status": "NotAvailable",
+        "PropertyCount": 0,
+        "Properties": []
+      },
+      {
+        "Type": "app.net_quest_session.QuestMatchmakeSystem",
+        "Status": "NotAvailable",
+        "PropertyCount": 0,
+        "Properties": []
+      },
+      {
+        "Type": "app.net_quest_session.cQuestSession",
+        "Status": "Completed",
+        "PropertyCount": 10,
+        "Properties": [
+          {
+            "Name": "SessionInfo",
+            "Type": "app.net_quest_session.cSessionInfo",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 3,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_SessionBinay",
+            "Type": "app.net_quest_session.cSessionBinaryQuest",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_SessionEquipChangeQueue",
+            "Type": "System.Collections.Generic.Dictionary`2<System.Int32,app.net_packet.cSysQuestChangeEquipSync>",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "QuestJoinMemberList",
+            "Type": "app.net_quest_session.cJoinQuestMemberList",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          }
+        ]
+      },
+      {
+        "Type": "app.Net_SessionService",
+        "Status": "Completed",
+        "PropertyCount": 5,
+        "Properties": [
+          {
+            "Name": "_LobbySession",
+            "Type": "app.net_lobby_session.cLobbySession",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_QuestSession",
+            "Type": "app.net_quest_session.cQuestSession",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_LinkSession",
+            "Type": "app.cLinkSession",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_MemoriesSession",
+            "Type": "app.cMemoriesSession",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          }
+        ]
+      },
+      {
+        "Type": "app.net_lobby_session.cLobbySession",
+        "Status": "NotAvailable",
+        "PropertyCount": 0,
+        "Properties": []
+      },
+      {
+        "Type": "app.cLinkSession",
+        "Status": "NotAvailable",
+        "PropertyCount": 0,
+        "Properties": []
+      },
+      {
+        "Type": "app.NetworkManager",
+        "Status": "Completed",
+        "PropertyCount": 48,
+        "Properties": [
+          {
+            "Name": "_UserName",
+            "Type": "via.string",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 32783,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_IsShowSessionReqDialog",
+            "Type": "bool",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 1026,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_SessionService",
+            "Type": "app.Net_SessionService",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_Party",
+            "Type": "app.Net_Party",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_UserInfoManager",
+            "Type": "app.Net_UserInfoManager",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_SocialUserList",
+            "Type": "app.Net_SocialUserList",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "_CapcomIdLinkService",
+            "Type": "app.Net_CapcomIdLinkService",
+            "GetterRva": "0x1B180",
+            "GetterBytes": "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 4C 89 C7 48 89 D3 49 89 CE 48 8B 05 A0 45 6A 14 48 31 E0 48 89 44 24 50 48 8B 0D 21 80 78 14 BA FF FF FF FF E8 A7 D3 FE 0A 48 89 C6 8B 40 78 85",
+            "Flags": 8337,
+            "VariableType": 1,
+            "GetterParameter": 0
+          }
+        ]
+      },
+      {
+        "Type": "via.network.session.MemberInfoTbl",
+        "Status": "Completed",
+        "PropertyCount": 2,
+        "Properties": [
+          {
+            "Name": "MemberInfo",
+            "Type": "via.intrusive_ptr",
+            "GetterRva": "0xAEEAE10",
+            "GetterBytes": "56 57 48 83 EC 28 4C 89 C7 4A 8B 74 CA 10 48 85 F6 74 10 48 89 F1 E8 A5 CD 11 00 48 89 F1 E8 9D CD 11 00 48 8B 0F 48 89 37 48 85 C9 74 05 E8 9D EB 11 00 48 85 F6 74 0E 48 89 F1 48 83 C4 28 5F",
+            "Flags": 8241,
+            "VariableType": 7980272,
+            "GetterParameter": 5964384
+          },
+          {
+            "Name": "ValidCount",
+            "Type": "size_t",
+            "GetterRva": "0xD1233C0",
+            "GetterBytes": "56 48 83 EC 20 4C 89 C6 48 89 D1 E8 E0 D9 E2 FE 48 89 06 48 83 C4 20 5E C3 CC CC CC CC CC CC CC 48 8B 82 B0 0F 00 00 49 89 00 C3 CC CC CC CC CC 48 83 C2 12 49 89 10 C3 CC CC CC CC CC CC CC CC",
+            "Flags": 8202,
+            "VariableType": 0,
+            "GetterParameter": 0
+          }
+        ]
+      },
+      {
+        "Type": "via.network.session.MemberInfo",
+        "Status": "Completed",
+        "PropertyCount": 5,
+        "Properties": [
+          {
+            "Name": "Index",
+            "Type": "s32",
+            "GetterRva": "0xD03A8D0",
+            "GetterBytes": "8B 42 14 41 89 00 C3 CC CC CC CC CC CC CC CC CC 8A 42 1C 41 88 00 C3 CC CC CC CC CC CC CC CC CC 8A 42 1D 41 88 00 C3 CC CC CC CC CC CC CC CC CC 8B 42 18 41 89 00 C3 CC CC CC CC CC CC CC CC CC",
+            "Flags": 4103,
+            "VariableType": 0,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "IsHost",
+            "Type": "bool",
+            "GetterRva": "0xD03AA10",
+            "GetterBytes": "8A 42 11 41 88 00 C3 CC CC CC CC CC CC CC CC CC 48 8B 42 10 49 89 00 C3 CC CC CC CC CC CC CC CC 48 8D 42 32 80 7A 52 00 74 0C 83 7A 4E 0C 72 17 48 8B 42 32 EB 11 48 8B 08 48 85 C9 48 8D 05 79",
+            "Flags": 1026,
+            "VariableType": 0,
+            "GetterParameter": 0
+          },
+          {
+            "Name": "UniqueId",
+            "Type": "via.intrusive_ptr",
+            "GetterRva": "0xAEEADC0",
+            "GetterBytes": "56 57 48 83 EC 28 4C 89 C7 48 8B B2 98 00 00 00 48 85 F6 74 10 48 89 F1 E8 F3 CD 11 00 48 89 F1 E8 EB CD 11 00 48 8B 0F 48 89 37 48 85 C9 74 05 E8 EB EB 11 00 48 85 F6 74 0E 48 89 F1 48 83 C4",
+            "Flags": 8241,
+            "VariableType": 7980352,
+            "GetterParameter": 5964464
+          }
+        ]
+      },
+      {
+        "Type": "System.Collections.Generic.List`1<via.network.session.MemberInfo>",
+        "Status": "NotAvailable",
+        "PropertyCount": 0,
+        "Properties": []
+      },
+      {
+        "Type": "via.network.SessionPlayFab",
+        "Status": "NotAvailable",
+        "PropertyCount": 0,
+        "Properties": []
+      },
+      {
+        "Type": "via.network.RemoteProcedure",
+        "Status": "Completed",
+        "PropertyCount": 11,
+        "Properties": [
+          {
+            "Name": "SelfMemberIndex",
+            "Type": "s32",
+            "GetterRva": "0xD124AA0",
+            "GetterBytes": "56 48 83 EC 20 4C 89 C6 E8 E3 0D 60 FD 89 06 48 83 C4 20 5E C3 CC CC CC CC CC CC CC CC CC CC CC 48 8D 8A 08 01 00 00 4C 89 C2 E9 31 B8 38 FE CC 48 8D 8A 10 01 00 00 4C 89 C2 E9 C1 B3 3C FE CC",
+            "Flags": 4103,
+            "VariableType": 0,
+            "GetterParameter": 0
+          }
+        ]
+      },
+      {
+        "Type": "via.network.ProtocolBroadcast",
+        "Status": "Completed",
+        "PropertyCount": 15,
+        "Properties": []
+      }
+    ],
+    "QuestSessionCandidate": {
+      "Status": "MatchingPathsCandidate",
+      "PrimaryState": "GuidCandidate",
+      "SecondaryState": "GuidCandidate",
+      "Sha256": "1905647336cc8d98898e6f6c0478a0a23684250f5e5000f7e0afea7cf28f3011",
+      "PrimaryPath": "NetworkManager+0x90+0x20+0x1D8",
+      "SecondaryPath": "NetworkManager+0x90+0x20+0x1E0+0x10",
+      "CurrentCandidateSha256": "1905647336cc8d98898e6f6c0478a0a23684250f5e5000f7e0afea7cf28f3011",
+      "PrimarySha256": "1905647336cc8d98898e6f6c0478a0a23684250f5e5000f7e0afea7cf28f3011",
+      "SecondarySha256": "1905647336cc8d98898e6f6c0478a0a23684250f5e5000f7e0afea7cf28f3011",
+      "CurrentState": "CurrentFieldsAgree",
+      "ValidatedForSharing": false
+    },
+    "QuestMembers": {
+      "UserListPath": "NetworkManager+0xB8+0x18",
+      "UserListStatus": "Partial",
+      "NativeTableStatus": "Completed",
+      "UserArrayLength": 4,
+      "NativeObjectCount": 3,
+      "Users": [
+        {
+          "ArraySlot": 0,
+          "Size": 56,
+          "ParameterSize": 0,
+          "Type": "app.Net_QuestUserInfo",
+          "ParameterType": null,
+          "Status": "UnexpectedType"
+        },
+        {
+          "ArraySlot": 1,
+          "Size": 56,
+          "ParameterSize": 0,
+          "Type": "app.Net_QuestUserInfo",
+          "ParameterType": null,
+          "Status": "UnexpectedType"
+        },
+        {
+          "ArraySlot": 2,
+          "Size": 56,
+          "ParameterSize": 0,
+          "Type": "app.Net_QuestUserInfo",
+          "ParameterType": null,
+          "Status": "UnexpectedType"
+        },
+        {
+          "ArraySlot": 3,
+          "Size": 56,
+          "ParameterSize": 0,
+          "Type": "app.Net_QuestUserInfo",
+          "ParameterType": null,
+          "Status": "UnexpectedType"
+        }
+      ],
+      "NativeMembers": [
+        {
+          "TableSlot": 0,
+          "NativeIndex": 0,
+          "IsHost": true,
+          "Status": "GetterVerifiedFields",
+          "UniqueIdType": "via.network.utility.UniqueId",
+          "UniqueIdVtableRva": null
+        },
+        {
+          "TableSlot": 1,
+          "NativeIndex": 1,
+          "IsHost": false,
+          "Status": "GetterVerifiedFields",
+          "UniqueIdType": "via.network.utility.UniqueId",
+          "UniqueIdVtableRva": null
+        },
+        {
+          "TableSlot": 2,
+          "NativeIndex": 2,
+          "IsHost": false,
+          "Status": "GetterVerifiedFields",
+          "UniqueIdType": "via.network.utility.UniqueId",
+          "UniqueIdVtableRva": null
+        }
+      ],
+      "ValidatedForSharing": false
+    },
+    "DamageBySlot": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "MemoryReadAttempts": 1794,
+    "TypeCacheHits": 150,
+    "RemainingObjects": 64,
+    "SkippedCallbacks": 40,
+    "MemoryBytesRead": 65981,
+    "ElapsedMilliseconds": 2
+  }
+}

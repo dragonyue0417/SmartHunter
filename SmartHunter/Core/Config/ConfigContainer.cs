@@ -34,8 +34,19 @@ namespace SmartHunter.Core.Config
             Load();
         }
 
+        public void Reload() { Load(); }
+
         void Load()
         {
+            // A language is an English baseline plus bundled and user overrides.
+            // Reusing the old dictionary would leak translations between languages.
+            if (Values is SmartHunter.Config.LocalizationConfig)
+            {
+                var localization = new SmartHunter.Config.LocalizationConfig("en-US." + (SmartHunter.Game.Helpers.LanguageCatalog.IsWorld(FileName) ? "World" : "Wilds") + ".json");
+                foreach (var pair in SmartHunter.Game.Helpers.LanguageCatalog.ReadBuiltIn(FileName))
+                    localization.Strings[pair.Key] = pair.Value;
+                Values = (T)(object)localization;
+            }
             if (File.Exists(FullPathFileName))// && (FileName.Equals("Config.json") || FileName.Equals("Memory.json")))
             {
                 try
@@ -62,9 +73,27 @@ namespace SmartHunter.Core.Config
                     settings.Converters.Add(new StringEnumConverter());
                     settings.Converters.Add(new StringFloatConverter());
 
-                    JsonConvert.PopulateObject(contents, Values, settings);
+                    string upgraded = Values is SmartHunter.Config.LocalizationConfig
+                        ? SmartHunter.Game.Helpers.LanguageCatalog.UpgradeBuiltInFile(FileName, contents)
+                        : Values is SmartHunter.Game.Config.MonsterDataConfig || Values is SmartHunter.Game.Config.PlayerDataConfig
+                          ? SmartHunter.Game.Helpers.TextKeyNames.UpgradeData(contents, Values is SmartHunter.Game.Config.PlayerDataConfig && !SmartHunter.Game.Helpers.LanguageCatalog.IsWorld(FileName), Values is SmartHunter.Game.Config.MonsterDataConfig && !SmartHunter.Game.Helpers.LanguageCatalog.IsWorld(FileName)) : null;
+                    JsonConvert.PopulateObject(upgraded ?? contents, Values, settings);
+                    var localization = (object)Values as SmartHunter.Config.LocalizationConfig;
+                    if (localization != null)
+                    {
+                        SmartHunter.Game.Helpers.LanguageCatalog.UpgradeLegacyDescriptions(localization.Strings, FileName);
+                        SmartHunter.Game.Helpers.LanguageCatalog.NormalizeSeparators(localization.Strings);
+                    }
 
                     Log.WriteLine($"{FileName} loaded");
+                    if (upgraded != null && upgraded != contents)
+                    {
+                        // Persist new editable keys without replacing custom values
+                        // or additional fields in the user's language document.
+                        TryPauseWatching();
+                        try { AtomicFile.Write(FullPathFileName, upgraded); }
+                        finally { TryUnpauseWatching(); }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -97,8 +126,18 @@ namespace SmartHunter.Core.Config
                 settings.Converters.Add(new StringFloatConverter());
 
                 var jsonString = JsonConvert.SerializeObject(Values, settings);
+                if (Values is SmartHunter.Config.LocalizationConfig language)
+                {
+                    var document = File.Exists(FullPathFileName) ? Newtonsoft.Json.Linq.JObject.Parse(File.ReadAllText(FullPathFileName)) : new Newtonsoft.Json.Linq.JObject();
+                    document["Strings"] = Newtonsoft.Json.Linq.JObject.FromObject(language.Strings);
+                    SmartHunter.Game.Helpers.TextKeyNames.Normalize(document, FileName, SmartHunter.Game.Helpers.LanguageCatalog.ReadBuiltIn(FileName));
+                    language.Strings = document["Strings"].ToObject<System.Collections.Generic.Dictionary<string,string>>();
+                    jsonString = document.ToString(Formatting.Indented);
+                }
+                else if (Values is SmartHunter.Game.Config.MonsterDataConfig || Values is SmartHunter.Game.Config.PlayerDataConfig)
+                    jsonString = SmartHunter.Game.Helpers.TextKeyNames.UpgradeData(jsonString, Values is SmartHunter.Game.Config.PlayerDataConfig && !SmartHunter.Game.Helpers.LanguageCatalog.IsWorld(FileName), Values is SmartHunter.Game.Config.MonsterDataConfig && !SmartHunter.Game.Helpers.LanguageCatalog.IsWorld(FileName));
 
-                File.WriteAllText(FullPathFileName, jsonString);
+                AtomicFile.Write(FullPathFileName, jsonString);
 
                 if (printToLog)
                 {

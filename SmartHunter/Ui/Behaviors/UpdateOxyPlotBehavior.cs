@@ -66,7 +66,12 @@ namespace SmartHunter.Ui.Behaviors
             }
         }
 
-        private void ContextOnPlayersDamageUpdated(object sender, EventArgs e) => UpdatePlot();
+        private void ContextOnPlayersDamageUpdated(object sender, EventArgs e)
+        {
+            // Timed plots already redraw on their timer; don't lay out the whole
+            // plot again on every 20-60 Hz memory update.
+            if (TickInterval <= 0) UpdatePlot();
+        }
 
         private void TimerOnTick(object sender, EventArgs e)
         {

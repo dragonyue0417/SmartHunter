@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net461</TargetFramework><PlatformTarget>x64</PlatformTarget><LangVersion>latest</LangVersion><AssemblyName>SmartHunter.LegacyBootstrap</AssemblyName><AssemblyVersion>2026.10.31.1</AssemblyVersion><FileVersion>2026.10.31.1</FileVersion><UpdatePackage Condition="'$(UpdatePackage)' == ''">../artifacts/SmartHunter-Unified-2026.10.31.1.zip</UpdatePackage></PropertyGroup>
+  <ItemGroup><Reference Include="System.IO.Compression"/><Reference Include="System.IO.Compression.FileSystem"/><Reference Include="System.Windows.Forms"/><EmbeddedResource Include="$(UpdatePackage)" LogicalName="SmartHunter.Update.zip"/></ItemGroup>
+  <Target Name="RequirePayload" BeforeTargets="PrepareForBuild"><Error Condition="!Exists('$(UpdatePackage)')" Text="Build the Unified deployment ZIP first, then pass -p:UpdatePackage=absolute-path-to-ZIP."/></Target>
+</Project>

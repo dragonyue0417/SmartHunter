@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using SmartHunter.Core.Data;
 using SmartHunter.Game.Data.WidgetContexts;
 using SmartHunter.Game.Helpers;
@@ -19,7 +19,7 @@ namespace SmartHunter.Game.Data.ViewModels
                     bool isDesignInstance = LicenseManager.UsageMode == LicenseUsageMode.Designtime;
                     if (isDesignInstance || ConfigHelper.Main.Values.Debug.UseSampleData)
                     {
-                        s_Instance.GenerateSampleData();
+                        // Preview snapshots are supplied by WildsMemoryUpdater.
                     }
                 }
 
@@ -31,6 +31,9 @@ namespace SmartHunter.Game.Data.ViewModels
         public ContextualWidget<MonsterWidgetContext> MonsterWidget { get; private set; }
         public ContextualWidget<PlayerWidgetContext> PlayerWidget { get; private set; }
         public ContextualWidget<DebugWidgetContext> DebugWidget { get; private set; }
+        bool m_IsPreview;
+        public bool IsPreview { get => m_IsPreview; set { if (SetProperty(ref m_IsPreview, value)) NotifyPropertyChanged(nameof(IsDebugVisible)); } }
+        public bool IsDebugVisible => !HideWidgetsRequested && (IsPreview || DebugWidget.Context.AllowVisibility);
 
         bool m_CanManipulateWindows;
         public bool CanManipulateWindows
@@ -48,6 +51,7 @@ namespace SmartHunter.Game.Data.ViewModels
                 if (SetProperty(ref m_HideWidgetsRequested, value))
                 {
                     NotifyPropertyChanged(nameof(IsVisible));
+                    NotifyPropertyChanged(nameof(IsDebugVisible));
                 }
             }
         }
@@ -79,6 +83,15 @@ namespace SmartHunter.Game.Data.ViewModels
             MonsterWidget = new ContextualWidget<MonsterWidgetContext>(ConfigHelper.Main.Values.Overlay.MonsterWidget, new MonsterWidgetContext());
             PlayerWidget = new ContextualWidget<PlayerWidgetContext>(ConfigHelper.Main.Values.Overlay.PlayerWidget, new PlayerWidgetContext());
             DebugWidget = new ContextualWidget<DebugWidgetContext>(ConfigHelper.Main.Values.Overlay.DebugWidget, new DebugWidgetContext());
+            DebugWidget.Context.PropertyChanged += (s, e) => { if (e.PropertyName == "AllowVisibility") NotifyPropertyChanged(nameof(IsDebugVisible)); };
+            ConfigHelper.Localization.Loaded += (s, e) => RefreshLocalization();
+        }
+
+        internal void RefreshLocalization()
+        {
+            foreach (var monster in MonsterWidget.Context.Monsters) monster.UpdateLocalization();
+            foreach (var effect in PlayerWidget.Context.StatusEffects)
+                effect.NotifyPropertyChanged(nameof(PlayerStatusEffect.Name));
         }
 
         void GenerateSampleData()

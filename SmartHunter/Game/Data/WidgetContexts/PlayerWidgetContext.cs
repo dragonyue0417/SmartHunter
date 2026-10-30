@@ -6,6 +6,7 @@ namespace SmartHunter.Game.Data.WidgetContexts
 {
     public class PlayerWidgetContext : WidgetContext
     {
+        protected override SmartHunter.Core.Config.WidgetConfig FontConfig => SmartHunter.Game.Helpers.ConfigHelper.Main.Values.Overlay.PlayerWidget;
         public ObservableCollection<PlayerStatusEffect> StatusEffects { get; private set; }
 
         public PlayerWidgetContext()

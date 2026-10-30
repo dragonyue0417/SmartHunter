@@ -10,7 +10,12 @@ namespace SmartHunter.Core.Data
             get { return m_Max; }
             set
             {
-                SetProperty(ref m_Max, value);
+                if (SetProperty(ref m_Max, value))
+                {
+                    if (ShouldCapCurrent) Current = Cap(m_Current, m_Max);
+                    NotifyPropertyChanged(nameof(Fraction));
+                    NotifyPropertyChanged(nameof(Angle));
+                }
             }
         }
 
@@ -38,7 +43,7 @@ namespace SmartHunter.Core.Data
             }
         }
 
-        public float Fraction { get { return m_Current / m_Max; } }
+        public float Fraction { get { return m_Max > 0 ? m_Current / m_Max : 0; } }
         public float Angle { get { return Fraction * 359.999f; } }
 
         public bool ShouldCapCurrent { get; set; }

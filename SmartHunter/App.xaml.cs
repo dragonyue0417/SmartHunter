@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -15,13 +16,28 @@ namespace SmartHunter
 {
     public partial class App : Application
     {
-        MhwOverlay m_Overlay;
+        WildsOverlay m_Overlay;
         FileContainer m_SkinFile;
 
         string m_LastSkinFileName;
 
+        public App()
+        {
+            DispatcherUnhandledException += (s, e) => Log.WriteException(e.Exception);
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+            {
+                if (e.ExceptionObject is Exception error) Log.WriteException(error);
+            };
+            // Resource dictionaries can instantiate view models during
+            // InitializeComponent, before OnStartup. Migrate before any of
+            // those models can create a default classified configuration.
+            StorageLayout.Prepare(FileContainer.GetFullPath());
+            DefaultFiles.Ensure(FileContainer.GetFullPath());
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            SmartHunter.World.GameProfile.Initialize();
             //var culture = new System.Globalization.CultureInfo("es-ES");
             //System.Globalization.CultureInfo.CurrentCulture = culture;
             //System.Globalization.CultureInfo.CurrentUICulture = culture;
@@ -29,41 +45,30 @@ namespace SmartHunter
             // Initialize the console view model first thing so we can see any problems that may occur
             var consoleViewModel = ConsoleViewModel.Instance;
 
-            Log.WriteLine($"Started {Assembly.GetExecutingAssembly().GetName().Version}");
+            Log.WriteLine($"Started SmartHunter {Assembly.GetExecutingAssembly().GetName().Version}");
             //Log.WriteLine($"Culture: {System.Globalization.CultureInfo.CurrentCulture.Name}");
 
             SetPerMonitorDpiAwareness();
 
             ConfigHelper.EnsureConfigs();
             ConfigHelper.Main.Loaded += Config_Loaded;
+            ConfigHelper.SettingsSaved += Config_Loaded;
 
             m_SkinFile = new FileContainer(ConfigHelper.Main.Values.SkinFileName);
             m_SkinFile.Changed += (s1, e1) => { LoadSkin(); };
             LoadSkin();
 
-            try
-            {
-                string[] files = Directory.GetFiles(".");
-                foreach (string file in files)
-                {
-                    if (Path.GetExtension(file).Equals(".exe") && file.Contains("SmartHunter_"))
-                    {
-                        File.Delete(file);
-                    }
-                }
-            }
-            catch
-            {
-
-            }
-
-            m_Overlay = new MhwOverlay(new ConsoleWindow(), new TeamWidgetWindow(), new MonsterWidgetWindow(), new PlayerWidgetWindow(), new DebugWidgetWindow());
+            m_Overlay = new WildsOverlay(new ConsoleWindow(), new TeamWidgetWindow(), new MonsterWidgetWindow(), new PlayerWidgetWindow(), new DebugWidgetWindow());
 
             base.OnStartup(e);
+            if(!e.Args.Contains("--no-updates"))SmartHunter.Core.Updates.UpdateService.Instance.Check(true);
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
+            ConfigHelper.SettingsSaved -= Config_Loaded;
+            m_Overlay?.Stop();
+            SmartHunter.Core.Updates.UpdateService.Instance.Dispose();
             Log.WriteLine("Ended");
             base.OnExit(e);
         }

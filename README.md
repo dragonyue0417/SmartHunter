@@ -1,60 +1,36 @@
-# SmartHunter - Monster Hunter: World Overlay
+# SmartHunter
 
-A complete overlay for Monster Hunter: World on PC. Distributed on [Nexus Mods](https://www.nexusmods.com/monsterhunterworld/mods/2556). Features include:
+支援《魔物獵人 世界/冰原》與《魔物獵人 荒野》的 Windows 資訊顯示工具。自動辨識遊戲，透過 overlay 顯示魔物血量、部位、狀態、隊伍傷害及玩家增益，不需要安裝遊戲模組。
 
-- Monster widget - name, health, parts, status effect buildup, and crown.
-- Team widget - name and damage meters.
-- Player widget - buff, debuff, and equipment/mantle timers.
-- Open source - freely learn from and contribute to the project.
-- Skinnable - create and distribute your own rich styles and animations with XAML.
-- Easy localization - create and distribute your own translations for our international friends.
+兩款遊戲各自儲存設定、介面位置與翻譯。可調整字級、大小及配色，並支援資料同步、自動更新與荒野網頁觀戰。
 
-## Changelog
+## 安裝與使用
 
-- Look [here](https://github.com/dragonyue0417/SmartHunter/commits/master)
+1. 使用 Windows x64，並安裝 [.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48)。
+2. 取得 [release/](release/) 內的完整檔案，放在可寫入的資料夾，執行 `SmartHunter.exe`。
+3. 啟動遊戲，建議使用無邊框或視窗模式。程式會自動讀取，執行狀態顯示在日誌中。
 
-## Requirements
+| 操作 | 方式 |
+| --- | --- |
+| 移動 overlay | 按住 `LeftAlt`，以滑鼠拖曳 |
+| 縮放 overlay | 按住 `LeftAlt`，滾動滑鼠，每次調整 5% |
+| 暫時隱藏 overlay | 按住 `F1` |
+| 分享荒野觀戰 | 點選左側「啟用並複製觀戰連結」 |
 
-- Windows.
-- [The latest .NET Framework runtime](https://dotnet.microsoft.com/download/dotnet-framework-runtime).
+設定變更會自動儲存。主視窗上方可選擇要修改的遊戲與語言；偵錯及網頁分享預設關閉。
 
-## How to install
+## 舊版升級
 
-- Download from [here](https://github.com/dragonyue0417/SmartHunter/releases).
+關閉舊程式，將 `release/` 的完整檔案複製到原資料夾並替換程式檔。首次執行會自動轉換舊設定與翻譯，保留原有自訂內容；也可在「一般設定」多選匯入舊版 JSON。
 
-## How to use
+兩款遊戲的資料分別儲存在 `Config/World`、`Config/Wilds` 與對應的 `Languages` 資料夾。自動更新預設從本專案 `unified` 分支的 `release/` 取得程式檔，保留個人設定。
 
-- Launch `SmartHunter.exe`.
-- Hold `LeftAlt` to view widget locations.
-- Click and drag widgets to move them.
-- Scroll over widgets to rescale them.
+## 建置
 
-## How to update
+需要 Windows 與 .NET SDK 8。執行 `dotnet build SmartHunter.sln -c Release -p:Platform=x64`；本機發布檔案由 `tools/Package-Client.ps1` 產生。
 
-- Following this [commit](https://github.com/gabrielefilipp/SmartHunter/commit/305b8a55eb4cd40c31a06a30ab862b4f803baa84) I've added an AutoUpdater module to this Application.
-- To enable this feature just set the key 'AutomaticallyCheckAndDownloadUpdates' to 'true', if present, otherwise just add it, to the file `Config.json`.
-- NOTE that this feature is already active if it's the first time you follow the "How to install" steps and download the mentioned files in a new directory.
-- To force an update just delete the file `Versions.json` and restart the application.
+## 致謝與來源
 
-## How to create and use new localizations
-
-- Create a copy of `en-US.json` and rename it for the locale you are translating to.
-- Translate the strings in the second part of each key value pair. Do not change the keys.
-- Ensure the new file is in the SmartHunter folder.
-- Open `Config.json` and point `LocalizationFileName` to the new file.
-
-## How to create and use new skins
-
-- Create a copy of `Default.xaml` and rename it appropriately.
-- Make changes to the new file.
-- Ensure the new file is in the SmartHunter folder.
-- Open `Config.json` and point `SkinFileName` to the new file.
-
-## Credits
-
-- [r00telement](https://www.nexusmods.com/monsterhunterworld/users/64406676) for he's original [project](https://github.com/r00telement/SmartHunter).
-- [Phil-Pa](https://github.com/Phil-Pa) for he's [idea](https://github.com/gabrielefilipp/SmartHunter/pull/57/commits/4e2394e98ca63626b2ddcb4503a0ba0b0ed70c72)
-
-## Disclaimer
-
-Use with care and at your own risk. It is possible to get banned from games for using mods and overlays. There have been reports of people being banned from other games, such as PUBG, if overlays are accidentally left running in the background. To date, there have been no reports of players being banned from Monster Hunter: World for using mods and overlays, but that doesn't preclude it from happening in the future.
+- [r00telement/SmartHunter](https://github.com/r00telement/SmartHunter) 與 [gabrielefilipp/SmartHunter](https://github.com/gabrielefilipp/SmartHunter)：原版功能與更新流程。
+- Marcus101RR Cheat Table：最初四組荒野管理器特徵碼的研究來源；[作者討論串](https://opencheattables.com/viewtopic.php?t=1331)。
+- 協助實機測試與翻譯的使用者。原版授權見 [LICENSE.txt](LICENSE.txt)。

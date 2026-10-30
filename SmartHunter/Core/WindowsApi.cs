@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 
 namespace SmartHunter.Core
@@ -59,19 +59,6 @@ namespace SmartHunter.Core
             MEM_RESERVE = 0x2000
         }
 
-        [Flags]
-        public enum RegionPageType : uint
-        {
-            // Indicates that the memory pages within the region are mapped into the view of an image section.
-            MEM_IMAGE = 0x1000000,
-
-            // Indicates that the memory pages within the region are mapped into the view of a section.
-            MEM_MAPPED = 0x40000,
-
-            // Indicates that the memory pages within the region are private (that is, not shared by other processes).
-            MEM_PRIVATE = 0x20000
-        }
-
         public struct MEMORY_BASIC_INFORMATION64
         {
             public ulong BaseAddress;
@@ -88,8 +75,9 @@ namespace SmartHunter.Core
         [DllImport("kernel32.dll")]
         public static extern int VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, out MEMORY_BASIC_INFORMATION64 lpBuffer, uint dwLength);
 
-        [DllImport("kernel32.dll")]
-        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, UIntPtr dwSize, out UIntPtr lpNumberOfBytesRead);
 
 
         [Flags]
@@ -174,43 +162,6 @@ namespace SmartHunter.Core
 
         [DllImport("user32.dll")]
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
-
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct WindowCompositionAttributeData
-        {
-            public WindowCompositionAttribute Attribute;
-            public IntPtr Data;
-            public int SizeOfData;
-        }
-
-        public enum WindowCompositionAttribute
-        {
-            WCA_ACCENT_POLICY = 19
-        }
-
-        public enum AccentState
-        {
-            ACCENT_DISABLED = 0,
-            ACCENT_ENABLE_GRADIENT = 1,
-            ACCENT_ENABLE_TRANSPARENTGRADIENT = 2,
-            ACCENT_ENABLE_BLURBEHIND = 3,
-            ACCENT_ENABLE_ACRYLICBLURBEHIND = 4, // RS4 1803
-            ACCENT_ENABLE_HOSTBACKDROP = 5, // RS5 1809
-            ACCENT_INVALID_STATE = 6
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct AccentPolicy
-        {
-            public AccentState AccentState;
-            public uint AccentFlags;
-            public uint GradientColor;
-            public uint AnimationId;
-        }
-
-        [DllImport("user32.dll")]
-        public static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
 
 
         public enum KeyboardMessage

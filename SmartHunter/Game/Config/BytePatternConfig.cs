@@ -1,4 +1,4 @@
-using SmartHunter.Core;
+﻿using SmartHunter.Core;
 
 namespace SmartHunter.Game.Config
 {

@@ -1,0 +1,22 @@
+{
+  "Product": "SmartHunter-Unified",
+  "Version": "2026.10.31.1",
+  "Files": {
+    "SmartHunter.exe": "354e2222dafee34d0c95ae68380ef4fd41fc380807f150d5b6f3182eda930dd6",
+    "SmartHunter.exe.config": "aa2c95cc9fe29e97abc08a1d03ad4485cd840cd3f45d7407fdac613f836c95e9",
+    "Themes/Default.xaml": "933956d27e969331ce76e0812662677e64196c1bb5327c6d7f7ca5955f9d1fd8",
+    "Newtonsoft.Json.dll": "f0c07af0e84d4dd4da4bd7823ba4535bc0481b3bf623ed40b659b68147a6bb75",
+    "Microsoft.Xaml.Behaviors.dll": "ff75938fedee596706171916db763ac100bc7164a7346dd739ad61660e068b5a",
+    "OxyPlot.dll": "bcad0cfecc043843008b4af27d74e4cf46638a06e5d9d8a7b09ffab6e5829a98",
+    "OxyPlot.Wpf.dll": "212b0dcf8688c2a2092c7b605e973c98c5f67527832adad0aee459c79d182d2b"
+  },
+  "Sizes": {
+    "SmartHunter.exe": 4622848,
+    "SmartHunter.exe.config": 358,
+    "Themes/Default.xaml": 119776,
+    "Newtonsoft.Json.dll": 721320,
+    "Microsoft.Xaml.Behaviors.dll": 144768,
+    "OxyPlot.dll": 549376,
+    "OxyPlot.Wpf.dll": 160768
+  }
+}

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using SmartHunter.Core;
@@ -19,6 +19,8 @@ namespace SmartHunter.Game.Data
     public class Monster : TimedVisibility
     {
         public ulong Address { get; private set; }
+        bool m_IsSelected;
+        public bool IsSelected { get => m_IsSelected; set => SetProperty(ref m_IsSelected, value); }
 
         string m_Id;
         public string Id
@@ -50,11 +52,18 @@ namespace SmartHunter.Game.Data
             }
         }
 
+        string m_VariantKeys = "";
+        public string VariantKeys
+        {
+            get => m_VariantKeys;
+            set { if (SetProperty(ref m_VariantKeys, value)) NotifyPropertyChanged(nameof(Name)); }
+        }
         public string Name
         {
             get
             {
-                return LocalizationHelper.GetMonsterName(Id);
+                string prefix = String.Join(" ", (VariantKeys ?? "").Split('|').Where(s => s.Length > 0).Select(LocalizationHelper.GetString));
+                return (prefix + " " + LocalizationHelper.GetMonsterName(Id)).Trim();
             }
         }
 
@@ -222,6 +231,49 @@ namespace SmartHunter.Game.Data
 
         public MonsterStatusEffect UpdateAndGetStatusEffect(ulong address, int index, float maxBuildup, float currentBuildup, float maxDuration, float currentDuration, int timesActivatedCount)
         {
+            if (SmartHunter.World.GameProfile.Active == SmartHunter.World.GameChoice.World)
+                return UpdateAndGetWorldStatusEffect(address,index,maxBuildup,currentBuildup,maxDuration,currentDuration,timesActivatedCount);
+
+            MonsterStatusEffect statusEffect = StatusEffects.SingleOrDefault(collectionStatusEffect => collectionStatusEffect.Index == index); // TODO: check address???
+
+            if (statusEffect != null)
+            {
+                statusEffect.Address = address;
+                if (ValidProgress(maxDuration, currentDuration))
+                {
+                    statusEffect.Duration.Max = maxDuration;
+                    statusEffect.Duration.Current = currentDuration;
+                }
+                if (ValidProgress(maxBuildup, currentBuildup))
+                {
+                    statusEffect.Buildup.Max = maxBuildup;
+                    statusEffect.Buildup.Current = currentBuildup;
+                }
+                statusEffect.TimesActivatedCount = timesActivatedCount;
+            }
+            else
+            {
+                statusEffect = new MonsterStatusEffect(this, address, index, maxBuildup, currentBuildup, maxDuration, currentDuration, timesActivatedCount);
+                statusEffect.Changed += PartOrStatusEffect_Changed;
+
+                StatusEffects.Add(statusEffect);
+            }
+
+            statusEffect.NotifyPropertyChanged(nameof(MonsterStatusEffect.IsVisible));
+
+            return statusEffect;
+        }
+
+        // Wilds clears valid 0/0 resets. World keeps the original ratio check,
+        // including signed sentinel counters used by its native status records.
+        static bool ValidProgress(float max, float current) =>
+            SmartHunter.World.GameProfile.Active == SmartHunter.World.GameChoice.World
+                ? !float.IsNaN(current / max)
+                : max >= 0 && current >= 0 && !float.IsNaN(max) && !float.IsNaN(current) && !float.IsInfinity(max) && !float.IsInfinity(current);
+
+        // Verbatim World model update from the user's original SmartHunter.
+        private MonsterStatusEffect UpdateAndGetWorldStatusEffect(ulong address, int index, float maxBuildup, float currentBuildup, float maxDuration, float currentDuration, int timesActivatedCount)
+        {
             MonsterStatusEffect statusEffect = StatusEffects.SingleOrDefault(collectionStatusEffect => collectionStatusEffect.Index == index); // TODO: check address???
 
             if (statusEffect != null)
@@ -271,7 +323,12 @@ namespace SmartHunter.Game.Data
 
         public static bool IsIncluded(string monsterId)
         {
-            return ConfigHelper.Main.Values.Overlay.MonsterWidget.MatchIncludeMonsterIdRegex(monsterId);
+            // Large monsters use emNNN_XX; emsNNN (small monsters) are excluded
+            // even if an old config contains a broader include expression.
+            return !string.IsNullOrEmpty(monsterId) && monsterId.Length > 2 &&
+                monsterId.StartsWith("em", StringComparison.Ordinal) &&
+                monsterId[2] >= '0' && monsterId[2] <= '9' &&
+                ConfigHelper.Main.Values.Overlay.MonsterWidget.MatchIncludeMonsterIdRegex(monsterId);
         }
 
         private void PartOrStatusEffect_Changed(object sender, GenericEventArgs<DateTimeOffset> e)

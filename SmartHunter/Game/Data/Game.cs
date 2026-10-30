@@ -1,4 +1,4 @@
-using SmartHunter.Core.Data;
+﻿using SmartHunter.Core.Data;
 
 namespace SmartHunter.Game.Data
 {
@@ -26,6 +26,7 @@ namespace SmartHunter.Game.Data
     public class Game : Bindable
     {
         public bool IsValid = false;
+        public bool LobbyHostWasFallback;
 
         public string key = "";
 

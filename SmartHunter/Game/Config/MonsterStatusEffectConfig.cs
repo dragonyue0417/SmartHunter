@@ -1,4 +1,4 @@
-namespace SmartHunter.Game.Config
+﻿namespace SmartHunter.Game.Config
 {
     public class MonsterStatusEffectConfig
     {

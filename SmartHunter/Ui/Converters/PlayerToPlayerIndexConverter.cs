@@ -14,7 +14,7 @@ namespace SmartHunter.Ui.Converters
 
             if (OverlayViewModel.Instance.TeamWidget.Context.Players.Contains(player))
             {
-                return OverlayViewModel.Instance.TeamWidget.Context.Players.IndexOf(player);
+                return player.Index;
             }
 
             return Binding.DoNothing;

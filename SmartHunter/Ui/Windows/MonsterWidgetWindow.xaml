@@ -11,29 +11,52 @@
                       
         xmlns:windows="clr-namespace:SmartHunter.Core.Windows"
         xmlns:viewModels="clr-namespace:SmartHunter.Game.Data.ViewModels"
+        xmlns:helpers="clr-namespace:SmartHunter.Game.Helpers"
     
         Title="{Binding ConverterParameter=LOC_WIDGET_MONSTER, Converter={StaticResource A_Converter_Localizer}}"
                       
         d:DataContext="{x:Static viewModels:OverlayViewModel.Instance}"        
         MouseDown="WidgetWindow_MouseDown"
-        MouseWheel="WidgetWindow_MouseWheel"                           
+        PreviewMouseWheel="MonsterWindow_MouseWheel"
         ShowActivated="False"        
         AllowsTransparency="True"
         WindowStyle="None"
         ShowInTaskbar="False"
         Background="#01000000"        
-        SizeToContent="WidthAndHeight" 
-        Width="Auto"
+        SizeToContent="WidthAndHeight"
         Height="Auto">
 
-    <Grid UseLayoutRounding="True" Margin="25" MinWidth="1038" MinHeight="50">
-        <Grid>
+    <Grid UseLayoutRounding="True" Margin="25" MinWidth="100" MinHeight="50">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <DockPanel Margin="0,0,0,8" Visibility="{Binding IsPreview, Converter={StaticResource A_Converter_BoolToVisibility}}">
+            <TextBlock DockPanel.Dock="Right" Text="{Binding [LOC_UI_PREVIEW_BADGE], Source={x:Static helpers:UiText.Instance}}" Visibility="{Binding IsPreview, Converter={StaticResource A_Converter_BoolToVisibility}}" Background="#FFE1AE" Foreground="#6E4E25" FontFamily="Segoe UI, Microsoft JhengHei" FontSize="11" Padding="8,4"/>
+        </DockPanel>
+        <Grid Grid.Row="1">
             <Grid.LayoutTransform>
                 <ScaleTransform ScaleX="{Binding MonsterWidget.Scale}" ScaleY="{Binding MonsterWidget.Scale}" />
             </Grid.LayoutTransform>
 
             <Grid Visibility="{Binding IsVisible, Converter={StaticResource A_Converter_BoolToVisibility}}">
-                <ContentControl DataContext="{Binding MonsterWidget.Context}" Content="{Binding}" />
+                <ScrollViewer x:Name="MonsterScroll" MaxWidth="{Binding MonsterWidget.Context.ViewportWidth}">
+                    <ScrollViewer.Style>
+                        <Style TargetType="ScrollViewer">
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/><Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding MonsterWidget.Context.HasCustomWidth}" Value="True"><Setter Property="HorizontalAlignment" Value="Stretch"/><Setter Property="HorizontalContentAlignment" Value="Stretch"/></DataTrigger>
+                                <DataTrigger Binding="{Binding MonsterWidget.Context.IsSingleRow}" Value="True">
+                                <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+                            </DataTrigger>
+                                <DataTrigger Binding="{Binding MonsterWidget.Context.HideScrollBars}" Value="True"><Setter Property="VerticalScrollBarVisibility" Value="Hidden"/></DataTrigger>
+                                <MultiDataTrigger><MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding MonsterWidget.Context.IsSingleRow}" Value="True"/>
+                                    <Condition Binding="{Binding MonsterWidget.Context.HideScrollBars}" Value="True"/>
+                                </MultiDataTrigger.Conditions><Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/></MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ScrollViewer.Style>
+                    <ContentControl DataContext="{Binding MonsterWidget.Context}" Content="{Binding}" HorizontalContentAlignment="Stretch" />
+                </ScrollViewer>
             </Grid>
         </Grid>
 

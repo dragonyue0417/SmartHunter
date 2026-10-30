@@ -13,7 +13,7 @@ namespace SmartHunter.Game.Config
 
         public bool MatchIncludeStatusEffectGroupIdRegex(string groupId)
         {
-            return new Regex(IncludeStatusEffectGroupIdRegex).IsMatch(groupId);
+            return !string.IsNullOrEmpty(groupId) && Regex.IsMatch(groupId, IncludeStatusEffectGroupIdRegex);
         }
     }
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using SmartHunter.Core.Data;
 
@@ -60,9 +60,7 @@ namespace SmartHunter.Game.Data
 
         public int CompareTo(Player other)
         {
-            if (this.Damage == 0 && other.Damage == 0)
-                return 0;
-            return this.Damage > other.Damage ? -1 : 1;
+            return other == null ? 1 : other.Damage.CompareTo(Damage);
         }
 
         public override string ToString()
