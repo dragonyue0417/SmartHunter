@@ -75,6 +75,7 @@ namespace SmartHunter.Core
                         () =>
                         {
                             Log.WriteLine("Searching for updates (You can disable this feature in file 'Config.json')!");
+                            updater.BeginCheck();
                         }),
                     new StateMachine<State>.Transition(
                         State.StartMHW,
@@ -136,21 +137,22 @@ namespace SmartHunter.Core
                 {
                     new StateMachine<State>.Transition(
                         State.StartMHW,
-                        () => !ConfigHelper.Main.Values.Overlay.MonsterWidget.UseNetworkServer && !updater.CheckForUpdates(),
+                        () => updater.CheckCompleted && !ConfigHelper.Main.Values.Overlay.MonsterWidget.UseNetworkServer && !updater.HasUpdate,
                         () =>
                         {
                             Initialize();
                         }),
                     new StateMachine<State>.Transition(
                         State.DownloadingUpdates,
-                        () => updater.CheckForUpdates(),
+                        () => updater.HasUpdate,
                         () =>
                         {
                             Log.WriteLine("Starting to download Updates!");
+                            updater.BeginDownload();
                         }),
                     new StateMachine<State>.Transition(
                         State.ServerChecking,
-                        () => ConfigHelper.Main.Values.Overlay.MonsterWidget.UseNetworkServer && !updater.CheckForUpdates(),
+                        () => updater.CheckCompleted && ConfigHelper.Main.Values.Overlay.MonsterWidget.UseNetworkServer && !updater.HasUpdate,
                         () =>
                         {
                             Log.WriteLine("Checking Server...");
@@ -201,14 +203,14 @@ namespace SmartHunter.Core
                 {
                     new StateMachine<State>.Transition(
                         State.Restarting,
-                        () => updater.DownloadUpdates(),
+                        () => updater.DownloadSucceeded,
                         () =>
                         {
                             Log.WriteLine("Successfully downloaded all files!");
                         }),
                     new StateMachine<State>.Transition(
                         State.StartMHW,
-                        () => !updater.DownloadUpdates(),
+                        () => updater.DownloadCompleted && !updater.DownloadSucceeded,
                         () =>
                         {
                             Log.WriteLine("Failed to download Updates... Resuming the normal flow of the application!");
@@ -217,26 +219,20 @@ namespace SmartHunter.Core
                 }));
 
             m_StateMachine.Add(State.Restarting, new StateMachine<State>.StateData(
-               null,
-               new StateMachine<State>.Transition[]
-               {
-                    new StateMachine<State>.Transition(
-                        State.Restarting,
-                        () => true,
-                        () =>
+                null,
+                new[]
+                {
+                    new StateMachine<State>.Transition(State.StartMHW, () => true, () =>
+                    {
+                        if (updater.LaunchInstallation())
                         {
-                            Log.WriteLine("Restarting Application!");
-                            string update = ".\\SmartHunter_NEW.exe";
-                            string exec = Assembly.GetEntryAssembly()?.Location;
-                            if (File.Exists(update) && exec != null && File.Exists(exec))
-                            {
-                                File.Move(exec, "SmartHunter_OLD.exe");
-                                File.Move(update, "SmartHunter.exe");
-                                Process.Start("SmartHunter.exe");
-                            }
-                            Environment.Exit(1);
-                        })
-               }));
+                            Log.WriteLine("Installing SmartHunter Unified in the current application folder.");
+                            m_DispatcherTimer?.Stop();
+                            Application.Current.Shutdown(0);
+                        }
+                        else Initialize();
+                    })
+                }));
 
             m_StateMachine.Add(State.ServerChecking, new StateMachine<State>.StateData(
                 null,

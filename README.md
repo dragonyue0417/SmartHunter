@@ -9,6 +9,17 @@ A complete overlay for Monster Hunter: World on PC. Distributed on [Nexus Mods](
 - Skinnable - create and distribute your own rich styles and animations with XAML.
 - Easy localization - create and distribute your own translations for our international friends.
 
+## Unified upgrade
+
+The maintained World/Iceborne and Wilds client is on the [unified branch](https://github.com/dragonyue0417/SmartHunter/tree/unified).
+This branch keeps the original World client source, with 64-bit session pointers and an updater targeting `unified/release/`.
+
+`SmartHunter/bin/Debug/SmartHunter.exe` is the standalone compatibility upgrade entry point, built from `SmartHunter.LegacyBootstrap` on `unified`. It installs the complete Unified client in the original folder; personal settings and translations are converted on first launch. Keep automatic updates enabled in the old client to receive this entry point after these master changes are published.
+
+Maintainers can regenerate the compatibility entry point with `./tools/Prepare-LegacyUpgrade.ps1 -UnifiedRoot <path-to-unified-checkout>` after building and verifying its `release/` files. The script only writes local files.
+
+Building the original source now produces an EXE with adjacent dependency DLLs. Use the complete build output when testing that client; its EXE alone is not the legacy download entry point.
+
 ## Changelog
 
 - Look [here](https://github.com/dragonyue0417/SmartHunter/commits/master)
@@ -34,7 +45,7 @@ A complete overlay for Monster Hunter: World on PC. Distributed on [Nexus Mods](
 - Following this [commit](https://github.com/gabrielefilipp/SmartHunter/commit/305b8a55eb4cd40c31a06a30ab862b4f803baa84) I've added an AutoUpdater module to this Application.
 - To enable this feature just set the key 'AutomaticallyCheckAndDownloadUpdates' to 'true', if present, otherwise just add it, to the file `Config.json`.
 - NOTE that this feature is already active if it's the first time you follow the "How to install" steps and download the mentioned files in a new directory.
-- To force an update just delete the file `Versions.json` and restart the application.
+- The updated source client checks the Unified version manifest and verifies every program file before installation. `Versions.json` is no longer used for that check; user JSON files are preserved.
 
 ## How to create and use new localizations
 

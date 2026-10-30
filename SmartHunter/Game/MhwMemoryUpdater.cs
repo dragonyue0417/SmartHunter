@@ -134,7 +134,7 @@ namespace SmartHunter.Game
             if (m_PlayerNamePattern.MatchedAddresses.Any() && m_CurrentPlayerNamePattern.MatchedAddresses.Any() && m_CurrentWeaponPattern.MatchedAddresses.Any() && m_LobbyStatusPattern.MatchedAddresses.Any())
             {
                 ulong playerNamesPtr = MemoryHelper.LoadEffectiveAddressRelative(Process, m_PlayerNamePattern.MatchedAddresses.First());
-                ulong playerNamesAddress = MemoryHelper.Read<uint>(Process, playerNamesPtr);
+                ulong playerNamesAddress = MemoryHelper.Read<ulong>(Process, playerNamesPtr);
 
                 ulong currentPlayerNamePtr = MemoryHelper.LoadEffectiveAddressRelative(Process, m_CurrentPlayerNamePattern.MatchedAddresses.First());
                 //ulong currentFelyneNameAddress = MemoryHelper.ReadMultiLevelPointer(traceUniquePointers, Process, currentPlayerNamePtr, 0xB40, 0x0, 0x890, 0x160, 0x8, 0x1E8, 0x7DC);
@@ -177,7 +177,7 @@ namespace SmartHunter.Game
                     ulong playerNamesPtr = MemoryHelper.LoadEffectiveAddressRelative(Process, m_PlayerNamePattern.MatchedAddresses.First());
                     ulong playerDamageRootPtr = MemoryHelper.LoadEffectiveAddressRelative(Process, m_PlayerDamagePattern.MatchedAddresses.First());
                     ulong playerDamageCollectionAddress = MemoryHelper.ReadMultiLevelPointer(traceUniquePointers, Process, playerDamageRootPtr, (long)MhwHelper.DataOffsets.PlayerDamageCollection.FirstPlayerPtr + (long)MhwHelper.DataOffsets.PlayerDamageCollection.MaxPlayerCount * sizeof(long) * (long)MhwHelper.DataOffsets.PlayerDamageCollection.NextPlayerPtr);
-                    ulong playerNamesAddress = MemoryHelper.Read<uint>(Process, playerNamesPtr);
+                    ulong playerNamesAddress = MemoryHelper.Read<ulong>(Process, playerNamesPtr);
 
                     MhwHelper.UpdateTeamWidget(Process, playerDamageCollectionAddress, playerNamesAddress);
 

@@ -9,8 +9,8 @@
         <LangVersion>latest</LangVersion>
         <AssemblyTitle>SmartHunter</AssemblyTitle>
         <Deterministic>false</Deterministic>
-        <AssemblyVersion>2024.10.08.00</AssemblyVersion>
-        <FileVersion>2024.10.08.00</FileVersion>
+        <AssemblyVersion>2026.10.31.0</AssemblyVersion>
+        <FileVersion>2026.10.31.0</FileVersion>
         <OutputPath>bin\$(Configuration)</OutputPath>
         <UseWPF>true</UseWPF>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -27,13 +27,8 @@
         <Exec Command="xcopy /E /Y &quot;$(ProjectDir)Ui\Resources&quot; &quot;$(TargetDir)&quot;" />
     </Target>
     <ItemGroup>
-        <PackageReference Include="Costura.Fody" Version="4.1.0">
-            <PrivateAssets>All</PrivateAssets>
-        </PackageReference>
-        <PackageReference Include="Fody" Version="6.3.0">
-            <PrivateAssets>All</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <!-- The single-EXE update endpoint uses the Unified legacy bootstrap.
+             Source builds keep dependency DLLs beside the original client. -->
         <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
         <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
         <PackageReference Include="OxyPlot.Wpf" Version="2.0.0" />
