@@ -1,4 +1,3 @@
-﻿using System;
 using System.Windows;
 using SmartHunter.Game.Data.ViewModels;
 

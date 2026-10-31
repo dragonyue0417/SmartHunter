@@ -102,11 +102,21 @@ namespace SmartHunter.Game.Helpers
             bool changed = wildsMonsters && SmartHunter.Wilds.WildsMonsterDataMigration.Upgrade(document);
             changed |= Normalize(document);
             if (wildsPlayer && document["StatusEffects"] is JArray statuses)
+            {
                 foreach (var status in statuses.OfType<JObject>())
                 {
                     string key = (string)status["NameStringId"], current = PlayerKey(key);
                     if (key != current) {status["NameStringId"]=current;changed=true;}
                 }
+                for (int slot = 0; slot < SmartHunter.Wilds.WildsMantles.Names.Length; slot++)
+                    foreach (bool cooling in new[] { false, true })
+                    {
+                        string key = SmartHunter.Wilds.WildsMantles.Key(slot, cooling);
+                        if (statuses.OfType<JObject>().Any(s => (string)s["NameStringId"] == key)) continue;
+                        statuses.Add(JObject.FromObject(new SmartHunter.Game.Config.StatusEffectConfig("Equipment", key, 0, null)));
+                        changed = true;
+                    }
+            }
             return changed ? document.ToString(Formatting.Indented) : contents;
         }
     }

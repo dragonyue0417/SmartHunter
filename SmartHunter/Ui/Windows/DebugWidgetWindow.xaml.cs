@@ -1,4 +1,4 @@
-﻿using SmartHunter.Core.Windows;
+using SmartHunter.Core.Windows;
 using SmartHunter.Game.Data.ViewModels;
 using SmartHunter.Game.Helpers;
 
@@ -28,18 +28,7 @@ namespace SmartHunter.Ui.Windows
             Left = System.Math.Max(area.Left + 8, System.Math.Min(Left, area.Right - ActualWidth - 8));
             Top = System.Math.Max(area.Top + 8, System.Math.Min(Top, area.Bottom - ActualHeight - 8));
         }
-        /*
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
 
-            //Variable to hold the handle for the form
-            var helper = new WindowInteropHelper(this).Handle;
-            //Performing some magic to hide the form from Alt+Tab
-            SetWindowLong(helper, GWL_EX_STYLE, (GetWindowLong(helper, GWL_EX_STYLE) | WS_EX_TOOLWINDOW) & ~WS_EX_APPWINDOW);
-        }
-        */
 
-        
     }
 }

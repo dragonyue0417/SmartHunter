@@ -1,19 +1,19 @@
 {
   "Product": "SmartHunter-Unified",
-  "Version": "2026.10.31.2",
+  "Version": "2026.10.31.6",
   "Files": {
-    "SmartHunter.exe": "0bb5fa8a57166c2dd73fdc55df9cf0f65577787f0f93415673051106b61e9a66",
+    "SmartHunter.exe": "5fb8cf2b982246da4caeabbfee36308aea9c6eddac815a8c02f50cc1ae02cf5b",
     "SmartHunter.exe.config": "aa2c95cc9fe29e97abc08a1d03ad4485cd840cd3f45d7407fdac613f836c95e9",
-    "Themes/Default.xaml": "933956d27e969331ce76e0812662677e64196c1bb5327c6d7f7ca5955f9d1fd8",
+    "Themes/Default.xaml": "fb8a60bccf20b3b87074d5dd8d4c58d6ce096ea39a3812749015f59123714959",
     "Newtonsoft.Json.dll": "f0c07af0e84d4dd4da4bd7823ba4535bc0481b3bf623ed40b659b68147a6bb75",
     "Microsoft.Xaml.Behaviors.dll": "ff75938fedee596706171916db763ac100bc7164a7346dd739ad61660e068b5a",
     "OxyPlot.dll": "bcad0cfecc043843008b4af27d74e4cf46638a06e5d9d8a7b09ffab6e5829a98",
     "OxyPlot.Wpf.dll": "212b0dcf8688c2a2092c7b605e973c98c5f67527832adad0aee459c79d182d2b"
   },
   "Sizes": {
-    "SmartHunter.exe": 4628480,
+    "SmartHunter.exe": 4648960,
     "SmartHunter.exe.config": 358,
-    "Themes/Default.xaml": 119776,
+    "Themes/Default.xaml": 119768,
     "Newtonsoft.Json.dll": 721320,
     "Microsoft.Xaml.Behaviors.dll": 144768,
     "OxyPlot.dll": 549376,

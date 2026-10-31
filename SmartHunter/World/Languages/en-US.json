@@ -1,5 +1,8 @@
 {
     "Strings": {
+        "LOC_FORMAT_EQUIPMENT_SECONDS": "{0:0} s",
+        "LOC_UI_MANTLE_DIAGNOSTICS": "Collect mantle timer diagnostics",
+        "LOC_UI_MANTLE_DIAGNOSTICS_DESC": "Every 2 seconds, trace Wilds mantle pointers, native types, timer candidates and getter code from the AOB result into Diagnostics/Wilds/Equipment.Wilds.json. Test each of the five mantles, waiting 5 seconds after putting it on and taking it off. There is no need to finish the cooldown. Disable after testing. Stored locally.",
         "LOC_4": "Unknown part 4",
         "LOC_5": "Unknown part 5",
         "LOC_EQUIPMENT_AFFINITY_BOOSTER": "Affinity Booster",

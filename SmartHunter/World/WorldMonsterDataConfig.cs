@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace SmartHunter.Game.Config
 {
@@ -1083,54 +1083,6 @@ namespace SmartHunter.Game.Config
                 new MonsterConfig("LOC_MONSTER_SAFI_JIIVA",
                     new MonsterPartConfig[]
                     {
-                        /*
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_1", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_2", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_3", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_4", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_5", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_6", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_7", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_8", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_9", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_10", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_11", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_12", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_13", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_14", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_15", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_16", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_17", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_18", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_19", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_20", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_21", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_22", true),
-                        new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_23", true),
-                        new MonsterPartConfig("Part", "LOC_PART_1"),
-                        new MonsterPartConfig("Part", "LOC_PART_2"),
-                        new MonsterPartConfig("Part", "LOC_PART_3"),
-                        new MonsterPartConfig("Part", "LOC_PART_4"),
-                        new MonsterPartConfig("Part", "LOC_PART_5"),
-                        new MonsterPartConfig("Part", "LOC_PART_6"),
-                        new MonsterPartConfig("Part", "LOC_PART_7"),
-                        new MonsterPartConfig("Part", "LOC_PART_8"),
-                        new MonsterPartConfig("Part", "LOC_PART_9"),
-                        new MonsterPartConfig("Part", "LOC_PART_10"),
-                        new MonsterPartConfig("Part", "LOC_PART_11"),
-                        new MonsterPartConfig("Part", "LOC_PART_12"),
-                        new MonsterPartConfig("Part", "LOC_PART_13"),
-                        new MonsterPartConfig("Part", "LOC_PART_14"),
-                        new MonsterPartConfig("Part", "LOC_PART_15"),
-                        new MonsterPartConfig("Part", "LOC_PART_16"),
-                        new MonsterPartConfig("Part", "LOC_PART_17"),
-                        new MonsterPartConfig("Part", "LOC_PART_18"),
-                        new MonsterPartConfig("Part", "LOC_PART_19"),
-                        new MonsterPartConfig("Part", "LOC_PART_20"),
-                        new MonsterPartConfig("Part", "LOC_PART_21"),
-                        new MonsterPartConfig("Part", "LOC_PART_22"),
-                        new MonsterPartConfig("Part", "LOC_PART_23")
-                        */
                         new MonsterPartConfig("Removable", "LOC_REMOVABLE_PART_TAIL", true),
                         new MonsterPartConfig("Part", "LOC_PART_HEAD"),
                         new MonsterPartConfig("Part", "LOC_PART_BODY"),
@@ -1913,27 +1865,6 @@ namespace SmartHunter.Game.Config
                 )
             }
         };
-        /*
-        public MonsterStatusEffectConfig[] StatusEffects =
-        {
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_POISON",       "08", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_PARALYSIS",    "10", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_SLEEP",        "18", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_BLAST",        "20", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_MOUNT",        "28", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_EXHAUST",      "30", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_STUN",         "38", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_TRANQUILIZE",  "40", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_FLASH",        "48", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_KNOW_DOWN",    "48", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_DUNG",         "58", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_SHOCK_TRAP",   "68", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_PITFALL_TRAP", "70", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_ELDERSEAL",    "88", "15C", "178", "17C", "1A4", "1A8"),
-            new MonsterStatusEffectConfig("Rage",         "LOC_STATUS_EFFECT_RAGE",         null, "190", "180", "1A0", "18C", "198"),
-            new MonsterStatusEffectConfig("StatusEffect", "LOC_STATUS_EFFECT_FATIGUE",      null, "42C", "420", "424", "430",  null, true)
-        };
-        */
 
         public MonsterStatusEffectConfig[] StatusEffects =
         {

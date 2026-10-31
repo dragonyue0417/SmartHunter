@@ -16,24 +16,24 @@ namespace SmartHunter.Wilds
         readonly HashSet<int> fieldTargets = new HashSet<int>();
         int fieldId = -1;
         public WildsReadStatistics LastReadStatistics { get; private set; } = new WildsReadStatistics();
-        public WildsReader(IWildsMemory memory, WildsAddresses addresses, ulong moduleBase, bool optimizeReads = true)
+        public WildsReader(IWildsMemory memory, WildsAddresses addresses, ulong moduleBase, bool optimizeReads = true, int moduleSize = 0)
         {
             reads = new WildsReadMemory(memory);
             context = new WildsReadContext(new WildsMemoryView(reads), addresses, moduleBase, optimizeReads);
             monsters = new WildsMonsterReader(context);
             party = new WildsPartyReader(context, questTotals);
-            effects = new WildsPlayerEffectReader(context);
+            effects = new WildsPlayerEffectReader(context, moduleSize);
         }
         public static bool Valid(float value) => WildsReadContext.Number(value);
         public static bool ValidHealth(float current, float maximum) => WildsReadContext.HealthRange(current, maximum);
-        public WildsSnapshot Read(bool selectedOnly = false, bool prioritizeSelected = true, bool showInCamp = false)
+        public WildsSnapshot Read(bool selectedOnly = false, bool prioritizeSelected = true, bool showInCamp = false, bool collectMantleDiagnostics = false)
         {
             reads.Reset();
             long started = Stopwatch.GetTimestamp();
             if (context.BulkReads)
                 context.Memory.BeginSnapshot();
             try
-            { return Capture(selectedOnly, prioritizeSelected, showInCamp); }
+            { return Capture(selectedOnly, prioritizeSelected, showInCamp, collectMantleDiagnostics); }
             finally
             {
                 LastReadStatistics = new WildsReadStatistics
@@ -47,7 +47,7 @@ namespace SmartHunter.Wilds
                 context.Health = null;
             }
         }
-        WildsSnapshot Capture(bool selectedOnly, bool prioritizeSelected, bool showInCamp)
+        WildsSnapshot Capture(bool selectedOnly, bool prioritizeSelected, bool showInCamp, bool collectMantleDiagnostics)
         {
             var result = new WildsSnapshot();
             var memory = context.Memory;
@@ -106,10 +106,13 @@ namespace SmartHunter.Wilds
                     monsters.CaptureDetails(monster);
                 party.Capture(result, local, questPresent && questTotals.UseQuestCounters, damageTargets);
                 CompleteQuestFrame(result, questPresent, active);
-                effects.Capture(result, local);
+                effects.Capture(result, local, collectMantleDiagnostics);
             }
             else
+            {
                 CompleteQuestFrame(result, questPresent, active);
+                if (!result.IsLoading && collectMantleDiagnostics) effects.CaptureMantles(result, local);
+            }
             return result;
         }
         void CompleteQuestFrame(WildsSnapshot result, bool present, bool active) => questTotals.Update(result, present, active, context.Memory.Int(context.Slot("QuestManager", "QuestMissionId")));

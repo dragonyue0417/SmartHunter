@@ -1,4 +1,3 @@
-using System;
 namespace SmartHunter.Wilds
 {
     public sealed class WildsReadStatistics

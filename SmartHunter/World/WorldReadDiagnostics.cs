@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
 using SmartHunter.Core;
-using SmartHunter.Core.Helpers;
 using SmartHunter.Game.Data.ViewModels;
 
 namespace SmartHunter.Game.Helpers

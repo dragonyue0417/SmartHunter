@@ -11,6 +11,24 @@ TestResults/
 *.log
 *.tmp
 
+# Local runtime data and research files must never become source changes.
+/Config/
+/Languages/
+/Logs/
+/Diagnostics/
+/LegacyFiles/
+/UserDataBackup/
+/.qa/
+/Config*.json
+/Versions.json
+/Log*.txt
+/*.World.json
+/*.Wilds.json
+*.zip
+*.ct
+*.CT
+*.dmp
+
 # Only the generated program payload belongs in the published release folder.
 /release/*
 !/release/SmartHunter.exe

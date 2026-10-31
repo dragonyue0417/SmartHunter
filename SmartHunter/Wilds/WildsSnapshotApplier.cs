@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SmartHunter.Game.Config;
-using SmartHunter.Game.Data;
 using SmartHunter.Game.Data.ViewModels;
 using SmartHunter.Game.Helpers;
 
@@ -90,10 +89,13 @@ namespace SmartHunter.Wilds
                 vm.TeamWidget.Context.UpdateAndGetPlayer(i, name, player?.Damage ?? 0);
             }
             vm.TeamWidget.Context.UpdateFractions();
-            foreach (var old in vm.PlayerWidget.Context.StatusEffects.ToArray()) if (!snapshot.Effects.Any(e => e.Index == old.Index)) vm.PlayerWidget.Context.StatusEffects.Remove(old);
-            foreach (var data in snapshot.Effects)
+            var definitions = ConfigHelper.PlayerData.Values.StatusEffects;
+            var visibleEffects = snapshot.Effects.Select(e => new { Data = e, Index = e.ConfigIndex(definitions) }).Where(e => e.Index >= 0).ToArray();
+            foreach (var old in vm.PlayerWidget.Context.StatusEffects.ToArray()) if (!visibleEffects.Any(e => e.Index == old.Index)) vm.PlayerWidget.Context.StatusEffects.Remove(old);
+            foreach (var item in visibleEffects)
             {
-                var effect = vm.PlayerWidget.Context.UpdateAndGetPlayerStatusEffect(data.Index, data.Remaining, true);
+                var data = item.Data;
+                var effect = vm.PlayerWidget.Context.UpdateAndGetPlayerStatusEffect(item.Index, data.Remaining, true);
                 effect.Time.Max = data.Infer ? Math.Max(effect.Time.Max, data.Remaining) : data.Max;
             }
         }

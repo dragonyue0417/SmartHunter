@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Linq;
 using SmartHunter.Core.Data;
 
@@ -42,6 +42,7 @@ namespace SmartHunter.Game.Data.WidgetContexts
             foreach (var statusEffect in StatusEffects)
             {
                 statusEffect.NotifyPropertyChanged(nameof(PlayerStatusEffect.IsVisible));
+                statusEffect.NotifyPropertyChanged(nameof(PlayerStatusEffect.TimeText));
             }
         }
     }

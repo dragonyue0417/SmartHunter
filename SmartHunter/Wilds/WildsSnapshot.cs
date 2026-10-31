@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 namespace SmartHunter.Wilds
 {
     public sealed class WildsSnapshot
@@ -18,6 +18,8 @@ namespace SmartHunter.Wilds
         public List<WildsMonsterSnapshot> Monsters = new List<WildsMonsterSnapshot>();
         public List<WildsPlayerSnapshot> Players = new List<WildsPlayerSnapshot>();
         public List<WildsEffectSnapshot> Effects = new List<WildsEffectSnapshot>();
+        [Newtonsoft.Json.JsonIgnore]
+        public WildsMantleSample Mantles;
     }
     public sealed class WildsMonsterSnapshot
     {
@@ -48,5 +50,9 @@ namespace SmartHunter.Wilds
     public sealed class WildsEffectSnapshot
     {
         public int Index; public float Remaining, Max; public bool Infer;
+        public string NameStringId;
+        internal int ConfigIndex(SmartHunter.Game.Config.StatusEffectConfig[] definitions) => definitions == null ? -1 : NameStringId == null
+            ? (Index >= 0 && Index < definitions.Length ? Index : -1)
+            : System.Array.FindIndex(definitions, d => d?.NameStringId == NameStringId);
     }
 }

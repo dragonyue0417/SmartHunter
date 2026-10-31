@@ -186,19 +186,6 @@ namespace SmartHunter.Game.Config
             new StatusEffectConfig("Equipment", "LOC_EQUIPMENT_RECHARGE_MANTLE_BANDIT", (uint)StatusEffectConfig.MemorySource.Equipment, indexToHexStrMantlesRecharging(18), new MemoryConditionConfig(0, indexToHexStrMantles(18))),
             new StatusEffectConfig("Equipment", "LOC_EQUIPMENT_RECHARGE_ASSASSINS_HOOD", (uint)StatusEffectConfig.MemorySource.Equipment, indexToHexStrMantlesRecharging(19), new MemoryConditionConfig(0, indexToHexStrMantles(19))),
 
-            // Not working
-            /*
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_INSECT_GLAIVE_ATTACK", (uint)StatusEffectConfig.MemorySource.Weapon, "1FE8", WeaponType.INSECT_GLAIVE),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_INSECT_GLAIVE_SPEED", (uint)StatusEffectConfig.MemorySource.Weapon, "1FEC", WeaponType.INSECT_GLAIVE),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_INSECT_GLAIVE_DEFENSE", (uint)StatusEffectConfig.MemorySource.Weapon, "1FF0", WeaponType.INSECT_GLAIVE),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_LONGSWORD_SPIRIT_GAUGE_REGEN_HELM_BREAKER", (uint)WeaponType.LONG_SWORD, indexToHexStrNoOffset(2402)),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_LONGSWORD_SPIRIT_GAUGE_REGEN_LAI_SLASH", (uint)WeaponType.LONG_SWORD, indexToHexStrNoOffset(2406)),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_LONGSWORD_STEADY_SPIRIT_LEVEL", (uint)WeaponType.LONG_SWORD, indexToHexStrNoOffset(2408)),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_CHARGE_BLADE_SHIELD_CHARGE", (uint)StatusEffectConfig.MemorySource.Weapon, "1FF8", WeaponType.CHARGE_BLADE),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_CHARGE_BLADE_BLADE_CHARGE", (uint)StatusEffectConfig.MemorySource.Weapon, "1FFC", WeaponType.CHARGE_BLADE),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_SWITCH_AXE_AMPED_STATE", (uint)StatusEffectConfig.MemorySource.Weapon, "1FD4", WeaponType.SWITCH_AXE),
-            new StatusEffectConfig("Weapon", "LOC_WEAPON_HAMMER_POWER_CHARGE", (uint)StatusEffectConfig.MemorySource.Weapon, null, WeaponType.HAMMER, new MemoryConditionConfig((byte)1, "1FC4"))
-            */
             //Working
             new StatusEffectConfig("Weapon", "LOC_WEAPON_CHARGE_BLADE_SHIELD_CHARGE", (uint)WeaponType.CHARGE_BLADE, indexToHexStrNoOffset(2270)),
             new StatusEffectConfig("Weapon", "LOC_WEAPON_CHARGE_BLADE_BLADE_CHARGE", (uint)WeaponType.CHARGE_BLADE, indexToHexStrNoOffset(2271)),

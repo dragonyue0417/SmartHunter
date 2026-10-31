@@ -1397,7 +1397,7 @@
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0} ({1:0})">
                                 <Binding Path="Name" Mode="OneWay" />
-                                <Binding Path="Time.Current" Mode="OneWay" />
+                                <Binding Path="TimeText" Mode="OneWay" />
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
@@ -1406,7 +1406,7 @@
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0:0} ({1:0})">
                                 <Binding Path="Name" Mode="OneWay" />
-                                <Binding Path="Time.Current" Mode="OneWay" />
+                                <Binding Path="TimeText" Mode="OneWay" />
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>

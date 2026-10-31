@@ -253,6 +253,7 @@ namespace SmartHunter.Game.Data.ViewModels
             AddOverlayFont("Advanced", "LOC_UI_DEBUG_FONT_SIZE", () => EditingOverlay.DebugWidget, () => OverlayViewModel.Instance.DebugWidget.Context.UpdateFromConfig());
             Add("Advanced", "LOC_UI_PREVIEW", () => EditingOptions.Debug.UseSampleData, v => EditingOptions.Debug.UseSampleData = v, false);
             Add("Advanced", "LOC_UI_NETWORK_DIAGNOSTICS", () => EditingOptions.Debug.CollectNetworkDiagnostics, v => EditingOptions.Debug.CollectNetworkDiagnostics = v, false);
+            Add("Advanced", "LOC_UI_MANTLE_DIAGNOSTICS", () => EditingOptions.Debug.CollectMantleDiagnostics, v => EditingOptions.Debug.CollectMantleDiagnostics = v, false);
             InitializeAppearance();
             FilteredSettings = new ListCollectionView(Settings.ToList());
             FilteredSettings.Filter = item =>
@@ -261,7 +262,7 @@ namespace SmartHunter.Game.Data.ViewModels
                 if(setting.Key.StartsWith("LOC_UI_COLOR_STATUS",StringComparison.Ordinal) && !HasColorStates) return false;
                 if(EditingGame != SmartHunter.World.GameChoice.World && setting.Key == "LOC_SETTING_SHOW_SOFTEN_PARTS") return false;
                 if (EditingGame == SmartHunter.World.GameChoice.World &&
-                    new[] { "LOC_UI_RELAY_ROLE", "LOC_UI_RELAY_BUILDUP", "LOC_UI_WEB_SHARE_ENABLED", "LOC_UI_WEB_SHARE_SESSION_LINK", "LOC_UI_NETWORK_DIAGNOSTICS", "LOC_UI_SHOW_IN_CAMP", "LOC_UI_PRIORITIZE_SELECTED_MONSTER", "LOC_UI_MONSTER_SELECTED_DETAILS" }.Contains(setting.Key)) return false;
+                    new[] { "LOC_UI_RELAY_ROLE", "LOC_UI_RELAY_BUILDUP", "LOC_UI_WEB_SHARE_ENABLED", "LOC_UI_WEB_SHARE_SESSION_LINK", "LOC_UI_NETWORK_DIAGNOSTICS", "LOC_UI_MANTLE_DIAGNOSTICS", "LOC_UI_SHOW_IN_CAMP", "LOC_UI_PRIORITIZE_SELECTED_MONSTER", "LOC_UI_MONSTER_SELECTED_DETAILS" }.Contains(setting.Key)) return false;
                 if (!String.IsNullOrWhiteSpace(Search))
                     return (setting.Name + " " + setting.Description).IndexOf(Search.Trim(), StringComparison.CurrentCultureIgnoreCase) >= 0;
                 return setting.Section == SelectedSection?.Id;

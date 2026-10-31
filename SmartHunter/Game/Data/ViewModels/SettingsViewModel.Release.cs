@@ -1,4 +1,3 @@
-using System;
 using SmartHunter.Core;
 using SmartHunter.Core.Updates;
 using SmartHunter.Game.Helpers;

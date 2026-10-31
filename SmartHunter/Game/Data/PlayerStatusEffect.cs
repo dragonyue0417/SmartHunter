@@ -1,4 +1,4 @@
-﻿using SmartHunter.Core.Data;
+using SmartHunter.Core.Data;
 using SmartHunter.Game.Helpers;
 
 namespace SmartHunter.Game.Data
@@ -16,11 +16,15 @@ namespace SmartHunter.Game.Data
                     NotifyPropertyChanged(nameof(GroupId));
                     NotifyPropertyChanged(nameof(Name));
                     NotifyPropertyChanged(nameof(IsVisible));
+                    NotifyPropertyChanged(nameof(TimeText));
                 }
             }
         }
 
         public Progress Time { get; private set; }
+        public string TimeText => SmartHunter.World.GameProfile.Active == SmartHunter.World.GameChoice.Wilds && GroupId == "Equipment"
+            ? string.Format(LocalizationHelper.GetString("LOC_FORMAT_EQUIPMENT_SECONDS"), System.Math.Ceiling(Time?.Current ?? 0))
+            : (Time?.Current ?? 0).ToString("0");
 
         bool m_IsConditionPassed;
         public bool IsConditionPassed
@@ -66,6 +70,7 @@ namespace SmartHunter.Game.Data
             if (maxTime.HasValue && currentTime.HasValue)
             {
                 Time = new Progress(maxTime.Value, currentTime.Value);
+                Time.PropertyChanged += (s, e) => { if (e.PropertyName == nameof(Progress.Current)) NotifyPropertyChanged(nameof(TimeText)); };
             }
 
             m_IsConditionPassed = isConditionPassed;

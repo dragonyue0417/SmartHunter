@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
 
@@ -58,11 +58,6 @@ namespace SmartHunter.Core
         static Key KeyFromVirtualCode(uint virtualCode)
         {
             return KeyInterop.KeyFromVirtualKey((int)virtualCode);
-        }
-
-        static int VirtualCodeFromKey(Key key)
-        {
-            return KeyInterop.VirtualKeyFromKey(key);
         }
 
         IntPtr KeyboardHook(int nCode, IntPtr wParam, IntPtr lParam)

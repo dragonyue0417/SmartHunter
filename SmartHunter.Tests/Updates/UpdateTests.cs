@@ -184,8 +184,9 @@ internal static void Defaults()
         var migrated=GameSettingsStore.Read(root);var saved=JObject.Parse(File.ReadAllText(path));
         Assert(((JObject)saved["Debug"]).Properties().All(p=>p.Value.Type==JTokenType.Boolean && !(bool)p.Value) && !(bool)saved["Overlay"]["DebugWidget"]["IsVisible"],"all diagnostics off on release migration");
         Assert(saved["DamageSharing"]==null && saved["Keybinds"]["CopyTeamDamage"]==null && (int)saved["CustomFutureSetting"]==27 && File.GetLastWriteTimeUtc(path)==modified,"retired settings removed without losing unknown fields or profile selection time");
-        migrated.WorldOptions.Debug.CollectNetworkDiagnostics=true;GameSettingsStore.Write(root,migrated,GameChoice.World);
-        Assert(GameSettingsStore.Read(root).WorldOptions.Debug.CollectNetworkDiagnostics,"explicit diagnostic re-enable survives subsequent startup");
+        migrated.WorldOptions.Debug.CollectNetworkDiagnostics=true;migrated.WildsOptions.Debug.CollectMantleDiagnostics=true;GameSettingsStore.Write(root,migrated);
+        var reloaded=GameSettingsStore.Read(root);
+        Assert(reloaded.WorldOptions.Debug.CollectNetworkDiagnostics && reloaded.WildsOptions.Debug.CollectMantleDiagnostics,"explicit diagnostic re-enable survives subsequent startup");
         foreach(GameChoice game in new[]{GameChoice.World,GameChoice.Wilds})
         {
             var fresh=GameSettingsStore.Document(new MainConfig(),game);Assert(((JObject)fresh["Debug"]).Properties().All(p=>!(bool)p.Value) && !(bool)fresh["Overlay"]["DebugWidget"]["IsVisible"] && (bool)fresh["Updates"]["Enabled"],"new install release defaults: "+game);

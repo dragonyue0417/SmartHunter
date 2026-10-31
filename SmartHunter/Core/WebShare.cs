@@ -112,7 +112,8 @@ namespace SmartHunter.Core
                 result.Monsters.Add(item);
             }
             result.Players = snapshot.Players.Where(p => p.Slot >= 0 && p.Slot < 4).GroupBy(p => p.Slot).Select(g => g.First()).Take(4).Select(p => new WebViewPlayer { Slot = p.Slot, Damage = Math.Max(0, p.Damage), Name = Text(p.IsNpc ? LocalizationHelper.GetString(p.Name) : p.Name, 64), IsNpc = p.IsNpc, Available = p.DamageAvailable }).ToList();
-            result.Effects = snapshot.Effects.Where(e => e.Index >= 0 && e.Index <= 10000).Take(256).Select(e => new WebViewEffect { Id = e.Index, Name = Text(LocalizationHelper.GetPlayerStatusEffectName(e.Index)), Remaining = Clean(e.Remaining), Max = Clean(e.Max) }).ToList();
+            result.Effects = snapshot.Effects.Select(e => new { Data = e, Index = e.ConfigIndex(ConfigHelper.PlayerData.Values.StatusEffects) })
+                .Where(e => e.Index >= 0).Take(256).Select(e => new WebViewEffect { Id = e.Index, Name = Text(LocalizationHelper.GetPlayerStatusEffectName(e.Index)), Remaining = Clean(e.Data.Remaining), Max = Clean(e.Data.Max) }).ToList();
             return result;
         }
         public static WebViewSnapshot World()

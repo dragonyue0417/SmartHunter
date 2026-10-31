@@ -1,4 +1,4 @@
-﻿using SmartHunter.Core.Data;
+using SmartHunter.Core.Data;
 
 namespace SmartHunter.Game.Data
 {
@@ -140,11 +140,6 @@ namespace SmartHunter.Game.Data
         public bool IsPlayerInLobby()
         {
             return LobbyID.Length > 0;
-        }
-
-        public bool IsCurrentPlayerSessionHost()
-        {
-            return CurrentPlayerName.Equals(SessionHostPlayerName) || SessionHostPlayerName.Length == 0 || CurrentPlayerName.Length == 0;
         }
 
         public bool IsCurrentPlayerLobbyHost()

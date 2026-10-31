@@ -1,10 +1,9 @@
-﻿using System.Linq;
+using System.Linq;
 using SmartHunter.Core;
 using SmartHunter.Core.Helpers;
 using SmartHunter.Game.Data.ViewModels;
 using SmartHunter.Game.Helpers;
 using ConfigHelper = SmartHunter.World.WorldConfigHelper;
-using System.Security.Cryptography;
 using System;
 
 namespace SmartHunter.Game
@@ -92,32 +91,6 @@ namespace SmartHunter.Game
         protected override void UpdateMemory()
         {
             UpdateVisibility();
-            /*
-            var range = new AddressRange(0x140000000, 0x169233000);
-            //var pattern = new BytePattern(new Config.BytePatternConfig("48 8B 05 ?? ?? ?? ?? 41 8B", "140000000", "163B0A000", null));
-
-            var pattern = new BytePattern(new Config.BytePatternConfig("null", "48 8B 0D ?? ?? ?? ??", null));
-            var matches = MemoryHelper.FindPatternAddresses(Process, range, pattern, false);
-
-            Log.WriteLine($"Found {matches.Count()} matches...");
-
-            ulong[] lookingFor = new ulong[1] { 0x144FA8720 };
-
-            var res = new System.Collections.Generic.List<ulong>();
-
-            foreach (ulong address in matches)
-            {
-                ulong lear = MemoryHelper.LoadEffectiveAddressRelative(Process, address);
-                foreach (ulong looking in lookingFor)
-                {
-                    if (looking == lear)
-                    {
-                        res.Add(address);
-                        Log.WriteLine($"Found match for 0x{looking} at 0x{address}");
-                    }
-                }
-            }
-            */
             bool traceUniquePointers = ConfigHelper.Main.Values.Debug.TraceUniquePointers;
             ulong playerNamesForFrame = 0;
             ulong playerNamesSlotForFrame=0,currentPlayerForFrame=0,lobbyForFrame=0;

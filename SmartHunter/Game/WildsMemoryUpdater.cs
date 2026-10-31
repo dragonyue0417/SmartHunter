@@ -28,6 +28,8 @@ namespace SmartHunter.Game
         WildsScanSummary previousSuccessfulScan;
         WildsNetworkProbe networkProbe;
         WildsNetworkReport networkReport;
+        WildsMantleDiagnostics mantleReport;
+        long nextMantleDiagnostic;
         long nextNetworkDiagnostic;
         string lastNetworkState;
         bool busy, disposed, preview;
@@ -108,18 +110,32 @@ namespace SmartHunter.Game
                         Log.WriteLine(String.Format(UiText.Instance["LOC_LOG_SCAN_UNKNOWN_RESOLVED"], version, scan.Report.ElapsedMilliseconds, scan.Report.LayoutVersion));
                         if (ConfigHelper.Main.Values.Relay.Enabled) Log.WriteLine(UiText.Instance["LOC_LOG_SCAN_UNKNOWN_RELAY"]);
                     }
-                    reader = new WildsReader(memory, scan.Addresses, moduleBase);
+                    reader = new WildsReader(memory, scan.Addresses, moduleBase, moduleSize: moduleSize);
                     networkProbe = new WildsNetworkProbe(memory, scan.Addresses, moduleBase, moduleSize: moduleSize);
                     networkReport = new WildsNetworkReport { GameVersion = version };
+                    mantleReport = new WildsMantleDiagnostics { GameVersion = version };
                 }
                 bool selectedOnly = ConfigHelper.Main.Values.Overlay.MonsterWidget.ShowOnlySelectedMonster && !ConfigHelper.Main.Values.Relay.Enabled;
                 bool prioritizeSelected = ConfigHelper.Main.Values.Overlay.MonsterWidget.PrioritizeSelectedMonster;
                 bool showInCamp = ConfigHelper.Main.Values.Overlay.MonsterWidget.ShowInCamp;
-                var snapshot = await Task.Run(() => reader.Read(selectedOnly, prioritizeSelected, showInCamp));
+                bool captureMantles = ConfigHelper.Main.Values.Debug.CollectMantleDiagnostics && clock.ElapsedMilliseconds >= nextMantleDiagnostic;
+                if (captureMantles) nextMantleDiagnostic = clock.ElapsedMilliseconds + 2000;
+                var snapshot = await Task.Run(() => reader.Read(selectedOnly, prioritizeSelected, showInCamp, captureMantles));
                 if (disposed) return;
                 if (ConfigHelper.Main.Values.Debug.UseSampleData) return; // a pending read cannot overwrite preview
                 debug.Observe(snapshot);
                 RecordSnapshot(snapshot);
+                if (snapshot.Mantles != null && ConfigHelper.Main.Values.Debug.CollectMantleDiagnostics)
+                {
+                    try
+                    {
+                        mantleReport.Add(snapshot.Mantles);
+                        var capturedMantles = mantleReport;
+                        await Task.Run(() => capturedMantles.Save(FileContainer.GetFullPathFileName("Equipment.Wilds.json")));
+                    }
+                    catch (Exception error) when (error is IOException || error is UnauthorizedAccessException) { Log.WriteLine("Mantle diagnostics skipped: " + error.Message); }
+                    if (disposed) return;
+                }
                 string networkState = $"{snapshot.StageId}/{snapshot.QuestSuccessState}/{snapshot.QuestFailureState}/{snapshot.IsQuestDamageFrozen}/{snapshot.Players.Count}";
                 if (snapshot.IsReady && ConfigHelper.Main.Values.Debug.CollectNetworkDiagnostics && (clock.ElapsedMilliseconds >= nextNetworkDiagnostic || lastNetworkState != networkState))
                 {
@@ -193,6 +209,7 @@ namespace SmartHunter.Game
             relay.Reset();
             OverlayViewModel.Instance.DebugWidget.Context.Reset();
             apply.Clear(); reader = null; scanReport = null; networkProbe = null; networkReport = null; nextNetworkDiagnostic = 0; lastNetworkState = null; lastDiagnosticState = null; lastDiagnosticAt = 0; memory?.Dispose(); memory = null; process?.Dispose(); process = null;
+            mantleReport = null; nextMantleDiagnostic = 0;
         }
         public void Dispose() { disposed = true; shutdown.Cancel(); timer.Stop(); timer.Tick -= Tick; Detach(); relay.Dispose(); }
     }

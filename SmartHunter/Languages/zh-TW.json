@@ -1,5 +1,8 @@
 {
     "Strings": {
+        "LOC_FORMAT_EQUIPMENT_SECONDS": "{0:0} 秒",
+        "LOC_UI_MANTLE_DIAGNOSTICS": "收集衣裝計時診斷",
+        "LOC_UI_MANTLE_DIAGNOSTICS_DESC": "每 2 秒從荒野的 AOB 定位結果收集衣裝指標、原生型別、計時候選值與 getter 程式碼，寫入 Diagnostics/Wilds/Equipment.Wilds.json。依序測試五種衣裝，穿上與脫下後各停留 5 秒即可，不必等冷卻結束；測完請關閉。資料只留在本機。",
         "LOC_EQUIPMENT_AFFINITY_BOOSTER": "達人煙筒",
         "LOC_EQUIPMENT_ASSASSINS_HOOD": "刺客衣裝",
         "LOC_EQUIPMENT_CLEANSER_BOOSTER": "解除煙筒",

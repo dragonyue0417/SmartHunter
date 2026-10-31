@@ -1,5 +1,8 @@
 {
     "Strings": {
+        "LOC_FORMAT_EQUIPMENT_SECONDS": "{0:0} 秒",
+        "LOC_UI_MANTLE_DIAGNOSTICS": "收集衣装计时诊断",
+        "LOC_UI_MANTLE_DIAGNOSTICS_DESC": "每 2 秒从荒野的 AOB 定位结果收集衣装指针、原生类型、计时候选值与 getter 代码，写入 Diagnostics/Wilds/Equipment.Wilds.json。依次测试五种衣装，穿上与脱下后各停留 5 秒，无需等待冷却结束；测试完成后关闭。数据仅保存在本机。",
         "LOC_4": "未知部位 4",
         "LOC_5": "未知部位 5",
         "LOC_EQUIPMENT_AFFINITY_BOOSTER": "达人烟筒",

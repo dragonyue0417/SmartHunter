@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using SmartHunter.Core.Data;
-using SmartHunter.Game.Data.ViewModels;
 using SmartHunter.Game.Helpers;
 
 namespace SmartHunter.Game.Data.WidgetContexts

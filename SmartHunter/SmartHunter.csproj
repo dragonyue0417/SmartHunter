@@ -11,8 +11,8 @@
         <AssemblyName>SmartHunter</AssemblyName>
         <RootNamespace>SmartHunter</RootNamespace>
         <Deterministic>false</Deterministic>
-        <AssemblyVersion>2026.10.31.2</AssemblyVersion>
-        <FileVersion>2026.10.31.2</FileVersion>
+        <AssemblyVersion>2026.10.31.6</AssemblyVersion>
+        <FileVersion>2026.10.31.6</FileVersion>
         <OutputPath>bin\$(Configuration)</OutputPath>
         <UseWPF>true</UseWPF>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

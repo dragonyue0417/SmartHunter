@@ -128,7 +128,7 @@ namespace SmartHunter.Wilds
             if (exhausted()) result.Status = "ReadBudget";
             hierarchies[type.TypeAddress] = result; return result;
         }
-        public WildsNetworkTypeMetadata ReadProperties(WildsNetworkTypeInfo type, ulong module, int moduleSize)
+        public WildsNetworkTypeMetadata ReadProperties(WildsNetworkTypeInfo type, ulong module, int moduleSize, bool equipment = false)
         {
             var result = new WildsNetworkTypeMetadata { Type = type.Name, Status = "NotAvailable" };
             ulong fields = m.Ptr(type.TypeAddress + 0x58), list = Pointer(fields) ? m.Ptr(fields + 0x20) : 0;
@@ -140,20 +140,23 @@ namespace SmartHunter.Wilds
             byte[] pointers = Pointer(data) ? m.Bytes(data, count * 8) : null;
             if (pointers == null) return result;
             result.Status = "Completed";
-            for (int i = 0; i < count && result.Properties.Count < 32 && !exhausted(); i++)
+            int maximumProperties = equipment ? 16 : 32;
+            for (int i = 0; i < count && result.Properties.Count < maximumProperties && !exhausted(); i++)
             {
                 ulong descriptor = BitConverter.ToUInt64(pointers, i * 8);
                 byte[] property = Pointer(descriptor) ? m.Bytes(descriptor, 0x30) : null;
                 if (property == null) continue;
                 string name = CString(BitConverter.ToUInt64(property, 0), 96);
-                if (name == null || !Interesting(name) && type.Name != "via.network.session.MemberInfo") continue;
+                if (name == null || !Interesting(name) && type.Name != "via.network.session.MemberInfo" && !(equipment &&
+                    (type.Name.Contains("ActiveSkill") || type.Name.Contains("ASkill") || name.Contains("ASkill") || name.Contains("ActiveSkill") || name.Contains("Character")))) continue;
                 var item = new WildsNetworkProperty { Name = name, Type = CString(BitConverter.ToUInt64(property, 0x20), 128),
                     Flags = BitConverter.ToUInt32(property, 0x18), GetterParameter = BitConverter.ToInt32(property, 0x28), VariableType = BitConverter.ToUInt32(property, 0x2C) };
                 ulong getter = BitConverter.ToUInt64(property, 0x10);
-                if (moduleSize >= 64 && getter >= module && getter - module <= (ulong)(moduleSize - 64))
+                int codeLength = equipment ? 128 : 64;
+                if (moduleSize >= codeLength && getter >= module && getter - module <= (ulong)(moduleSize - codeLength))
                 {
                     item.GetterRva = "0x" + (getter - module).ToString("X");
-                    byte[] bytes = m.Bytes(getter, 64);
+                    byte[] bytes = m.Bytes(getter, codeLength);
                     if (bytes != null)
                     {
                         item.GetterBytes = BitConverter.ToString(bytes).Replace('-', ' ');
@@ -174,7 +177,7 @@ namespace SmartHunter.Wilds
                 result.Properties.Add(item);
             }
             if (exhausted()) result.Status = "ReadBudget";
-            else if (result.Properties.Count >= 32 && count > 32) result.Status = "PropertyLimit";
+            else if (result.Properties.Count >= maximumProperties && count > maximumProperties) result.Status = "PropertyLimit";
             return result;
         }
         static bool Interesting(string name)

@@ -4,10 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using SmartHunter.Core;
 using SmartHunter.Core.Helpers;
 using SmartHunter.Game.Config;
 using SmartHunter.Game.Data;
@@ -786,7 +783,7 @@ namespace SmartHunter.Game.Helpers
                         if (maxHealth > 0)
                         {
                             MonsterPart mPart = UpdateMonsterRemovablePart(process, monster, removablePartAddress);
-                            if (/*isLast || */monster.Parts.Where(p => p.IsRemovable).Count() == maxRemovableParts)
+                            if (monster.Parts.Where(p => p.IsRemovable).Count() == maxRemovableParts)
                                 break;
                             bool isSame;
                             do
@@ -951,21 +948,6 @@ namespace SmartHunter.Game.Helpers
                 statusEffect = ConfigHelper.MonsterData.Values.StatusEffects.SingleOrDefault(s => s.GroupId.Equals("Stamina"));
                 monster.UpdateAndGetStatusEffect(staminaAddress, Array.IndexOf(ConfigHelper.MonsterData.Values.StatusEffects, statusEffect), maxStaminaBuildUp, currentStaminaBuildUp, 1, 0, 0);
             }
-            /*
-            if (currentFatigueDuration > 0)
-            {
-                statusEffect = ConfigHelper.MonsterData.Values.StatusEffects.SingleOrDefault(s => s.GroupId.Equals("Fatigue"));
-            }
-            else
-            {
-                statusEffect = ConfigHelper.MonsterData.Values.StatusEffects.SingleOrDefault(s => s.GroupId.Equals("Stamina"));
-            }
-
-            if (maxStaminaBuildUp > 0 || currentFatigueDuration > 0)
-            {
-                monster.UpdateAndGetStatusEffect(staminaAddress, Array.IndexOf(ConfigHelper.MonsterData.Values.StatusEffects, statusEffect), maxStaminaBuildUp > 0 ? maxStaminaBuildUp : 1, !statusEffect.InvertBuildup ? currentStaminaBuildUp : maxStaminaBuildUp - currentStaminaBuildUp, maxFatigueDuration, !statusEffect.InvertDuration ? currentFatigueDuration : maxFatigueDuration - currentFatigueDuration, fatigueActivatedCount);
-            }
-            */
             // Rage
 
             ulong rageAddress = monster.Address + DataOffsets.Monster.MonsterRageOffset;

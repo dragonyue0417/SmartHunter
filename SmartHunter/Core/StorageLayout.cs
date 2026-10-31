@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using SmartHunter.World;
 using SmartHunter.Game.Helpers;
@@ -20,7 +19,7 @@ namespace SmartHunter.Core
             if (name == "Default.xaml") return Path.Combine(root, "Themes", name);
             if (name == "Log.SmartHunter.txt") return Path.Combine(root, "Logs", name);
             if (name == "Read.World.json" || name == "Read.World.Monsters.json") return Path.Combine(root, "Diagnostics", "World", name);
-            if (name == "Scan.Wilds.json" || name == "Network.Wilds.json") return Path.Combine(root, "Diagnostics", "Wilds", name);
+            if (name == "Scan.Wilds.json" || name == "Network.Wilds.json" || name == "Equipment.Wilds.json") return Path.Combine(root, "Diagnostics", "Wilds", name);
             foreach (string game in new[] { "World", "Wilds" })
             {
                 foreach (string type in new[] { "MonsterData", "PlayerData", "Memory", "Settings" })

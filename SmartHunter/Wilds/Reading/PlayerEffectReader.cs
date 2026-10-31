@@ -6,6 +6,7 @@ namespace SmartHunter.Wilds
     internal sealed class WildsPlayerEffectReader
     {
         readonly WildsReadContext game;
+        readonly WildsMantleReader mantles;
         sealed class Requirement
         {
             public int Offset; public int? Integer; public byte? Byte;
@@ -18,9 +19,10 @@ namespace SmartHunter.Wilds
             public Requirement[] Requirements;
         }
         readonly Timer[] timers;
-        public WildsPlayerEffectReader(WildsReadContext game)
+        public WildsPlayerEffectReader(WildsReadContext game, int moduleSize = 0)
         {
             this.game = game;
+            mantles = new WildsMantleReader(game, moduleSize);
             timers = WildsCatalog.Instance.PlayerStatusEffects.Select((definition, index) => new Timer
             {
                 Output = index,
@@ -30,8 +32,8 @@ namespace SmartHunter.Wilds
                 Source = (WildsEffectSource)definition.Source,
                 Duration = definition.HasMaxDuration,
                 Buildup = definition.IsBuildup,
-                Supported = (definition.Conditions ?? new MemoryConditionConfig[0]).All(c => c.Offsets?.Length == 1),
-                Requirements = (definition.Conditions ?? new MemoryConditionConfig[0]).Where(c => c.Offsets?.Length == 1).Select(c => new Requirement
+                Supported = (definition.Conditions ?? Array.Empty<MemoryConditionConfig>()).All(c => c.Offsets?.Length == 1),
+                Requirements = (definition.Conditions ?? Array.Empty<MemoryConditionConfig>()).Where(c => c.Offsets?.Length == 1).Select(c => new Requirement
                 {
                     Offset = WildsStatusEffectConfig.Hex(c.Offsets[0]),
                     Integer = c.IntValue,
@@ -58,7 +60,8 @@ namespace SmartHunter.Wilds
             int length = array == 0 ? 0 : game.Memory.Int(array + 28);
             return index >= 0 && index < length && length <= 256 ? game.Memory.Float(array + 32 + (ulong)index * 4) : Single.NaN;
         }
-        public void Capture(WildsSnapshot snapshot, ulong local)
+        internal void CaptureMantles(WildsSnapshot snapshot, ulong local) => snapshot.Mantles = mantles.Capture(null, local, true);
+        public void Capture(WildsSnapshot snapshot, ulong local, bool collectMantleDiagnostics = false)
         {
             var memory = game.Memory;
             ulong items = game.Follow(local, "PlayerConsumableEffects"), songs = game.Follow(local, "PlayerHornEffects"),
@@ -128,53 +131,7 @@ namespace SmartHunter.Wilds
                         Infer = inferred
                     });
             }
-            CaptureTools(snapshot, local);
-        }
-        void CaptureTools(WildsSnapshot snapshot, ulong local)
-        {
-            var memory = game.Memory;
-            ulong[] equipment = memory.Array(game.Follow(local, "PlayerSpecializedTools"), 8);
-            int reserve = ReserveTool();
-            for (int slot = 0; slot < equipment.Length && slot < 5; slot++)
-            {
-                if (slot != 0 && slot != reserve - 1)
-                    continue;
-                ulong tool = equipment[slot];
-                if (tool == 0)
-                    continue;
-                bool worn = memory.Byte(tool + 0x33) != 0;
-                float remaining = game.Health.Read(memory, memory.Ptr(tool + (worn ? 16UL : 24UL))), duration = game.Health.Read(memory, memory.Ptr(tool + (worn ? 40UL : 32UL)));
-                if (WildsReadContext.HealthRange(remaining, duration) && remaining > 0)
-                    snapshot.Effects.Add(new WildsEffectSnapshot { Index = timers.Length + slot * 2 + (worn ? 0 : 1), Remaining = remaining, Max = duration });
-            }
-        }
-        int ReserveTool()
-        {
-            var memory = game.Memory;
-            if (memory.Int(game.Slot("PlayerManager", "PlayerIsInArena")) < 1)
-            {
-                int selected = memory.Int(game.Slot("SaveManager", "SaveIndex"));
-                if (selected < 0 || selected > 7)
-                    return 0;
-                ulong saves = game.Slot("SaveManager", "SaveData"), save = saves == 0 ? 0 : memory.Ptr(saves + (ulong)selected * 8);
-                ulong equipment = game.Follow(save, "SaveSpecializedTool");
-                return equipment == 0 ? 0 : memory.Int(equipment + 64);
-            }
-            int mission = memory.Int(game.Slot("QuestManager", "QuestMissionId")), loadout = memory.Int(game.Slot("QuestManager", "QuestArenaSelectedLoadout"));
-            if (loadout < 0 || loadout >= 32)
-                return 0;
-            foreach (ulong entry in memory.Array(game.Root("QuestManager", "QuestArenaData"), 64))
-            {
-                ulong details = memory.Ptr(entry + 32);
-                if (details == 0 || memory.Int(details + 16) != mission)
-                    continue;
-                ulong list = memory.Ptr(entry + 64);
-                if (list == 0 || loadout >= memory.Int(list + 28))
-                    return 0;
-                ulong selected = memory.Ptr(list + 32 + (ulong)loadout * 8), equipment = selected == 0 ? 0 : memory.Ptr(selected + 16);
-                return equipment == 0 ? 0 : memory.Int(equipment + 80);
-            }
-            return 0;
+            snapshot.Mantles = mantles.Capture(snapshot.Effects, local, collectMantleDiagnostics);
         }
     }
 }

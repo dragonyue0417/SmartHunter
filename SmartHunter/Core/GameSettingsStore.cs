@@ -54,7 +54,7 @@ namespace SmartHunter.Core
             if(((int?)document["ReleaseDefaultsVersion"]??0)<1)
             {
                 var debug=document["Debug"] as JObject??new JObject();
-                foreach(string name in new[]{"UseInternalSkin","UseSampleData","CollectNetworkDiagnostics","ShowServerLogs","TraceUniquePointers","ShowWeirdRemovableParts"})debug[name]=false;
+                foreach(string name in new[]{"UseInternalSkin","UseSampleData","CollectNetworkDiagnostics","CollectMantleDiagnostics","ShowServerLogs","TraceUniquePointers","ShowWeirdRemovableParts"})debug[name]=false;
                 document["Debug"]=debug;
                 var overlay=document["Overlay"] as JObject??new JObject();
                 var widget=overlay["DebugWidget"] as JObject??new JObject();widget["IsVisible"]=false;overlay["DebugWidget"]=widget;document["Overlay"]=overlay;

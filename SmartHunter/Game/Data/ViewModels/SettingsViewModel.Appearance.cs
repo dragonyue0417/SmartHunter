@@ -80,9 +80,7 @@ namespace SmartHunter.Game.Data.ViewModels
             {
                 if(game==GameChoice.World) definitions=JArray.FromObject(new WorldPlayerDataConfig().StatusEffects);
                 else {
-                    var effects=SmartHunter.Wilds.WildsCatalog.Instance.PlayerStatusEffects.Select(e=>new StatusEffectConfig(e.GroupId,e.NameStringId,0,null)).ToList();
-                    foreach(var id in new[]{"GHILLIE","ROCKSTEADY","MENDING","EVASION","CORRUPTED"}) {effects.Add(new StatusEffectConfig("Equipment","LOC_EQUIPMENT_MANTLE_"+id,0,null));effects.Add(new StatusEffectConfig("Equipment","LOC_EQUIPMENT_RECHARGE_MANTLE_"+id,0,null));}
-                    definitions=JArray.FromObject(effects);
+                    definitions=JArray.FromObject(new PlayerDataConfig(GameChoice.Wilds).StatusEffects);
                 }
             }
             else definitions=JArray.FromObject(game==GameChoice.World?new WorldMonsterDataConfig().StatusEffects:SmartHunter.Wilds.WildsCatalog.Instance.StatusEffects);
